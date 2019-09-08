@@ -16,21 +16,23 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <step></step>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Step from "@/components/SignUp/Step/main"
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
-};
+    step: Step
+  }
+}
 </script>
+
+<style>
+  * {
+    font-family: 'Noto Sans TC', sans-serif ;
+  }
+</style>
