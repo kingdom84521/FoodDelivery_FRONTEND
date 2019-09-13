@@ -8,6 +8,12 @@ import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
 
+Vue.directive('blur', {
+  inserted(el) {
+    el.onfocus = (ev) => ev.target.blur();
+  }
+});
+
 new Vue({
   router,
   store,
