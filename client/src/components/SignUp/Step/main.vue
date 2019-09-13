@@ -12,7 +12,7 @@
                     outlined
                     :color="``"
                     :class="`green--text`"
-                    @click="test( n )"
+                    @click="goToStep( n )"
                 >
                     <v-card-title primary-title class="pb-4">
                         <v-flex row justify-space-between>
@@ -61,6 +61,9 @@ export default {
         }
     },
     methods: {
+        goToStep( now ) {
+            this.$emit( "step-change", now ) ;
+        }
     }
 }
 </script>
