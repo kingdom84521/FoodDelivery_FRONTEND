@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import SignUp from "@/views/SignUp"
 
+// import SignUp from 
+
 Vue.use(Router)
 
 export default new Router({
@@ -10,12 +12,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home'
+      name: 'home',
+      
     },
     {
-      path: "/signup",
-      name: "signup",
-      component: 
+      path: '/signup',
+      name: 'signup',
+      component: () => import('@/views/SignUp.vue')
     }
   ]
 })
