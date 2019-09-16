@@ -16,7 +16,7 @@
     </v-app-bar>
 
     <v-content>
-      <step></step>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
@@ -26,7 +26,7 @@ import Step from "@/components/SignUp/Step/main"
 
 export default {
   components: {
-    step: Step
+    // step: Step
   }
 }
 </script>
