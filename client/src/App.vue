@@ -26,7 +26,6 @@ import Step from "@/components/SignUp/Step/main"
 
 export default {
   components: {
-    // step: Step
   }
 }
 </script>

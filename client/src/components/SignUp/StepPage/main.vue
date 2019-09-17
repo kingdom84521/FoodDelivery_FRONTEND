@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row
-      v-if="now == 0"
+      v-if="atStep( 0 )"
       class="mr-3"
     >
         <v-card
@@ -75,7 +75,7 @@
                   v-model="value" 
                   value="同意"
                 >
-
+                
                 </v-checkbox>
               </v-card-actions>
             </v-row>
@@ -86,20 +86,25 @@
 </template>
 
 <script>
-export default {
-  name: "stepPage",
-  props: {
-    now: {
-      type: Number,
-      required: true
-    }
-  },
-  data: () => {
-    return {
+  export default {
+    name: "stepPage",
+    props: {
+      now: {
+        type: Number,
+        required: true
+      }
+    },
+    data: () => {
+      return {
 
+      }
+    },
+    methods: {
+      atStep( pageNumber ) {
+        return this.now == pageNumber
+      }
     }
   }
-}
 </script>
 
 <style>
