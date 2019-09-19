@@ -5,13 +5,13 @@
                 v-for="( content, n ) in step"
                 :key="n"
                 :cols="12 / ( step.length + 1 )"
-                class="pa-1"
+                :class="n !== 3 ? 'pa-1' : 'px-1 pt-1'"
             >
                 <v-card
                     outlined
                     :color="content.color"
                     :class="`${ content.textColor }--text`"
-                    @click="goToStep( n )"
+                    @click="changeStepHandler( n )"
                 >
                     <v-card-title primary-title class="pb-4">
                         <v-flex row justify-space-between>
@@ -72,7 +72,7 @@ export default {
         }
     },
     methods: {
-        goToStep( now ) {
+        changeStepHandler( now ) {
             // for ( let n = now ; n > 0 ; --n )
             // {
             //     this.step[ n - 1 ].color = "green"
@@ -97,7 +97,7 @@ export default {
                 this.step[ n - 1 ].textColor = "white"
                 this.step[ n - 1 ].finished = true
             }
-            for ( let n = newValue ; n <= 2 ; ++n )
+            for ( let n = newValue ; n <= 3 ; ++n )
             {
                 this.step[ n ].color = ""
                 this.step[ n ].textColor = "green"

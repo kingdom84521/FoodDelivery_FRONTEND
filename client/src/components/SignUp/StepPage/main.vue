@@ -1,91 +1,34 @@
 <template>
   <v-container fluid>
-    <v-row
-      v-if="atStep( 0 )"
-      class="mr-3"
-    >
-        <v-card
-          class="grey ma-3 col-12"
+    <InnerPage :now="now" />
+    <v-divider />
+    <v-row justify="space-between" class="mt-3 mx-3">
+        <v-btn
+            :disabled="now !== 0 ? false : true"
+            @click="previousStepHandler()"
+            x-large 
+            color="red" 
+            class="white--text headline"
         >
-          <v-card
-            flat
-            class="grey lighten-3"
-          >
-            <v-card-text>
-              <div
-                id="pactText"
-                class="pa-3 white headline overflow-y-auto"
-              >
-                asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>asdasdasdasdasd
-                <br>
-              </div>
-            </v-card-text>
-            <v-row
-              class="mx-4"
-              justify="end"
-            >
-              <v-card-actions
-                class="ma-1"
-              >
-                <v-checkbox
-                  class="white ma-1 pa-4"
-                  hide-details
-                  label="同意上述條款" 
-                  v-model="value" 
-                  value="同意"
-                >
-                
-                </v-checkbox>
-              </v-card-actions>
-            </v-row>
-          </v-card>
-        </v-card>
-      </v-row>
+            <v-icon left large>mdi-chevron-left</v-icon>
+            上一步
+        </v-btn>
+        <v-btn
+            @click="nextStepHandler()"
+            x-large 
+            color="green" 
+            class="white--text headline"
+        >
+            {{ nextOrFinished }}
+            <v-icon right large>mdi-chevron-right</v-icon>
+        </v-btn>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+  import InnerPage from "@/components/SignUp/StepPage/InnerPage/main.vue"
+
   export default {
     name: "stepPage",
     props: {
@@ -94,14 +37,23 @@
         required: true
       }
     },
-    data: () => {
-      return {
-
-      }
+    components: {
+      InnerPage
     },
     methods: {
       atStep( pageNumber ) {
         return this.now == pageNumber
+      },
+      nextStepHandler() {
+        this.$emit( "next-step", this.now + 1 )
+      },
+      previousStepHandler() {
+        this.$emit( "previous-step", this.now - 1 )
+      }
+    },
+    computed: {
+      nextOrFinished() {
+        return this.now === 4 ? "完成" : "下一步"
       }
     }
   }

@@ -1,27 +1,7 @@
 <template>
     <v-container fluid>
         <step :now="now" @step-change="goToPage( $event )" />
-        <step-page :now="now" />
-
-        <v-divider />
-            <v-row justify="space-between" class="mt-3 mx-3">
-                <v-btn
-                    x-large 
-                    color="red" 
-                    class="white--text headline"
-                >
-                    <v-icon left large>mdi-chevron-left</v-icon>
-                    上一步
-                </v-btn>
-                <v-btn 
-                    x-large 
-                    color="green" 
-                    class="white--text headline"
-                >
-                    下一步
-                    <v-icon right large>mdi-chevron-right</v-icon>
-                </v-btn>
-            </v-row>
+        <step-page :now="now" @next-step="goToPage( $event )" @previous-step="goToPage( $event )" />
     </v-container>
 </template>
 
