@@ -22,10 +22,11 @@
 </template>
 
 <script>
-import Step from "@/components/SignUp/Step/main"
-
 export default {
-  components: {
+  data: () => {
+    return {
+      test: 0
+    }
   }
 }
 </script>

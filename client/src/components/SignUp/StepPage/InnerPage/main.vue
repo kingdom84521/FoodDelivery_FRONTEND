@@ -45,9 +45,39 @@
           <v-card
             class="col-6"
           >
-            <v-card-title primary-title>
-              title
-            </v-card-title>
+            <v-list
+              disabled
+            >
+              <v-list-item>
+                <v-row>
+                  <v-list-item-content>
+                    <v-col
+                      cols="4"
+                    >
+                      <v-row>
+                        <v-list-item-title
+                          class="text-center noto-family title-text"
+                        >
+                          帳號
+                        </v-list-item-title>
+                      </v-row>
+                    </v-col>
+                    <v-col
+                      cols="6"
+                    >
+                      <v-row
+                        justify="center"
+                      >
+                        <v-text-field
+                          label="test"
+                          v-model="test"
+                        />
+                      </v-row>
+                    </v-col>
+                  </v-list-item-content>
+                </v-row>
+              </v-list-item>
+            </v-list>
           </v-card>
         </v-row>
       </v-card>
@@ -95,7 +125,8 @@
 export default {
     data: () => {
       return {
-        ifAgreeContract: undefined
+        ifAgreeContract: undefined,
+        test: null
       }
     },
     created() {
@@ -117,5 +148,11 @@ export default {
 </script>
 
 <style>
+ .noto-family {
+   font-family: 'Noto Sans TC', sans-serif ;
+ }
 
+ .title-text {
+   font-size: 24px ;
+ }
 </style>
