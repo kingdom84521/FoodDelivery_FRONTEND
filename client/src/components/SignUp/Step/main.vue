@@ -73,18 +73,6 @@ export default {
     },
     methods: {
         changeStepHandler( now ) {
-            // for ( let n = now ; n > 0 ; --n )
-            // {
-            //     this.step[ n - 1 ].color = "green"
-            //     this.step[ n - 1 ].textColor = "white"
-            //     this.step[ n - 1 ].finished = true
-            // }
-            // for ( let n = now ; n <= 2 ; ++n )
-            // {
-            //     this.step[ n ].color = ""
-            //     this.step[ n ].textColor = "green"
-            //     this.step[ n ].finished = false
-            // }
             this.$emit( "step-change", now )
         }
     },

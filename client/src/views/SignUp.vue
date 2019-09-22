@@ -23,7 +23,18 @@ export default {
     },
     methods: {
         goToPage( now ) {
-            this.now = now
+            if ( now <= 0 )
+            {
+                this.now = 0
+            }
+            else if ( now >= 3 )
+            {
+                this.now = 3
+            }
+            else
+            {
+                this.now = now
+            }
         }
     }
 }
