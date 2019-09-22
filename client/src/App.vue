@@ -12,7 +12,6 @@
 </template>
 
 <script>
-  // import Home from './views/Home'  
   import Header from './components/Header'
   import Footer from './components/Footer'
 
@@ -20,11 +19,16 @@
    name: 'App',
    components: {
      Header,
-     Footer,
-    //  Home,
+     Footer
    },
    data:() => ({
 
    }),
   };
 </script>
+
+<style>
+  * {
+    font-family: 'Noto Sans TC', sans-serif ;
+  }
+</style>
