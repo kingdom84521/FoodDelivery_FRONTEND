@@ -21,10 +21,10 @@
 
     <!-- Before sign in -->
     <v-toolbar-items 
-      v-if="!isLogin"
+      v-if="!isUserSignIn"
     >
-      <v-btn text v-blur>SIGN IN</v-btn>
-      <v-btn text v-blur class="d-none d-md-flex" to="signup">SIGN UP</v-btn>
+      <v-btn text v-blur to="/signin">SIGN IN</v-btn>
+      <v-btn text v-blur class="d-none d-md-flex" to="/signup">SIGN UP</v-btn>
     </v-toolbar-items>
     <!-- After sign in -->
     <v-menu 
@@ -93,7 +93,6 @@
 <script>
   export default { 
     data:() => ({
-      isLogin: true,
       featureChoose: null,
       features: [
         {
@@ -127,11 +126,25 @@
           link: '/signout',
         },
       ],
+      /*
       user: {
         img: 'https://cdn.vuetifyjs.com/images/john.jpg',
         name: 'Blue Joe',
         email: 'joe8773@gmail.com',
       },
+      */
     }),
+    props: {
+      user: {
+        type: Object,
+        default: null,
+        required: false
+      },
+    },
+    computed: {
+      isUserSignIn() {
+        return this.user;
+      }
+    },
   }
 </script>

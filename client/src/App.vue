@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header/>
+    <Header :user="user"/>
 
     <v-content>
       <!-- <Home/> -->
@@ -22,7 +22,7 @@
      Footer
    },
    data:() => ({
-
+     user: null,
    }),
   };
 </script>
