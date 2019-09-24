@@ -14,7 +14,7 @@
                 class="white ma-1 pa-4"
                 hide-details
                 label="同意上述條款"
-                v-model="ifAgreeContract"
+                v-model="user.agreeContract"
               />
             </v-card-actions>
           </v-row>
@@ -64,6 +64,7 @@
                         label="請輸入您的帳號"
                         filled
                         v-model="user.account"
+                        @blur="dataPush()"
                       >
                         <template v-slot:append>
                           <v-tooltip
@@ -133,6 +134,7 @@
                         filled
                         v-model="user.password"
                         @click:append="showPassword.origin = !showPassword.origin"
+                        @blur="dataPush()"
                       >
                       </v-text-field>
                       <v-text-field
@@ -142,6 +144,7 @@
                         filled
                         v-model="user.confirmedPassword"
                         @click:append="showPassword.confirmed = !showPassword.confirmed"
+                        @blur="dataPush()"
                       >
                       </v-text-field>
                     </v-col>
@@ -182,8 +185,8 @@
   export default {
       data: () => {
         return {
-          ifAgreeContract: false,
           user: {
+            agreeContract: false,
             account: "",
             password: "",
             confirmedPassword: ""
@@ -250,6 +253,9 @@
               case "tooltipColor":
                 return nowStatus.tooltipColor
             }
+          },
+          dataPush() {
+            this.$emit( "data-change", this.user )
           }
       }
     }
