@@ -1,6 +1,22 @@
 <template>
   <v-container fluid>
-    <InnerPage :now="now" @data-change="dataUpdate( $event )" />
+    <v-window
+      v-model="now"
+    >
+      <v-window-item>
+        <contract-page />
+      </v-window-item>
+      <v-window-item>
+        <register-page />
+      </v-window-item>
+      <v-window-item>
+        <personal-data-page />
+      </v-window-item>
+      <v-window-item>
+        <final-page />
+      </v-window-item>
+    </v-window>
+    <!-- <InnerPage :now="now" @data-change="dataUpdate( $event )" /> -->
     <v-divider />
     <v-row no-gutters justify="space-between" class="mt-3 mx-3">
         <v-btn
@@ -42,7 +58,10 @@
 </template>
 
 <script>
-  import InnerPage from "@/components/SignUp/StepPage/InnerPage/main.vue"
+  import ContractPage from "@/components/SignUp/StepPage/ContractPage/main.vue"
+  import RegisterPage from "@/components/SignUp/StepPage/RegisterPage/main.vue"
+  import PersonalDataPage from "@/components/SignUp/StepPage/PersonalDataPage/main.vue"
+  import FinalPage from "@/components/SignUp/StepPage/FinalPage/main.vue"
 
   export default {
     name: "stepPage",
@@ -61,7 +80,10 @@
       }
     },
     components: {
-      InnerPage
+      ContractPage,
+      RegisterPage,
+      PersonalDataPage,
+      FinalPage
     },
     methods: {
       atStep( pageNumber ) {
@@ -100,4 +122,16 @@
   #pactText {
     max-height: 600px ;
   }
+
+  .noto-family {
+    font-family: "Noto Sans TC", sans-serif;
+  }
+
+ .title-text {
+   font-size: 18px ;
+  }
+
+ input[ type="password" ] {
+   font-family: caption
+ }
 </style>
