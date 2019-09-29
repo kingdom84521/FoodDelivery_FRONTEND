@@ -4,8 +4,60 @@
       <v-card class="grey col-12">
         <v-card flat class="grey lighten-3">
           <v-card-text>
-            <div id="pactText" class="pa-3 white headline overflow-y-auto">
-              <!-- Where the contract text display.   -->
+            <div id="pactText" class="pa-3 white headline overflow-y-hidden">
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>
+              blah<br>blah<br>
+              blah<br>
+              blah<br>
+
+              blah<br>
+
+              blah<br>
+              blah<br>
+
+              blah<br>
+
+              blah<br>
+              blah<br>
+
+              blah<br>
+
+              blah<br>
+              blah<br>
+
+              blah<br>
+
+              blah<br>
+              blah<br>
+
+              blah<br>
+
+              blah<br>
+              blah<br>
+
+              blah<br>
+
+              blah<br>
+              blah<br>
+
+              blah<br>
+
+              blah<br>
+              
             </div>
           </v-card-text>
           <v-row class="mx-4" justify="end">
@@ -31,6 +83,14 @@ export default {
         partUser: {
           agreeContract: false
         }
+      }
+    },
+    watch: {
+      partUser: {
+        handler( value ) {
+          this.$emit( "data-change", value )
+        },
+        deep: true
       }
     }
 }

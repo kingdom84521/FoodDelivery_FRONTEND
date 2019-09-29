@@ -10,29 +10,28 @@
               dense
             >
               <v-list-item>
-                <v-row>
+                <v-row no-gutters>
                   <v-list-item-content>
                     <v-col
                       cols="4"
                     >
-                      <v-row>
-                        <v-list-item-title
-                          class="noto-family"
+                      <v-list-item-title
+                        class="noto-family"
+                      >
+                      <v-row
+                        no-gutters
+                        justify="center"
+                      >
+                        <v-icon left>
+                          mdi-account
+                        </v-icon>
+                        <div
+                          class="title-text"
                         >
-                        <v-row
-                          justify="center"
-                        >
-                          <v-icon left>
-                            mdi-account
-                          </v-icon>
-                          <div
-                            class="title-text"
-                          >
-                            設定帳號
-                          </div>
-                        </v-row>
-                        </v-list-item-title>
+                          設定帳號
+                        </div>
                       </v-row>
+                      </v-list-item-title>
                     </v-col>
                     <v-col
                       cols="7"
@@ -77,15 +76,14 @@
               <v-list-item
                 class="mt-5"
               >
-                <v-row>
+                <v-row no-gutters>
                   <v-list-item-content>
                     <v-col
                       cols="4"
                     >
-                      <v-row>
-                        <v-list-item-title
-                          class="noto-family"
-                        >
+                      <v-list-item-title
+                        class="noto-family"
+                      >
                         <v-row
                           justify="center"
                         >
@@ -98,8 +96,7 @@
                             設定密碼
                           </div>
                         </v-row>
-                        </v-list-item-title>
-                      </v-row>
+                      </v-list-item-title>
                     </v-col>
                     <v-col
                       cols="7"

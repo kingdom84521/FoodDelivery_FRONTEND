@@ -4,10 +4,10 @@
       v-model="now"
     >
       <v-window-item>
-        <contract-page />
+        <contract-page @data-change="dataUpdate( $event )" />
       </v-window-item>
       <v-window-item>
-        <register-page />
+        <register-page @data-change="dataUpdate( $event )" />
       </v-window-item>
       <v-window-item>
         <personal-data-page />
@@ -18,7 +18,7 @@
     </v-window>
     <!-- <InnerPage :now="now" @data-change="dataUpdate( $event )" /> -->
     <v-divider />
-    <v-row no-gutters justify="space-between" class="mt-3 mx-3">
+    <v-row no-gutters justify="space-between align-end" class="mt-3 mx-3">
         <v-btn
             :disabled="now !== 0 ? false : true"
             @click="previousStepHandler()"
@@ -68,9 +68,22 @@
     data: () => {
       return {
         user: {},
-        storedRules: {
-          required: value => !!value || ""
-        }
+        errors: [
+          {
+            contractNotAgreeing: false
+          },
+          {
+            accountRequired: false,
+            passwordRequired: false,
+            inconsistentPassword: false,
+          },
+          {
+
+          },
+          {
+
+          }
+        ]
       }
     },
     props: {
@@ -86,9 +99,6 @@
       FinalPage
     },
     methods: {
-      atStep( pageNumber ) {
-        return this.now == pageNumber
-      },
       nextStepHandler() {
         // if ( !checkErrors( this.now ) )
         // {
@@ -104,7 +114,7 @@
         this.$emit( "previous-step", this.now - 1 )
       },
       dataUpdate( dataPack ) {
-        this.user = dataPack
+        this.user = this._.merge( this.user, dataPack )
       },
       checkErrors() {
 
