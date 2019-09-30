@@ -16,7 +16,7 @@
             </v-col>
             <v-col>
                 <v-card class="ml-auto py-1" height="350" width="500">
-                    <v-img height="200" src="../pic/kid.gif"></v-img>
+                    <v-img height="200" src="../assets/kid.gif"></v-img>
                     <v-card-title >所選店名</v-card-title>
                     <v-card-text>地址:xx市xx區xx路xx號</v-card-text>
                     <v-card-text>電話:04-xxxxxxxx</v-card-text>

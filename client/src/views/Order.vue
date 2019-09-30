@@ -7,7 +7,7 @@
         </v-layout>
         <v-layout>
             <v-card class="mx-2 py-1" height="300" width="350">
-                <v-img height="150" src="../pic/kid.gif">
+                <v-img height="150" src="../assets/kid.gif">
                 </v-img>
                 <v-card-title >店名</v-card-title>
                 <v-card-text>預估xxx分鐘</v-card-text>
