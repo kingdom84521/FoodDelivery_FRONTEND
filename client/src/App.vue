@@ -3,7 +3,6 @@
     <Header :user="user"/>
 
     <v-content>
-      <!-- <Home/> -->
       <router-view></router-view>
     </v-content>
 
@@ -23,6 +22,11 @@
    },
    data:() => ({
      user: null,
+    //  user: {
+    //     img: 'https://cdn.vuetifyjs.com/images/john.jpg',
+    //     name: 'Blue Joe',
+    //     email: 'joe8773@gmail.com',
+    //   },
    }),
   };
 </script>

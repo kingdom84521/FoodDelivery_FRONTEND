@@ -126,13 +126,6 @@
           link: '/signout',
         },
       ],
-      /*
-      user: {
-        img: 'https://cdn.vuetifyjs.com/images/john.jpg',
-        name: 'Blue Joe',
-        email: 'joe8773@gmail.com',
-      },
-      */
     }),
     props: {
       user: {
