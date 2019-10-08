@@ -7,7 +7,7 @@
     color="green"
   >
     <!-- Logo -->
-    <router-link to="/">
+    <router-link to="/home">
       <v-img
         :src="require('../assets/driver.svg')"
         max-height="40"

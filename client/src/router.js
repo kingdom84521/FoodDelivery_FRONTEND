@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '@/views/Home'
+import SignIn from '@/views/SignIn'
 
 Vue.use(Router)
 
@@ -8,14 +10,14 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
-      component: () => import('./views/Home.vue') 
+      component: Home
     },
     {
       path: '/signin',
       name: 'signin',
-      component: () => import('./views/SignIn.vue') 
+      component: SignIn
     },
   ]
 })
