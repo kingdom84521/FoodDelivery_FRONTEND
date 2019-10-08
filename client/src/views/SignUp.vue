@@ -27,9 +27,9 @@ export default {
             {
                 this.now = 0
             }
-            else if ( now >= 4 )
+            else if ( now >= 3 )
             {
-                this.now = 4
+                this.now = 3
             }
             else
             {

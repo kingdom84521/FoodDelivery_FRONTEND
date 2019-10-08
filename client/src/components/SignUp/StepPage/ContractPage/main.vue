@@ -4,60 +4,8 @@
       <v-card class="grey col-12">
         <v-card flat class="grey lighten-3">
           <v-card-text>
-            <div id="pactText" class="pa-3 white headline overflow-y-hidden">
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>
-              blah<br>blah<br>
-              blah<br>
-              blah<br>
-
-              blah<br>
-
-              blah<br>
-              blah<br>
-
-              blah<br>
-
-              blah<br>
-              blah<br>
-
-              blah<br>
-
-              blah<br>
-              blah<br>
-
-              blah<br>
-
-              blah<br>
-              blah<br>
-
-              blah<br>
-
-              blah<br>
-              blah<br>
-
-              blah<br>
-
-              blah<br>
-              blah<br>
-
-              blah<br>
-
-              blah<br>
-              
+            <div id="pactText" class="pa-3 white headline overflow-y-auto">
+              <!-- Where cantact text display -->
             </div>
           </v-card-text>
           <v-row class="mx-4" justify="end">
