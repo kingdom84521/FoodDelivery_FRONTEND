@@ -115,7 +115,6 @@
                               <v-btn
                                 color="primary darken-2 subtitle-1"
                                 v-on="on"
-                                @click="dateInit"
                                 block
                                 large
                               >
@@ -141,6 +140,37 @@
                 </v-row>
               </v-list-item>
               <v-divider />
+              <v-list-item>
+                <v-row no-gutters>
+                  <v-list-item-content>
+                    <v-col
+                      cols="4"
+                    >
+                      <v-list-item-title>
+                        <v-row
+                          justify="center"
+                        >
+                          <v-icon
+                            left
+                          >
+                            mdi-home-city
+                          </v-icon>
+                          <span
+                            class="title"
+                          >
+                            地址
+                          </span>
+                        </v-row>
+                      </v-list-item-title>
+                    </v-col>
+                    <v-col
+                      cols="7"
+                    >
+                      
+                    </v-col>
+                  </v-list-item-content>
+                </v-row>
+              </v-list-item>
             </v-list>
           </v-card>
         </v-row>
@@ -165,11 +195,6 @@
       dataPush() {
         this.partUser = this._.assign( this.partUser, this.fullName )
         this.$emit( "data-change", this.partUser )
-      },
-      dateInit() {
-        if ( this._.isUndefined( this.partUser.birthday ) ) {
-          this.partUser.birthday = new Date().toISOString().substr( 0, 10 )
-        }
       },
       async birthdayUpdate( birthday ) {
         await this.$refs.birthdayPopup.save( birthday )

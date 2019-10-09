@@ -11,6 +11,7 @@
                     outlined
                     :color="content.color"
                     :class="`${ content.textColor }--text`"
+                    :elevation="n === now ? 6 : 0"
                     @click="changeStepHandler( n )"
                 >
                     <v-card-title primary-title class="pb-4">
