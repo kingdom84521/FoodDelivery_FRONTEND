@@ -34,4 +34,12 @@ export default {
   * {
     font-family: 'Noto Sans TC', sans-serif ;
   }
+
+  .noto-family {
+    font-family: "Noto Sans TC", sans-serif;
+  }
+
+  .title-text {
+   font-size: 20px ;
+  }
 </style>

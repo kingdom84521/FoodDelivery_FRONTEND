@@ -124,14 +124,6 @@
     max-height: 600px ;
   }
 
-  .noto-family {
-    font-family: "Noto Sans TC", sans-serif;
-  }
-
- .title-text {
-   font-size: 18px ;
-  }
-
  input[ type="password" ] {
    font-family: caption
  }
