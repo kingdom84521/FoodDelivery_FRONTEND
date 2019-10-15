@@ -15,22 +15,20 @@
                     <v-col
                       cols="4"
                     >
-                      <v-list-item-title
-                        class="noto-family"
-                      >
-                      <v-row
-                        no-gutters
-                        justify="center"
-                      >
-                        <v-icon left>
-                          mdi-account
-                        </v-icon>
-                        <div
-                          class="title-text"
+                      <v-list-item-title>
+                        <v-row
+                          no-gutters
+                          justify="center"
                         >
-                          設定帳號
-                        </div>
-                      </v-row>
+                          <v-icon left>
+                            mdi-account
+                          </v-icon>
+                          <div
+                            class="title"
+                          >
+                            設定帳號
+                          </div>
+                        </v-row>
                       </v-list-item-title>
                     </v-col>
                     <v-col
@@ -45,6 +43,7 @@
                         <template v-slot:append>
                           <v-tooltip
                             right
+                            nudge-right="5"
                             v-if="accountStatus.status !== 'loading'"
                             :color="`${ getStatusDisplay( 'color' ) } lighten-1`"
                           >
@@ -91,7 +90,7 @@
                             mdi-lock
                           </v-icon>
                           <div
-                            class="title-text"
+                            class="title"
                           >
                             設定密碼
                           </div>

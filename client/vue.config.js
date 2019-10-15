@@ -1,5 +1,9 @@
 module.exports = {
-    sass: {
-        prepandData: `@import "~@/styles/variables.sass"`
+    css: {
+        loaderOptions: {
+            sass: {
+                prepandData: `@import "~@/styles/variables.sass"`
+            }
+        }
     }
 }

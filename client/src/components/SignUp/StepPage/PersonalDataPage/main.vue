@@ -166,7 +166,86 @@
                     <v-col
                       cols="7"
                     >
-                      
+                      <v-text-field
+                        label="請輸入您的地址"
+                        filled
+                        v-model="partUser.address"
+                        @blur="dataPush()"
+                      />
+                    </v-col>
+                  </v-list-item-content>
+                </v-row>
+              </v-list-item>
+              <v-divider />
+              <v-list-item>
+                <v-row no-gutters>
+                  <v-list-item-content>
+                    <v-col
+                      cols="4"
+                    >
+                      <v-list-item-title>
+                        <v-row
+                          justify="center"
+                        >
+                          <v-icon
+                            left
+                          >
+                            mdi-cellphone-text
+                          </v-icon>
+                          <span
+                            class="title"
+                          >
+                            電話號碼
+                          </span>
+                        </v-row>
+                      </v-list-item-title>
+                    </v-col>
+                    <v-col
+                      cols="7"
+                    >
+                      <v-text-field
+                        label="請輸入您的電話號碼"
+                        filled
+                        v-model="partUser.phone"
+                        @blur="dataPush()"
+                      />
+                    </v-col>
+                  </v-list-item-content>
+                </v-row>
+              </v-list-item>
+              <v-divider />
+              <v-list-item>
+                <v-row no-gutters>
+                  <v-list-item-content>
+                    <v-col
+                      cols="4"
+                    >
+                      <v-list-item-title>
+                        <v-row
+                          justify="center"
+                        >
+                          <v-icon
+                            left
+                          >
+                            mdi-email-multiple
+                          </v-icon>
+                          <span
+                            class="title"
+                          >
+                            電子信箱
+                          </span>
+                        </v-row>
+                      </v-list-item-title>
+                    </v-col>
+                    <v-col
+                      cols="7"
+                    >
+                      <v-text-field
+                        label="請輸入您的電子信箱"
+                        filled
+                        v-model="partUser.email"
+                        @blur="dataPush()"
+                      />
                     </v-col>
                   </v-list-item-content>
                 </v-row>
@@ -186,7 +265,10 @@
         partUser: {
           lastName: undefined,
           firstName: undefined,
-          birthday: undefined
+          birthday: undefined,
+          address: undefined,
+          phone: undefined,
+          email: undefined
         },
         menuDisplay: false
       }
