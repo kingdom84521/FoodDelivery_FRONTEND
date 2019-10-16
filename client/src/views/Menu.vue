@@ -1,28 +1,26 @@
 <template>
-    <v-container>
-        <v-layout text-center row>
-            <v-flex mb-12>
-                <h1 class="display-2 font-weight-bold mb-3">選擇菜色</h1>
-            </v-flex>
-        </v-layout>
-        <v-layout>
-            <v-col>
-                <v-select outlined :items="main" label="主食..." v-model="mainprice" @change="getTotal()"></v-select>
-                <v-select outlined :items="dish" label="小菜..." v-model="dishprice" @change="getTotal()"></v-select>
-                <v-select outlined :items="drink" label="飲料..." v-model="drinkprice" @change="getTotal()"></v-select>
+    <v-container fluid>
+        <v-row no-gutters align="center" justify="center">
+            <v-col cols="12">
+                <v-card color="#69F0AE" outlined max-height="250">
+                    <v-row no-gutters align="center" justify="center">
+                        <v-col cols="3" align-self="start">
+                            <v-card-title class="display-2 ml-5">STORE NAME</v-card-title>
+                            <v-card-subtitle class="title ml-10">tel:xx-xxxx-xxxx</v-card-subtitle>
+                            <v-card-text>address:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</v-card-text>
+                        </v-col>
+                        <v-col cols="9">
+                            <v-img max-height="249" src="../assets/italy.jpg">
 
-                <v-input label="總計" :messages="total.toString()" ></v-input>
-                <v-btn class="mt-9 primary" color="white" outlined to="submit" @click="passMenu()">送出</v-btn>
-            </v-col>
-            <v-col>
-                <v-card class="ml-auto py-1" height="350" width="500">
-                    <v-img height="200" src="../assets/kid.gif"></v-img>
-                    <v-card-title >所選店名</v-card-title>
-                    <v-card-text>地址:xx市xx區xx路xx號</v-card-text>
-                    <v-card-text>電話:04-xxxxxxxx</v-card-text>
+                            </v-img>
+                        </v-col>
+                    </v-row>
                 </v-card>
             </v-col>
-        </v-layout>
+        </v-row>
+        <v-row>
+            
+        </v-row>
     </v-container>
 </template>>
 
