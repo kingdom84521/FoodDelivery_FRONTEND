@@ -26,6 +26,12 @@ export default {
   data: () => {
     return {
     }
+  },
+  mounted() {
+    this.axios.get( "https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP049/107" )
+              .then( res => {
+                console.log( res )
+              } )
   }
 }
 </script>

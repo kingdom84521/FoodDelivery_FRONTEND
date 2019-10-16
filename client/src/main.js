@@ -6,11 +6,9 @@ import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
 import _ from 'lodash'
-import moment from 'moment'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$moment = moment
 Vue.prototype._ = _
 
 new Vue({

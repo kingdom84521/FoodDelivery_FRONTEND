@@ -130,8 +130,7 @@
                               :max="new Date().toISOString().substr( 0, 10 )"
                               v-model="partUser.birthday"
                               @change="birthdayUpdate"
-                            >
-                            </v-date-picker>
+                            />
                           </v-menu>
                         </v-col>
                       </v-row>
@@ -291,12 +290,7 @@
         return answer
       },
       birthdayDisplay() {
-        if ( this._.isUndefined( this.partUser.birthday ) ) {
-          return "尚未選擇"
-        }
-        else {
-          return this.partUser.birthday
-        }
+        return this._.isUndefined( this.partUser.birthday ) ? "尚未選擇" : this.partUser.birthday
       }
     },
     watch: {
