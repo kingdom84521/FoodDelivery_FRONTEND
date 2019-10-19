@@ -57,10 +57,10 @@
 </template>
 
 <script>
-  import ContractPage from "@/components/SignUp/StepPage/ContractPage/main.vue"
-  import RegisterPage from "@/components/SignUp/StepPage/RegisterPage/main.vue"
-  import PersonalDataPage from "@/components/SignUp/StepPage/PersonalDataPage/main.vue"
-  import FinalPage from "@/components/SignUp/StepPage/FinalPage/main.vue"
+  import ContractPage from "@/components/SignUp/StepPage/ContractPage.vue"
+  import RegisterPage from "@/components/SignUp/StepPage/RegisterPage.vue"
+  import PersonalDataPage from "@/components/SignUp/StepPage/PersonalDataPage.vue"
+  import FinalPage from "@/components/SignUp/StepPage/FinalPage.vue"
 
   export default {
     name: "stepPage",
