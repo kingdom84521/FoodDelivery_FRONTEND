@@ -19,5 +19,9 @@ export default new Router({
       name: 'signin',
       component: SignIn
     },
+    {
+      path: '*',
+      redirect: { name: 'home' }
+    },
   ]
 })
