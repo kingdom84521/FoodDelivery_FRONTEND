@@ -20,7 +20,7 @@
                     </v-col>
                 </v-row>
                 <v-row>
-                    <feature-square v-for="i in 6" :key="i"/>
+                    <feature-square v-for="i in 6" :key="i" title="testing" description="testing testing testing"/>
                 </v-row>
             </v-card>
           </v-col>
@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import FeatureSquare from "@/components/featureSquare"
+import FeatureSquare from "@/components/dashboard/featureGroup/featureSquare"
+// import FeatureGroup from "@/components/dashboard/featureGroup/main"
 
 export default {
     name: "Dashboard",
