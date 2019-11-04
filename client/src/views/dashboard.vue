@@ -20,7 +20,9 @@
                     </v-col>
                 </v-row>
                 <v-row>
-                    <feature-square v-for="i in 6" :key="i" title="testing" description="testing testing testing"/>
+                    <feature-group
+                        :data="features"
+                    />
                 </v-row>
             </v-card>
           </v-col>
@@ -29,20 +31,39 @@
 </template>
 
 <script>
-import FeatureSquare from "@/components/dashboard/featureGroup/featureSquare"
-// import FeatureGroup from "@/components/dashboard/featureGroup/main"
+// import FeatureSquare from "@/components/dashboard/featureGroup/featureSquare"
+import FeatureGroup from "@/components/dashboard/featureGroup/main"
 
 export default {
     name: "Dashboard",
     components: {
-        FeatureSquare
+        FeatureGroup
     },
     data: () => {
         return {
-            feature: [
-                {
-                }
+            features: [   
             ]
+        }
+    },
+    async mounted() {
+        let el =  {
+                    title: "test",
+                    description: "testing testing testing",
+                    route: "/testing"
+                }
+
+        for ( let i = 0 ; i < 6 ; ++i ) {
+             this.features.push( el )
+             await this.delayOne()
+        }
+    },
+    methods: {
+        delayOne() {
+            return new Promise( ( resolve ) => {
+                setTimeout( () => {
+                    resolve();
+                }, 100 )
+            })
         }
     }
 }

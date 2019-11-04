@@ -1,6 +1,4 @@
 <template>
-  <v-container>
-      <v-row>
           <v-col
             cols="4"
           >
@@ -11,6 +9,7 @@
                 elevation="3"
                 @mouseenter="hoverHandler( 'enter' )"
                 @mouseleave="hoverHandler( 'leave' )"
+                @click="clickHandler( to )"
             >
                 <v-row
                     justify="center"
@@ -32,8 +31,6 @@
                 </v-row>
             </v-card>
           </v-col>
-      </v-row>
-  </v-container>
 </template>
 
 <script>
@@ -44,6 +41,10 @@ export default {
             required: true
         },
         description: {
+            type: String,
+            required: true
+        },
+        to: {
             type: String,
             required: true
         }
@@ -63,6 +64,9 @@ export default {
             {
                 this.hover = false ;
             }
+        },
+        clickHandler( position ) {
+            this.$router.push( position )
         }
     }
 }
