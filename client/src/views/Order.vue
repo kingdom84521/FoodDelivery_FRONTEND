@@ -7,7 +7,7 @@
             </v-btn> -->
         </v-row>
         <v-row justify="space-between">
-            <v-card class="mb-7" v-for="i in test" height="300" width="490">
+            <v-card class="mb-7" v-for="i in test" :key="i" height="300" width="490">
                 <v-img height="155" src="../assets/italy.jpg"></v-img>
                 <v-card-title >{{i.store}}</v-card-title>
                 <v-card-text>預估{{i.time}}分鐘</v-card-text>

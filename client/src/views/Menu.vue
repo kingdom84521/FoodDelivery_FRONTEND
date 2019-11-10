@@ -1,5 +1,18 @@
 <template>
     <v-container fluid>
+        <v-navigation-drawer expand-on-hover absolute right>
+                    <v-list>
+                        <v-list-item-group>
+                            
+                        </v-list-item-group>
+                    </v-list>
+                    <v-divider></v-divider>
+                    小計:
+                    服務費:
+                    <v-spacer></v-spacer>
+                    總計:
+        </v-navigation-drawer>
+
         <v-card max-height="250">
             <v-img max-height="249" src="../assets/italy.jpg"></v-img>
         </v-card>
@@ -8,7 +21,7 @@
             STORE NAME
         </v-row>
         <v-divider></v-divider>
-        <v-row class="my-10">
+        <v-row class="my-10" no-gutters>
             <v-tabs background-color="green accent-3" grow center>
                 <v-tabs-slider></v-tabs-slider>
                 <v-tab v-for="i in tabs" :key="i" :href="`#tab-${i}`">
@@ -17,25 +30,20 @@
                 <v-tab-item v-for="k in tabs" :key="k" :value="'tab-' + k">
                     <v-row>
                         <v-col sm="4"  v-for="i in main" :key="i" >
-                            <v-card class="mb-6 green accent-1" outlined width="490">
-                                <v-img height="155" src="../assets/italy.jpg"></v-img>
+                            <v-card class="mb-6 green accent-1" outlined @click="Add()">
+                                <v-img max-height="200" src="../assets/italy.jpg"></v-img>
                                 <v-card-title >{{i.name}} NT{{i.price}}$</v-card-title>
                                 <v-card-text>{{i.nutrition}}kcal</v-card-text>
                                 <v-card-actions>
-                                   <v-btn fab color="teal" @click="Add()">
+                                   <v-btn right bottom fab color="teal" @click="Add()">
                                        <v-icon>mdi-plus</v-icon>
                                    </v-btn>
                                 </v-card-actions>
-                  </v-card>                            
+                            </v-card>                            
                         </v-col>
                     </v-row>
                 </v-tab-item>
             </v-tabs>
-        </v-row>
-        <v-row >
-            <!-- <v-navigation-drawer expand-on-hover permanent absolute right>
-                DRAWER TEST
-            </v-navigation-drawer> -->
         </v-row>
     </v-container>
 </template>>
@@ -43,17 +51,20 @@
 <script>
 export default {
     data: () => ({
-        main: [ { name : "咖哩飯",
-                  price : 65,
-                  nutrition : 800 
-                },
-                { name : "蒜香海鮮義大利麵",
+        main: [ { name : "西班牙海鮮燉飯",
                   price : 80,
-                  nutrition : 750
+                  nutrition : 800,
+                  url : "spainsh"
                 },
-                { name : "皮蛋瘦肉粥",
-                  price : 60,
-                  nutrition : 600 
+                { name : "蒜香雞肉義大利麵",
+                  price : 65,
+                  nutrition : 600,
+                  url : "garlic"
+                },
+                { name : "奶油培根蛋寬扁麵",
+                  price : 75,
+                  nutrition : 750,
+                  url : "butter"
                 }
               ],
         dish: [ { name : "白菜滷",
@@ -71,7 +82,7 @@ export default {
               ],
         drink: ["麥茶 $20", "蜜茶 $20", "冬瓜茶 $15", "仙草干茶 $25"],
         pass: [],
-        tabs: 3,
+        tabs: 3
     }),
     methods:{
         getTotal: function(){
@@ -90,8 +101,10 @@ export default {
         },
         Add: function(){
             console.log("Btn click!")
+        },
+        Loadimg: function(i){
+            return require(`../assets/${i}.jpg`);
         }
-        
     }
 };
 </script>>
