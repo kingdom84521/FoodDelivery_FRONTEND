@@ -29,6 +29,7 @@
                     <v-row
                         no-gutters
                         justify="center"
+                        @click="test"
                     >
                         <v-col
                             cols="1"
@@ -41,7 +42,7 @@
                             </v-icon>
                         </v-col>
                         <v-col
-                            cols="5"
+                            cols="3"
                         >
                             <div
                                 style="text-decoration: underline;"
