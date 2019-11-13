@@ -13,6 +13,12 @@
       >
         <span class="mr-2">Latest Release</span>
       </v-btn>
+      <v-btn
+        text
+        to="/order"
+      >
+        Order
+      </v-btn>
     </v-app-bar>
 
     <v-content>
