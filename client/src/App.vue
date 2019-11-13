@@ -16,18 +16,45 @@
     </v-app-bar>
 
     <v-content>
+<<<<<<< HEAD
       <router-view/>
+=======
+      <router-view></router-view>
+>>>>>>> feature@frontside-signup
     </v-content>
   </v-app>
 </template>
 
 <script>
 export default {
+<<<<<<< HEAD
   name: 'App',
   components: {
+=======
+  data: () => {
+    return {
+    }
+>>>>>>> feature@frontside-signup
   },
-  data: () => ({
-    //
-  }),
-};
+  mounted() {
+    this.axios.get( "https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP049/107" )
+              .then( res => {
+                console.log( res )
+              } )
+  }
+}
 </script>
+
+<style>
+  * {
+    font-family: 'Noto Sans TC', sans-serif ;
+  }
+
+  .noto-family {
+    font-family: "Noto Sans TC", sans-serif;
+  }
+
+  .title-text {
+   font-size: 20px ;
+  }
+</style>
