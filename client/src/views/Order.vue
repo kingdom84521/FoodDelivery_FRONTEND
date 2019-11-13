@@ -1,60 +1,89 @@
 <template>
-    <v-container fluid>
-        <v-row class="mb-12">
-            <v-text-field append-icon="mdi-magnify" outlined placeholder="搜尋店家..."></v-text-field>
-            <!-- <v-btn color="primary">
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn> -->
-        </v-row>
-        <v-row justify="space-between">
-            <v-card class="mb-7" v-for="i in test" :key="i" height="300" width="490">
-                <v-img height="155" src="../assets/italy.jpg"></v-img>
-                <v-card-title >{{i.store}}</v-card-title>
-                <v-card-text>預估{{i.time}}分鐘</v-card-text>
-                <v-card-actions>
-                    <v-btn outlined to="menu" class="primary" color="white" >點菜</v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-row>
-        <v-fade-transition>
-            <v-btn color="primary" fab fixed right bottom v-show="scrolling" @click="ScrollTop()">
-                <v-icon>mdi-arrow-up-bold-outline</v-icon>
-            </v-btn>
-        </v-fade-transition>
-    </v-container>
+  <v-container>
+    <v-row>
+      <v-text-field
+        label="運送地址"
+        prepend-icon="mdi-map-marker"
+        append-icon="mdi-crosshairs-gps"
+        placeholder="請輸入運送地址"
+        v-model="location"
+        @click:append="getLocation()"
+      ></v-text-field>
+    </v-row>
+    <!-- <v-divider/> -->
+    <v-row class="mt-3">
+      <v-text-field append-icon="mdi-magnify" outlined placeholder="搜尋店家..."></v-text-field>
+    </v-row>
+    <!-- 店家列表 -->
+    <v-row justify="space-around">
+      <v-col
+        v-for="(store, i) in stores"
+        :key="i"
+        md="3"
+        sm="4"
+        cols="12"
+      >
+        <v-card
+          :to="{ name: 'store', params: { storeId: store.id } }"
+          class="mb-7"
+          height="310"
+        >
+          <v-img src="@/assets/italy.jpg" height="155"></v-img>
+          <v-card-title> {{ store.name }} </v-card-title>
+          <v-card-text> 預估{{ store.distance }}分鐘 </v-card-text>
+        </v-card>
+      </v-col>
+      <v-spacer></v-spacer>
+    </v-row>
+
+    <!-- 至頂按鈕 -->
+    <v-fade-transition>
+      <v-btn color="primary" fab fixed right bottom v-show="scrolling" @click="ScrollTop()">
+        <v-icon>mdi-arrow-up-bold-outline</v-icon>
+      </v-btn>
+    </v-fade-transition>
+  </v-container>
 </template>>
 
 <script>
+import StoreList from '@/assets/temp/storeList.json'
+
 export default {
-    data: () => ({
-        dateOption: ["Today ", "Tomorrow ", "Day after tomorrow "],
-        date: "",
-        test: [{store:"store1", time:"xxx"}, {store:"store2", time:"xxx"}, {store:"store3", time:"xxx"},
-               {store:"store4", time:"xxx"}, {store:"store5", time:"xxx"}, {store:"store6", time:"xxx"}],
-        scrolling: false
-    }),
-    methods:{
-        handleScroll() {
-            this.scrolling = window.pageYOffset > 0
-        },
-        ScrollTop(){
-            window.scroll({top:0, behavior:"smooth"})
-        }
+  data: () => ({
+    // dateOption: ["Today ", "Tomorrow ", "Day after tomorrow "],
+    // date: "",
+    scrolling: false,
+    stores: [],
+    location: ""
+  }),
+  methods: {
+    handleScroll() {
+      this.scrolling = window.pageYOffset > 0;
     },
-    computed: {
-        /*testToAry() {
-            let ary = [];
-            for(let key in this.test) {
-                ary.push({key: this.test[key]})
-            }
-            return ary
-        }*/
+    ScrollTop() {
+      window.scroll({ top: 0, behavior: "smooth" });
     },
-    created() {
-        window.addEventListener( "scroll", this.handleScroll ) 
+    getStoresData() {
+      if ( this.location === "" ) {
+        return;
+      }
+      this.stores = StoreList;
+      // console.log( this.stores );
     },
-    beforeDestroy() {
-        window.removeEventListener( "scroll", this.handleScroll )
+    getLocation() {
+      console.log("Get location by Google API");
+      this.location = "360台灣苗栗縣苗栗市恭敬路43號";
+      this.getStoresData();
     }
+  },
+  watch: {},
+  computed: {},
+  created() {
+    this.getStoresData();
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
 };
 </script>
