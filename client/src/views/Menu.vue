@@ -1,110 +1,156 @@
 <template>
-    <v-container fluid>
-        <v-navigation-drawer expand-on-hover absolute right>
-                    <v-list>
-                        <v-list-item-group>
-                            
-                        </v-list-item-group>
-                    </v-list>
-                    <v-divider></v-divider>
-                    小計:
-                    服務費:
-                    <v-spacer></v-spacer>
-                    總計:
-        </v-navigation-drawer>
+  <v-container fluid>
+    <!-- 購物車 -->
+    <!-- <v-navigation-drawer expand-on-hover absolute right>
+      <v-list>
+        <v-list-item-group></v-list-item-group>
+      </v-list>
+      <v-divider />小計:
+      服務費:
+      <v-spacer></v-spacer>
+      總計:
+    </v-navigation-drawer> -->
 
-        <v-card max-height="250">
-            <v-img max-height="249" src="../assets/italy.jpg"></v-img>
+    <!-- 餐廳招牌 -->
+    <v-card>
+      <v-img 
+        max-height="250"
+        src="../assets/italy.jpg"
+      ></v-img>
+      <v-card-actions>
+        <!-- 店名 -->
+        <v-card-title>
+          {{ storeData.name }}
+        </v-card-title>
+        <v-spacer></v-spacer>
+        <v-btn 
+          icon
+          @click.stop="showStoreData = true"
+        >
+          <v-icon
+            color="green accent-4"
+          >
+            mdi-alert-circle-outline
+          </v-icon>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+
+    <!-- 餐廳詳細資料 -->
+    <v-dialog
+      v-model="showStoreData"
+      max-width="1000"
+    >
+      <v-card>
+        <v-img
+          max-height="250"
+          src="../assets/italy.jpg"
+        ></v-img>
+        <v-container>
+
+        </v-container>
+      </v-card>
+    </v-dialog>
+    
+    <!-- 餐點分類 -->
+    <v-tabs
+      background-color="green accent-3" 
+      center-active
+      v-model="menu"
+    >
+      <v-tab 
+        v-for="category in storeMenu.categorys"
+        :key="category.key"
+      >
+        {{ category.name }}
+      </v-tab>
+    </v-tabs>
+
+    <!-- 餐點項目 -->
+    <v-tabs-items
+      v-model="menu"
+    >
+      <v-tab-item
+        v-for="category in storeMenu.categorys"
+        :key="category.key"
+      >
+        <v-card
+          v-for="(item, i) in storeMenu.items[ category.key ]"
+          :key="i"
+          @click="checkoutItemExtra(category, item)"
+        >
+          <!-- <v-img  src="@/assets/italy.jpg"></v-img> -->
+          <v-card-actions>
+            <v-card-title> {{ item.name }} </v-card-title>
+            <v-spacer></v-spacer>
+            <v-card-subtitle>
+              NT{{ item.price }}$
+            </v-card-subtitle>
+            <v-btn
+              icon
+              v-if="category.extra"
+            >
+              <v-icon
+                color="green accent-4"
+              >
+                mdi-plus-box-outline
+              </v-icon>
+            </v-btn>
+          </v-card-actions>
+          <!-- <v-card-text>{{ items.nutrition }}kcal</v-card-text> -->
         </v-card>
-        <v-row class="green accent-2" align="center">
-            <!-- 店名 -->
-            STORE NAME
-        </v-row>
-        <v-divider></v-divider>
-        <v-row class="my-10" no-gutters>
-            <v-tabs background-color="green accent-3" grow center>
-                <v-tabs-slider></v-tabs-slider>
-                <v-tab v-for="i in tabs" :key="i" :href="`#tab-${i}`">
-                  Tab {{ i }}
-                </v-tab>
-                <v-tab-item v-for="k in tabs" :key="k" :value="'tab-' + k">
-                    <v-row>
-                        <v-col sm="4"  v-for="i in main" :key="i" >
-                            <v-card class="mb-6 green accent-1" outlined @click="Add()">
-                                <v-img max-height="200" src="../assets/italy.jpg"></v-img>
-                                <v-card-title >{{i.name}} NT{{i.price}}$</v-card-title>
-                                <v-card-text>{{i.nutrition}}kcal</v-card-text>
-                                <v-card-actions>
-                                   <v-btn right bottom fab color="teal" @click="Add()">
-                                       <v-icon>mdi-plus</v-icon>
-                                   </v-btn>
-                                </v-card-actions>
-                            </v-card>                            
-                        </v-col>
-                    </v-row>
-                </v-tab-item>
-            </v-tabs>
-        </v-row>
-    </v-container>
+      </v-tab-item>
+    </v-tabs-items>
+
+    <!-- 餐點額外項目 -->
+    <v-dialog
+      v-model="showItemExtra"
+      max-width="1000"
+    >
+      <v-card>
+        <v-img
+          max-height="250"
+          src="../assets/italy.jpg"
+        ></v-img>
+        <v-container>
+
+        </v-container>
+      </v-card>
+    </v-dialog>
+  </v-container>
 </template>>
 
 <script>
+import Store from '@/assets/temp/storeList.json';
+import Menu from '@/assets/temp/store1.json';
+
 export default {
-    data: () => ({
-        main: [ { name : "西班牙海鮮燉飯",
-                  price : 80,
-                  nutrition : 800,
-                  url : "spainsh"
-                },
-                { name : "蒜香雞肉義大利麵",
-                  price : 65,
-                  nutrition : 600,
-                  url : "garlic"
-                },
-                { name : "奶油培根蛋寬扁麵",
-                  price : 75,
-                  nutrition : 750,
-                  url : "butter"
-                }
-              ],
-        dish: [ { name : "白菜滷",
-                  price : 20,
-                  nutrition : 100
-                },
-                { name : "皮蛋豆腐",
-                  price : 35,
-                  nutrition : 200
-                },
-                { name : "海帶豆干",
-                  price : 30,
-                  nutrition : 150
-                },
-              ],
-        drink: ["麥茶 $20", "蜜茶 $20", "冬瓜茶 $15", "仙草干茶 $25"],
-        pass: [],
-        tabs: 3
-    }),
-    methods:{
-        getTotal: function(){
-            this.total = 0
-            var mp = parseInt(this.mainprice.slice(-2))
-            var dp = parseInt(this.dishprice.slice(-2))
-            var drp = parseInt(this.drinkprice.slice(-2))
-            this.total = mp + dp + drp
-        },
-        passMenu: function(){
-            this.pass = []
-            this.pass.push(this.mainprice)
-            this.pass.push(this.dishprice)
-            this.pass.push(this.drinkprice)
-            this.pass.push(this.total.toString())
-        },
-        Add: function(){
-            console.log("Btn click!")
-        },
-        Loadimg: function(i){
-            return require(`../assets/${i}.jpg`);
-        }
+  data: () => ({
+    storeData: {},
+    storeMenu: {},
+    menu: null,
+    showStoreData: false,
+    showItemExtra: false
+  }),
+  methods: {
+    checkoutItemExtra( category , item ) {
+      if ( category.extra ) {
+        this.showItemExtra = true;
+        return;
+      }
+      this.addToCart(category, item);
+    },
+    addToCart( category , item ) {
+      console.log("Add item to the cart!");
     }
+  },
+  created() {
+    this.storeData = Store.find( (element) => {
+      return element.id === "store1";
+    });
+    this.storeMenu = Menu;
+    // console.log( this.storeData );
+    // console.log( this.storeMenu );
+  }
 };
 </script>>
