@@ -5,7 +5,7 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
-import _ form 'lodash'
+import _ from 'lodash'
 
 Vue.config.productionTip = false
 
