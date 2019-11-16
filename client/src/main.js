@@ -5,11 +5,7 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
-<<<<<<< HEAD
-import _ form 'lodash'
-=======
 import _ from 'lodash'
->>>>>>> feature@frontside-signup
 
 Vue.config.productionTip = false
 

@@ -16,25 +16,16 @@
     </v-app-bar>
 
     <v-content>
-<<<<<<< HEAD
       <router-view/>
-=======
-      <router-view></router-view>
->>>>>>> feature@frontside-signup
     </v-content>
   </v-app>
 </template>
 
 <script>
 export default {
-<<<<<<< HEAD
-  name: 'App',
-  components: {
-=======
   data: () => {
     return {
     }
->>>>>>> feature@frontside-signup
   },
   mounted() {
     this.axios.get( "https://www.ris.gov.tw/rs-opendata/api/v1/datastore/ODRP049/107" )
