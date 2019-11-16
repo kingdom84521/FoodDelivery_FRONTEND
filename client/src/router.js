@@ -1,13 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-<<<<<<< HEAD
-import SignUp from "@/views/SignUp"
-
-// import SignUp from 
-=======
 import Home from '@/views/Home'
 import SignIn from '@/views/SignIn'
->>>>>>> feature@home
+import SignUp from '@/views/SignUp'
 
 Vue.use(Router)
 
@@ -18,15 +13,14 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      
+      component: Home
     },
     {
-<<<<<<< HEAD
       path: '/signup',
       name: 'signup',
       component: SignUp
-    }
-=======
+    },
+    {
       path: '/signin',
       name: 'signin',
       component: SignIn
@@ -35,6 +29,5 @@ export default new Router({
       path: '*',
       redirect: { name: 'home' }
     },
->>>>>>> feature@home
   ]
 })
