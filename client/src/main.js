@@ -11,6 +11,12 @@ Vue.config.productionTip = false
 
 Vue.prototype._ = _
 
+Vue.directive('blur', {
+  inserted(el) {
+    el.onfocus = (ev) => ev.target.blur();
+  }
+});
+
 new Vue({
   router,
   store,

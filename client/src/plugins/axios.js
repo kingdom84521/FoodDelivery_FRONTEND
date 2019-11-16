@@ -42,6 +42,7 @@ _axios.interceptors.response.use(
 
 // eslint-disable-next-line
 Plugin.install = function(Vue, options) {
+  options;
   Vue.axios = _axios;
   window.axios = _axios;
   Object.defineProperties(Vue.prototype, {
