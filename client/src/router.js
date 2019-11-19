@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/views/dashboard'
-import Purchase from '@/components/dashboard/featureView/purchase/main'
-import Page from '@/components/dashboard/featureView/purchase/page'
+import Purchase from '@/components/dashboard/purchase/main'
+import Page from '@/components/dashboard/purchase/page'
 
 Vue.use(Router)
 

@@ -22,9 +22,7 @@
                 </v-tabs>
             </v-col>
         </v-row>
-        <v-row>
-            <router-view />
-        </v-row>
+        <router-view />
     </div>
 </template>
 
