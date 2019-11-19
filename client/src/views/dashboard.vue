@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-sheet>
+        <v-sheet color="#FCFCFC">
             <v-row>
                 <v-col
                     justify-self="center"
@@ -55,13 +55,7 @@
                 <v-col
                     cols="9"
                 >
-                    <v-row>
-                        <v-col>
-                            <v-tabs>
-                                
-                            </v-tabs>
-                        </v-col>
-                    </v-row>
+                    <router-view />
                 </v-col>
             </v-row>
         </v-sheet>
@@ -88,5 +82,7 @@ export default {
 </script>
 
 <style>
-
+    .border--black {
+        border: 1px #D8D8D8 solid ;
+    }
 </style>
