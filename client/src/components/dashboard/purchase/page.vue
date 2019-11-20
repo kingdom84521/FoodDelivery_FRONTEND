@@ -5,7 +5,7 @@
                 cols="5"
             >
                 <v-expand-transition>
-                    <div v-if="this.type !== 'future'">
+                    <div v-if="this.type !== 'ongoing'">
                         <v-text-field
                             solo
                             prepend-inner-icon="mdi-magnify"
@@ -13,9 +13,19 @@
                             clearable
                             v-model="keyword"
                             @click:clear="clearMessage"
+                            placeholder="請輸入您要搜尋的關鍵字"
                         />
                     </div>
                 </v-expand-transition>
+            </v-col>
+        </v-row>
+        <v-row no-gutters>
+            <v-col class="border--black">
+                <v-sheet class="pa-4">
+                    <v-card>
+
+                    </v-card>
+                </v-sheet>
             </v-col>
         </v-row>
     </div>
@@ -40,5 +50,7 @@ export default {
 </script>
 
 <style>
-
+    .border--black {
+        border: 1px #D8D8D8 solid ;
+    }
 </style>

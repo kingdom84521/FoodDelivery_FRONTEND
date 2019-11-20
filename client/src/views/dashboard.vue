@@ -55,7 +55,7 @@
                 <v-col
                     cols="9"
                 >
-                    <router-view />
+                    <router-view class="mr-5" />
                 </v-col>
             </v-row>
         </v-sheet>
