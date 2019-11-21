@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header :user="user"/>
+    <Header :user="user" @user-signout="signoutHandler"/>
 
     <v-content>
       <router-view/>
@@ -28,6 +28,15 @@
         email: 'joe8773@gmail.com',
       },
    }),
+   methods: {
+     signinHandler( userData ) {
+       this.user = userData ;
+       this.$router.push( "/home" )
+     },
+     signoutHandler() {
+       this.user = null ;
+     }
+   }
   };
 </script>
 
