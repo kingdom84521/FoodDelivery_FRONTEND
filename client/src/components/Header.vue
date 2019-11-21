@@ -3,19 +3,19 @@
     app
     flat
     dark
-    max-height="60"
+    height="80"
     color="green"
   >
     <!-- Logo -->
     <router-link to="/home">
       <v-img
-        :src="require('../assets/driver.svg')"
-        max-height="40"
+        :src="require('../assets/myLogo.png')"
+        max-height="64"
         max-width="40"
         contain
-      ></v-img>
+      />
     </router-link>
-    <v-toolbar-title>食載有你</v-toolbar-title>
+    <v-toolbar-title class="ml-3">食載有你</v-toolbar-title>
 
     <div class="flex-grow-1"></div>
 
@@ -23,8 +23,32 @@
     <v-toolbar-items 
       v-if="!isUserSignIn"
     >
-      <v-btn text v-blur to="/signin">SIGN IN</v-btn>
-      <v-btn text v-blur class="d-none d-md-flex" to="/signup">SIGN UP</v-btn>
+      <v-btn text v-blur to="/signin">
+        <v-icon
+          left
+          color="white"
+        >
+          mdi-account-plus
+        </v-icon>
+        <div
+          class="title"
+        >
+          註冊
+        </div>
+      </v-btn>
+      <v-btn text v-blur class="d-none d-md-flex" to="/signup">
+        <v-icon
+          left
+          color="white"
+        >
+          mdi-login
+        </v-icon>
+        <div
+          class="title"
+        >
+          登入
+        </div>
+      </v-btn>
     </v-toolbar-items>
     <!-- After sign in -->
     <v-menu 
@@ -41,16 +65,16 @@
           icon
           v-on="on"
         >
-          <v-avatar
-            color="grey lighten-1"
-            size="40"
-          >
-            <img 
-              v-if="user.img"
-              :src="user.img"
+            <v-avatar
+              color="grey lighten-1"
+              size="40"
             >
-            <v-icon v-else>mdi-account</v-icon>
-          </v-avatar>
+              <img 
+                v-if="user.img"
+                :src="user.img"
+              >
+              <v-icon v-else>mdi-account</v-icon>
+            </v-avatar>
         </v-btn>
       </template>
       <!-- User dropdown menu -->
@@ -121,17 +145,20 @@
           link: '/settings',
         },
         {
+          name: "Help center",
+          icon: "mdi-help-circle",
+          link: "help"
+        },
+        {
           name: 'Sign out',
           icon: 'mdi-logout',
           link: '/signout',
-        },
+        }
       ],
     }),
     props: {
       user: {
-        type: Object,
-        default: null,
-        required: false
+        type: Object
       },
     },
     computed: {
