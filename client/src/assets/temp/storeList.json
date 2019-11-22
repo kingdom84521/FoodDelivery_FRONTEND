@@ -1,6 +1,5 @@
-[
-  {
-    "id": "store1",
+[{
+    "id": 100001,
     "name": "洋津義大利麵",
     "address": "360苗栗縣苗栗市勝利路247號",
     "workTime": [
@@ -12,11 +11,80 @@
       ["1100-2130"],
       ["1100-2130"]
     ],
-    "coordinate": [0,0],
-    "distance": 5
+    "coordinate": [0, 0],
+    "distance": 5,
+    "rating": 4.5,
+    "menus": [200001],
+    "toppings": {
+      "300001": {
+        "id": 300001,
+        "name": "套餐選項",
+        "options": [{
+            "id": 400001,
+            "name": "濃湯",
+            "price": 0
+          },
+          {
+            "id": 400002,
+            "name": "布丁",
+            "price": 0
+          },
+          {
+            "id": 400003,
+            "name": "奶酪",
+            "price": 0
+          }
+        ],
+        "quantity_max": 1,
+        "quantity_min": 1
+      },
+      "300002": {
+        "id": 300002,
+        "name": "附餐飲料選擇",
+        "options": [{
+            "id": 400004,
+            "name": "蔗香紅茶",
+            "price": 0
+          },
+          {
+            "id": 400005,
+            "name": "凍檸茶",
+            "price": 40
+          },
+          {
+            "id": 400006,
+            "name": "鮮奶茶",
+            "price": 40
+          },
+          {
+            "id": 400007,
+            "name": "養樂多紅茶",
+            "price": 45
+          },
+          {
+            "id": 400008,
+            "name": "檸檬養樂多",
+            "price": 50
+          },
+          {
+            "id": 400009,
+            "name": "蜂蜜檸檬",
+            "price": 35
+          },
+          {
+            "id": 400010,
+            "name": "冬瓜檸檬",
+            "price": 30
+          }
+        ],
+        "quantity_max": 1,
+        "quantity_min": 1
+      }
+      
+    }
   },
   {
-    "id": "store2",
+    "id": 100002,
     "name": "Loving Hut 愛家 苗栗聯合店",
     "address": "360苗栗縣苗栗市中正路1051號",
     "workTime": [
@@ -28,11 +96,16 @@
       ["1100-1330", "1700-2000"],
       ["1100-1330", "1700-2000"]
     ],
-    "coordinate": [0,0],
-    "distance": 2
+    "coordinate": [0, 0],
+    "distance": 2,
+    "rating": 4.5,
+    "menus": [200002],
+    "toppings": {
+
+    }
   },
   {
-    "id": "store3",
+    "id": 100003,
     "name": "南苗鍋燒麵",
     "address": "360苗栗縣苗栗市中正路1016號",
     "workTime": [
@@ -44,11 +117,14 @@
       [],
       ["1000-0200"]
     ],
-    "coordinate": [0,0],
-    "distance": 1
+    "coordinate": [0, 0],
+    "distance": 1,
+    "rating": 4.5,
+    "menus": [200003],
+    "toppings": {}
   },
   {
-    "id": "store4",
+    "id": 100004,
     "name": "鼎香169餐坊",
     "address": "360苗栗縣苗栗市中正路964號",
     "workTime": [
@@ -60,11 +136,14 @@
       [],
       ["0600-1300"]
     ],
-    "coordinate": [0,0],
-    "distance": 1
+    "coordinate": [0, 0],
+    "distance": 1,
+    "rating": 4.5,
+    "menus": [200004],
+    "toppings": {}
   },
   {
-    "id": "store5",
+    "id": 100005,
     "name": "新竹夜市城",
     "address": "360苗栗縣苗栗市中正路1019號",
     "workTime": [
@@ -76,7 +155,29 @@
       ["1130-2300"],
       ["1130-2300"]
     ],
-    "coordinate": [0,0],
-    "distance": 1
+    "coordinate": [0, 0],
+    "distance": 1,
+    "rating": 4.5,
+    "menus": [200005],
+    "toppings": {}
+  },
+  {
+    "id": 100006,
+    "name": "新竹夜市城",
+    "address": "360苗栗縣苗栗市中正路1019號",
+    "workTime": [
+      ["1130-2300"],
+      ["1130-2300"],
+      ["1130-2300"],
+      ["1130-2300"],
+      ["1130-2300"],
+      ["1130-2300"],
+      ["1130-2300"]
+    ],
+    "coordinate": [0, 0],
+    "distance": 1,
+    "rating": 4.5,
+    "menus": [200006],
+    "toppings": {}
   }
 ]
