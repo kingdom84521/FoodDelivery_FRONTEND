@@ -18,7 +18,7 @@ export default new Router({
       component: Order
     },
     {
-      path: '/store/:storId',
+      path: '/store/:storeId',
       name: 'store',
       component: Menu
     },
@@ -32,10 +32,10 @@ export default new Router({
     //   name: 'submit',
     //   component: Submit
     // },
-    {
-      path: '/test',
-      name: 'test',
-      component: Test
-    },
+    // {
+    //   path: '/test',
+    //   name: 'test',
+    //   component: Test
+    // },
   ]
 })

@@ -14,19 +14,19 @@
               "id": 700001,
               "name": "正常",
               "price": 95,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700002,
               "name": "加大",
               "price": 115,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700003,
               "name": "升級套餐",
               "price": 135,
-              "toppings_ids": [300001, 300002]
+              "topping_ids": [300001, 300002]
             }
           ]
         },
@@ -38,19 +38,19 @@
               "id": 700004,
               "name": "正常",
               "price": 115,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700005,
               "name": "加大",
               "price": 135,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700006,
               "name": "升級套餐",
               "price": 155,
-              "toppings_ids": [300001, 300002]
+              "topping_ids": [300001, 300002]
             }
           ]
         },
@@ -62,19 +62,19 @@
               "id": 700007,
               "name": "正常",
               "price": 115,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700008,
               "name": "加大",
               "price": 135,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700009,
               "name": "升級套餐",
               "price": 155,
-              "toppings_ids": [300001, 300002]
+              "topping_ids": [300001, 300002]
             }
           ]
         },
@@ -86,19 +86,19 @@
               "id": 700010,
               "name": "正常",
               "price": 105,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700011,
               "name": "加大",
               "price": 125,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700012,
               "name": "升級套餐",
               "price": 145,
-              "toppings_ids": [300001, 300002]
+              "topping_ids": [300001, 300002]
             }
           ]
         },
@@ -110,19 +110,19 @@
               "id": 700013,
               "name": "正常",
               "price": 115,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700014,
               "name": "加大",
               "price": 135,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700015,
               "name": "升級套餐",
               "price": 155,
-              "toppings_ids": [300001, 300002]
+              "topping_ids": [300001, 300002]
             }
           ]
         },
@@ -134,19 +134,19 @@
               "id": 700016,
               "name": "正常",
               "price": 115,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700017,
               "name": "加大",
               "price": 135,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700018,
               "name": "升級套餐",
               "price": 155,
-              "toppings_ids": [300001, 300002]
+              "topping_ids": [300001, 300002]
             }
           ]
         },
@@ -158,19 +158,19 @@
               "id": 700019,
               "name": "正常",
               "price": 95,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700020,
               "name": "加大",
               "price": 115,
-              "toppings_ids": [300002]
+              "topping_ids": [300002]
             },
             {
               "id": 700021,
               "name": "升級套餐",
               "price": 135,
-              "toppings_ids": [300001, 300002]
+              "topping_ids": [300001, 300002]
             }
           ]
         }
@@ -188,7 +188,7 @@
             "id": 700022,
             "name": null,
             "price": 50,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -199,7 +199,7 @@
             "id": 700023,
             "name": null,
             "price": 70,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -210,7 +210,7 @@
             "id": 700024,
             "name": null,
             "price": 70,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -221,7 +221,7 @@
             "id": 700025,
             "name": null,
             "price": 35,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -232,7 +232,7 @@
             "id": 700026,
             "name": null,
             "price": 35,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -243,7 +243,7 @@
             "id": 700027,
             "name": null,
             "price": 50,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -254,7 +254,7 @@
             "id": 700028,
             "name": null,
             "price": 35,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         }
       ]
@@ -271,7 +271,7 @@
             "id": 700029,
             "name": null,
             "price": 30,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -282,7 +282,7 @@
             "id": 700030,
             "name": null,
             "price": 55,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -293,7 +293,7 @@
             "id": 700031,
             "name": null,
             "price": 55,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -304,7 +304,7 @@
             "id": 700032,
             "name": null,
             "price": 60,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -315,7 +315,7 @@
             "id": 700033,
             "name": null,
             "price": 65,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -326,7 +326,7 @@
             "id": 700034,
             "name": null,
             "price": 50,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         },
         {
@@ -337,7 +337,7 @@
             "id": 700035,
             "name": null,
             "price": 45,
-            "toppings_ids": []
+            "topping_ids": []
           }]
         }
       ]
