@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header :user="user" @user-signout="signoutHandler"/>
+    <Header :user="user" @user-signout="signoutHandler" @user-signin="signinHandler"/>
 
     <v-content>
       <router-view/>
@@ -30,8 +30,12 @@
    }),
    methods: {
      signinHandler( userData ) {
-       this.user = userData ;
-       this.$router.push( "/home" )
+       console.log( userData )
+       // this.user = userData
+       if ( this.$router.currentRoute.fullPath !== "/home" )
+       {
+         this.$router.push( "/home" )
+       }
      },
      signoutHandler() {
        this.user = null ;

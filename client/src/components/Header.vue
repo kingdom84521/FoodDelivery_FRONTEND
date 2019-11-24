@@ -13,7 +13,7 @@
     >
       <router-link to="/home">
         <v-img
-          :src="require('../assets/myLogo.png')"
+          :src="require('@/assets/logo.png')"
           max-height="64"
           max-width="40"
           contain
@@ -221,7 +221,7 @@
         {
           name: 'History',
           icon: 'mdi-history',
-          link: '/history',
+          link: '/dashboard/purchase/all',
         },
         {
           name: 'QR code',
@@ -260,7 +260,7 @@
           password: this.signinData.password
         }
         // backend communication
-        this.$emit( "user-signin" ) // need return user data pack !
+        this.$emit( "user-signin", loginData ) // need return user data pack !
         this.signinDialog( "close" )
       },
       signinDialog( action ) {
@@ -275,8 +275,13 @@
         }
       },
       backToHome() {
-        console.log( this.$router.current )
-        this.$router.push("/home")
+        if ( this.$router.currentRoute.fullPath !== "/home" )
+        {
+          this.$router.push("/home")
+        }
+        else {
+          return 
+        }
       }
     },
     computed: {
