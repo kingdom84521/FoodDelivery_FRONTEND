@@ -4,7 +4,7 @@ import Order from '@/views/Order.vue'
 import Menu from '@/views/Menu.vue'
 // import Submit from '@/views/Submit.vue'
 
-import Test from '@/components/Test.vue'
+// import Test from '@/components/Test.vue'
 
 Vue.use(Router)
 
