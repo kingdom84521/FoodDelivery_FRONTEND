@@ -1,10 +1,8 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col
-      >
-        <!-- cols="10"
-        class="pr-0" -->
+      <!-- 菜單 -->
+      <v-col>
         <!-- 餐廳招牌 -->
         <v-card>
           <v-img 
@@ -67,15 +65,18 @@
         <!-- 餐點分類 -->
         <v-tabs 
           background-color="green accent-3" 
+          color="grey darken-2"
           center-active 
           v-model="menu_tab"
         >
           <v-tab 
             v-for="(category, index) in store_menu.categories"
             :key="index"
+            class="font-weight-bold"
           >
             {{ category.name }}
           </v-tab>
+          <v-tabs-slider color="orange darken-2" />
         </v-tabs>
 
         <!-- 餐點項目 -->
@@ -95,9 +96,9 @@
               <v-card-actions>
                 <v-card-title> {{ product.name }} </v-card-title>
                 <v-spacer />
-                <v-card-subtitle>
+                <div class="font-weight-medium">
                   NT{{ lowestPrice(product.product_variations) }}$
-                </v-card-subtitle>
+                </div>
                 <v-btn
                   icon
                   v-if="isItemExtra( product )"
@@ -254,14 +255,114 @@
       </v-col>
 
       <!-- 購物車 -->
-      <!-- <v-col>
+      <v-col
+        lg="3"
+        md="3"
+        cols="12"
+        class="pl-md-0"
+      >
         <v-sheet
-          elevation="5"
-          color="green"
+          height="100%"
+          elevation="2"
+          color="green accent-3"
+          class="pa-1"
         >
-          123132
+          <v-card
+            height="100%"
+          >
+            <v-card-title class="justify-center font-weight-black">購物車列表</v-card-title>
+            <v-divider />
+            <v-sheet
+              v-if="shopping_cart.list.length === 0"
+              hieght="200"
+              class="pa-1 text-center font-weight-medium"
+            >
+              你尚未放入任何產品到購物車中。
+            </v-sheet>
+            <v-list
+              v-else
+            >
+              <v-list-item
+                v-for="(item, index) in shopping_cart.list"
+                :key="index"
+              >
+                <v-row no-gutter>
+                  <!-- 數量調整 -->
+                  <v-col cols="1" class="pa-0 pt-2">
+                    <v-btn 
+                      icon
+                      color="green accent-3"
+                      @click="changeQuantity(item, '-', true)"
+                    >
+                      <v-icon>mdi-minus</v-icon>
+                    </v-btn>
+                  </v-col>
+                  <v-col cols="1" class="pa-0 pt-3">
+                    <div class="text-end font-weight-bold"> {{ item.quantity }} </div>
+                  </v-col>
+                  <v-col cols="1" class="pa-0 pt-2">
+                    <v-btn 
+                      icon
+                      color="green accent-3"
+                      @click="changeQuantity(item, '+', true)"
+                    >
+                      <v-icon>mdi-plus</v-icon>
+                    </v-btn>
+                  </v-col>
+                  <!-- 項目描述 -->
+                  <v-col cols="5" class="pa-0">
+                    <v-list class="pa-0">
+                      <v-list-item>
+                        <v-list-item-title>{{ item.product.name }}</v-list-item-title>
+                      </v-list-item>
+                      <v-list-item 
+                        class="mt-n5"
+                        v-if="item.variation.name !== null"
+                      >
+                        <v-list-item-title>~{{ item.variation.name }}</v-list-item-title>
+                      </v-list-item>
+                      <template
+                        v-if="item.toppings.length !== 0"
+                      >
+                        <div
+                          v-for="(topping, topping_index) in item.toppings"
+                          :key="topping_index"
+                        >
+                          <v-list-item 
+                            v-for="(option, option_index) in topping.options_list"
+                            :key="option_index"
+                            class="mt-n5"
+                          >
+                            <v-list-item-title>+{{ option.name }}</v-list-item-title>
+                          </v-list-item>
+                        
+                        </div>
+                      </template>
+                    </v-list>
+                  </v-col>
+                  <!-- 小計 -->
+                  <v-col 
+                    cols="4" 
+                    class="pr-0 pb-0"
+                    v-if="!shopping_cart_edit"
+                  >
+                    <v-list-item-action-text class="title">NT{{ item.subtotal }}$</v-list-item-action-text>
+                  </v-col>
+                  <v-col v-else>
+                    <v-btn 
+                      block
+                      color="red darken-1"
+                      @click="deleteShoppingCartItem(index)"
+                    >
+                      刪除
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-list-item>
+            </v-list>
+          </v-card>
         </v-sheet>
-      </v-col> -->
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -269,6 +370,7 @@
 <script>
 import Store from '@/assets/temp/storeList.json';
 import Menu from '@/assets/temp/menuList.json';
+// import ProductVariation from '@/components/Menu/ProductVariation/main';
 
 export default {
   name: 'Menu',
@@ -282,6 +384,7 @@ export default {
     product_detail: false,
     check_shopping_car: false,
     product_variation: null,
+    shopping_cart_edit: false,
     toppings: [],
     item_extra: {
       category: {},
@@ -327,11 +430,14 @@ export default {
       }
       this.addToCart();
     },
-    changeQuantity( item , state ) {
+    changeQuantity( item , state , shopping_cart_list = false ) {
       if ( state === '+' ) {
         item.quantity += 1;
       } else if ( state === '-' ) {
         item.quantity -= 1;
+      }
+      if ( shopping_cart_list ) {
+        this.updateShoppingCart();
       }
     },
     clearTemporaryItem() {
@@ -353,12 +459,10 @@ export default {
 
       return unit
     },
-    addToCart() {
-      console.log("Add item to the cart!");
-
-      let list_item_template = { ...this.temporary_item, "toppings": [], "remarks": null };
-      list_item_template.price = list_item_template.subtotal;
-      list_item_template.subtotal = list_item_template.price * list_item_template.quantity;
+    getNewListItem() {
+      let item_template = { ...this.temporary_item, "toppings": [], "remarks": null };
+      item_template.price = item_template.subtotal;
+      item_template.subtotal = item_template.price * item_template.quantity;
 
       if ( this.item_extra.toppings !== null ) {
         let toppings_choice = this.toppings;
@@ -374,16 +478,75 @@ export default {
                 topping_unit.options_list.push( this.getUnit( topping.options[option_index] ) );              
               });
             } 
-            list_item_template.toppings.push( topping_unit );
+            item_template.toppings.push( topping_unit );
           } 
         });
       }
 
-      this.shopping_cart.list.push( list_item_template );
-      console.log( this.shopping_cart.list );
+      this.clearTemporaryItem();
+      this.unsetToppings();
+      return item_template;
+    },
+    getSameItemIndex( item ) {
+      let list = this.shopping_cart.list;
+      if ( list.length === 0 ) {
+        return -1;
+      }
+
+      return this._.findIndex(list, list_item => {
+        if ( item.category.id !== list_item.category.id || item.product.id !== list_item.product.id || item.variation.id !== list_item.variation.id || item.toppings.length !== list_item.toppings.length ) {
+          return false;
+        }
+
+        let item_toppings = item.toppings;
+        let list_toppings = list_item.toppings;
+        for ( var topping_index = 0 ; topping_index < item_toppings.length ; ++topping_index ) {
+          if ( item_toppings[ topping_index ].options_list.length !== list_toppings[ topping_index ].options_list.length ) {
+            return false;
+          }
+
+          let item_options = item_toppings[ topping_index ];
+          let list_options = list_toppings[ topping_index ];
+          for ( var option_index = 0 ; option_index < item_options.length ; ++option_index ) {
+            if ( item_options[ option_index ].id !== list_options[ option_index ].id ) {
+              return false;
+            } 
+          }
+        }
+        return true;
+      });
+    },
+    addToCart() {
+      let list_item_template = this.getNewListItem();
+
+      let same_item_index = this.getSameItemIndex( list_item_template );
+      if ( same_item_index === -1 ) {
+        this.shopping_cart.list.push( list_item_template );
+      } else {
+        this.shopping_cart.list[ same_item_index ].quantity += list_item_template.quantity;
+      }
 
       this.product_detail = false;
-      this.clearTemporaryItem();
+      this.updateShoppingCart();
+    },
+    updateShoppingCart() {
+      let price_total = 0;
+
+      this._.remove(this.shopping_cart.list, {'quantity': 0});
+
+      this._.forEach(this.shopping_cart.list, (item, index) => {
+        let price_subtotal = item.price * item.quantity;
+        if ( item.subtotal !== price_subtotal ) {
+          this.shopping_cart.list[index].subtotal = price_subtotal;
+        }
+        price_total += price_subtotal;
+      });
+
+      this.shopping_cart.total = price_total;
+      console.log( this.shopping_cart.list );
+    },
+    backToProductVariation( index ) {
+      console.log( index );
     }
   },
   watch: {
