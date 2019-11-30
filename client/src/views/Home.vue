@@ -20,8 +20,8 @@
             >
               <v-img
                 src="@/assets/logo.png"
-                max-height="85%"
-                max-width="85%"
+                max-height="75%"
+                max-width="75%"
                 contain
               >
               </v-img>
@@ -125,13 +125,13 @@
               >
                 <div>
                   <div class="display-1 font-weight-bold">
-                    無地不送
+                    美味快遞
                   </div>
                   <div 
                     class="headline ml-2 pa-5"
                     style="line-height: 3.5rem; width: 85%"
                   >
-                    每個顧客的交通不便，我們幫您想到了。再遠的地方，熱騰騰的飯菜都能為你準時送達。  
+                    美食當前卻困擾於無法外出嗎？交給食載有你，保證將熱騰騰的飯菜，準時送到您的門前。  
                   </div>
                 </div>
               </v-col>
@@ -140,15 +140,86 @@
         </v-sheet>
       </v-col>
     </v-row>
+    <v-spacer class="py-4"/>
+    <v-row 
+      justify="center"
+      no-gutters
+    >
+      <v-col
+        cols="10"
+      >
+        <v-sheet color="transparent">
+          <div 
+            class="display-3 grey--text"
+            style="line-height: 4.5rem"
+          >
+            Easier, Faster
+          </div>  
+        </v-sheet>
+      </v-col>
+      <v-col
+        cols="10"
+        class="mr-8"
+      >
+        <v-sheet color="transparent">
+          <div class="headline mt-2">
+            為了您能更方便的點餐，我們將流程做了優化：
+          </div>
+        </v-sheet>
+      </v-col>
+      <v-col
+        cols="11"
+        class="mt-5"
+      >
+        <v-row no-gutters justify="space-around">
+          <v-col
+            v-for="( title, index ) in stepInfo"
+            :key="index"
+          >            
+            <div class="d-flex flex-row justify-center align-center">
+              <div
+                class="success circle text-center mr-3 white--text"
+              >
+                {{ index + 1 }}
+              </div>
+              <div class="title">
+                {{ title }}
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row no-gutters justify="space-around" class="mt-5 mx-10">
+          <v-col
+            cols="12"
+          >
+            <div 
+              class="grey black--text d-flex justify-center align-center"
+              style="height: 202.125px"
+            >
+              Picture
+              <br>
+                ( 8 : 1 )
+            </div>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
   export default {
     data: () => ({
-      keyword: ""
+      keyword: "",
+      stepInfo: [
+        "輸入你想吃的美食",
+        "搜尋到附近的相關店家",
+        "點餐後選擇結帳",
+        "靜待熱騰騰的美食上門"
+      ]
     }),
     methods: {
+      
     }
   }
 </script>
@@ -157,5 +228,11 @@
   .border--grey {
     border: 1px #A4A4A4 solid !important ;
     border-radius: 5px
+  }
+
+  .circle {
+    height: 25px ;
+    width: 25px ;
+    border-radius: 25% ;
   }
 </style>
