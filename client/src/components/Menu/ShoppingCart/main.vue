@@ -27,76 +27,81 @@
           :key="index"
           @click="backToProductVariation( index )"
         >
-          <v-row no-gutter>
-            <!-- 數量調整 -->
-            <v-col cols="1" class="pa-0 pt-2">
-              <v-btn 
-                icon
-                color="green accent-3"
-                @click.stop="changeQuantity(item, '-')"
-              >
-                <v-icon>mdi-minus</v-icon>
-              </v-btn>
-            </v-col>
-            <v-col cols="1" class="pa-0 pt-3">
-              <div class="text-end font-weight-bold"> {{ item.quantity }} </div>
-            </v-col>
-            <v-col cols="1" class="pa-0 pt-2">
-              <v-btn 
-                icon
-                color="green accent-3"
-                @click.stop="changeQuantity(item, '+')"
-              >
-                <v-icon>mdi-plus</v-icon>
-              </v-btn>
-            </v-col>
+          <!-- <v-btn 
+            block
+            color="red darken-1"
+            @click="deleteShoppingCartItem(index)"
+          >
+            刪除
+          </v-btn> -->
+          <v-row>
             <!-- 項目描述 -->
-            <v-col cols="5" class="pa-0">
-              <v-list class="pa-0">
-                <v-list-item>
-                  <v-list-item-title>{{ item.product.name }}</v-list-item-title>
-                </v-list-item>
-                <v-list-item 
-                  class="mt-n5"
-                  v-if="item.variation.name !== null"
-                >
-                  <v-list-item-title>~{{ item.variation.name }}</v-list-item-title>
-                </v-list-item>
-                <template
-                  v-if="item.toppings.length !== 0"
-                >
-                  <div
-                    v-for="(topping, topping_index) in item.toppings"
-                    :key="topping_index"
-                  >
-                    <v-list-item 
-                      v-for="(option, option_index) in topping.options_list"
-                      :key="option_index"
-                      class="mt-n5"
+            <v-col cols="9">
+              <v-row>
+                <div class="pl-4 font-weight-bold headline">{{ item.product.name }}</div>
+              </v-row>
+              <v-row v-if="item.variation.name !== null">
+                <div class="pl-4 title">~{{ item.variation.name }}</div>
+              </v-row>
+              <template v-if="item.toppings.length !== 0">
+                <v-row>
+                  <div class="pl-4 subtitle-1">加點：</div>
+                </v-row>
+                <v-row>
+                  <v-list class="pl-12">
+                    <div
+                      v-for="(topping, topping_index) in item.toppings"
+                      :key="topping_index"
                     >
-                      <v-list-item-title>+{{ option.name }}</v-list-item-title>
-                    </v-list-item>
-                  
-                  </div>
-                </template>
-              </v-list>
+                      <v-list-item 
+                        v-for="(option, option_index) in topping.options_list"
+                        :key="option_index"
+                        class="mt-n5"
+                      >
+                        <v-list-item-title>+{{ option.name }}</v-list-item-title>
+                      </v-list-item>
+                    </div>
+                  </v-list>
+                </v-row>
+              </template>
+            </v-col>
+            <!-- 數量調整 -->
+            <v-col 
+              cols="3"
+              class="pa-0 pr-3"
+            >
+              <v-row class="justify-center">
+                <v-btn 
+                  icon
+                  color="red accent-3"
+                  @click.stop="changeQuantity(item, '-')"
+                >
+                  <v-icon>mdi-minus</v-icon>
+                </v-btn>
+              </v-row>
+              <v-row class="justify-center">
+                <div class="font-weight-bold"> {{ item.quantity }} </div>
+              </v-row>
+              <v-row class="justify-center">
+                <v-btn 
+                  icon
+                  color="green accent-4"
+                  @click.stop="changeQuantity(item, '+')"
+                >
+                  <v-icon>mdi-plus</v-icon>
+                </v-btn>
+              </v-row>
             </v-col>
             <!-- 小計 -->
-            <v-col 
-              cols="4" 
-              class="pr-0 pb-0"
-              v-if="!shopping_cart_edit"
-            >
-              <v-list-item-action-text class="title">NT{{ item.subtotal }}$</v-list-item-action-text>
+            <v-col cols="9">
+              <v-row class="justify-end">
+                <div class="ont-weight-bold title">價錢：</div>
+              </v-row>
             </v-col>
-            <v-col v-else>
-              <v-btn 
-                block
-                color="red darken-1"
-                @click="deleteShoppingCartItem(index)"
-              >
-                刪除
-              </v-btn>
+            <v-col cols="3">
+              <v-row class="justify-start">
+                <div class="ont-weight-bold title">NT{{ item.subtotal }}$</div>
+              </v-row>
             </v-col>
           </v-row>
         </v-list-item>
@@ -116,9 +121,9 @@ export default {
       require: true
     }
   },
-  data: {
+  data: () => ({
     shopping_cart_edit: false,
-  },
+  }),
   methods: {
     changeQuantity( item , state ) {
       this.$emit('changeQuantity', item, state, true);
