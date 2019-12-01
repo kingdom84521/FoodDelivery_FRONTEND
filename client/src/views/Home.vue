@@ -194,7 +194,7 @@
           >
             <div 
               class="grey black--text d-flex justify-center align-center"
-              style="height: 202.125px"
+              style="height: 202.13px"
             >
               Picture
               <br>
@@ -204,11 +204,119 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-spacer class="py-4"/>
+    <v-row
+      justify="center"
+      no-gutters
+    >
+      <v-col
+        cols="10"
+      >
+        <v-sheet color="transparent">
+          <div 
+            class="display-3 grey--text"
+            style="line-height: 4.5rem"
+          >
+            Other Choice
+          </div>  
+        </v-sheet>
+      </v-col>
+      <v-col
+        cols="10"
+      >
+        <v-row>
+          <v-col
+            cols="6"
+            class="px-5"
+          >
+            <v-sheet 
+              class="border-bold-grey d-flex flex-column align-center"
+              height="430"
+            >
+              <div 
+                class="headline pa-5"
+                style="width: 98%"
+              >
+                <p>
+                  想要讓其他顧客品嘗你的美食嗎？ 您可以選擇成為其中一個店家！
+                  <br>
+                  <br>
+                  食載有你也有提供店家上傳自己菜單的服務。填寫好相關的資料後，
+                  <br>
+                  您就可以成為我們的其中一個店家了！
+                  <br>
+                  <br>
+                  有興趣成為我們的一份子嗎？
+                  <br>
+                  快點擊下面加入我們吧！
+                </p>
+              </div>
+              <v-btn
+                x-large
+                depressed
+                width="60%"
+                height="80"
+                color="success"
+                class="white--text text-weight-bold my-3"
+                style="border-radius: 40px"
+              >
+                <div class="display-2">
+                  Join Us
+                </div>
+              </v-btn>
+            </v-sheet>
+          </v-col>
+          <v-col
+            cols="6"
+            class="px-5"
+          >
+            <v-sheet 
+              class="border-bold-grey d-flex flex-column align-center"
+              height="430"
+            >
+              <div 
+                class="headline px-5 pt-5"
+                style="width: 98%"
+              >
+                <p>
+                  歡迎使用我們的APP！
+                  <br>
+                  <br>
+                  點擊下面的按鈕，前往下載頁面吧！
+                </p>
+              </div>
+              <v-spacer class="py-2"/>
+              <v-row no-gutters class="mb-3">
+                <v-col
+                  cols="8"
+                  justify-self="center"
+                >
+                  <download-button type="google" class="mb-2" />
+                  <download-button type="appstore" />
+                </v-col>
+                <v-col
+                  cols="4"
+                  align-self="center"
+                  class="pb-2"
+                >
+                  <v-img max-width="90%" max-height="90%" src="@/assets/phone.png"/>
+                </v-col>
+              </v-row>
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
+  import downloadButton from "@/components/Home/downloadButton"
+
   export default {
+    components: {
+      downloadButton
+    },
     data: () => ({
       keyword: "",
       stepInfo: [
@@ -228,6 +336,11 @@
   .border--grey {
     border: 1px #A4A4A4 solid !important ;
     border-radius: 5px
+  }
+
+  .border-bold-grey {
+    border: 2px #A4A4A4 solid !important ;
+    border-radius: 10px
   }
 
   .circle {
