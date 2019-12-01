@@ -168,11 +168,18 @@ export default {
     check_shopping_car: false
   }),
   methods: {
+    getUnit( item ) {
+      let unit = {
+        id: null,
+        name: null
+      };
+      unit.id = item.id;
+      unit.name = item.name;
+
+      return unit
+    },
     changeQuantity( item , state ) {
       this.$emit('changeQuantity', item, state);
-    },
-    getUnit( item ) {
-      return this.$emit('getUnit', item);
     },
     addToCart() {
       this.$emit('addToCart');
