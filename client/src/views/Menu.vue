@@ -119,139 +119,17 @@
           v-model="product_detail" 
           max-width="600"
         >
-          <v-card>
-            <v-img
-              max-height="250"
-              src="../assets/butter.jpg"
-            ></v-img>
-            <v-card-title>
-              <div> {{ item_extra.product.name }} </div>
-              <v-spacer />
-              <div> NT{{ temporary_item.subtotal * temporary_item.quantity }}$ </div>
-            </v-card-title>
-            <v-divider />
-
-            <!-- Variations -->
-            <v-list>
-              <v-list-item-group
-                v-model="product_variation"
-                :mandatory="product_variation !== null"
-              >
-                <v-card-title>選擇種類</v-card-title>
-                <template
-                  v-for="(variation, index) in item_extra.product.product_variations"
-                >
-                  <v-list-item
-                    :key="index"
-                  >
-                    <template v-slot:default="{ active,toggle }">
-                      <v-list-item-icon>
-                        <v-icon v-if="product_variation !== index">mdi-radiobox-blank</v-icon>
-                        <v-icon v-else>mdi-radiobox-marked</v-icon>
-                      </v-list-item-icon>
-
-                      <v-list-item-content>
-                        <v-list-item-title>{{ variation.name }}</v-list-item-title>
-                      </v-list-item-content>
-
-                      <v-list-item-action>
-                        <v-list-item-action-text class="title">NT{{ variation.price }}$</v-list-item-action-text>
-                      </v-list-item-action>
-                    </template>
-                  </v-list-item>
-                </template>
-              </v-list-item-group>
-            </v-list>
-
-            <!-- Toppings -->
-            <v-list 
-              v-if="item_extra.toppings"
-            >
-              <template
-                v-for="(topping, top_index) in item_extra.toppings"
-              >
-                <v-list-item-group
-                  v-model="toppings[top_index]"
-                  :key="topping.id"
-                  :mandatory="topping.quantity_min > 0 && toppings[top_index] !== null"
-                  :multiple="topping.quantity_max > 1"
-                >
-                  <v-divider />
-                  <v-card-title> {{ topping.name }} </v-card-title>
-                  <template
-                    v-for="(option, op_index) in topping.options"
-                  >
-                    <v-list-item
-                      v-if="topping.quantity_max === 1"
-                      :key="option.id"
-                    >
-                      <template 
-                        v-slot:default="{ active,toggle }"
-                      >
-                        <v-list-item-icon>
-                          <v-icon v-if="toppings[top_index] !== op_index">mdi-radiobox-blank</v-icon>
-                          <v-icon v-else>mdi-radiobox-marked</v-icon>
-                        </v-list-item-icon>
-
-                        <v-list-item-content>
-                          <v-list-item-title>{{ option.name }}</v-list-item-title>
-                        </v-list-item-content>
-
-                        <v-list-item-action>
-                          <v-list-item-action-text class="title">+NT{{ option.price }}$</v-list-item-action-text>
-                        </v-list-item-action>
-                      </template>
-                    </v-list-item>
-                  </template>
-                </v-list-item-group>
-              </template>
-            </v-list>
-
-            <v-divider />
-
-            <!-- 備註 -->
-            <v-card-title>備註</v-card-title>
-
-            <!-- 數量調整及送出 -->
-            <v-card-actions>
-              <v-row justify="center">
-                <v-col cols="1">
-                  <v-btn 
-                    icon
-                    color="green accent-3"
-                    :disabled="temporary_item.quantity === 1"
-                    @click="changeQuantity(temporary_item, '-')"
-                  >
-                    <v-icon>mdi-minus</v-icon>
-                  </v-btn>
-                </v-col>
-                <v-col cols="2">
-                  <div class="text-end font-weight-bold"> {{ temporary_item.quantity }} </div>
-                </v-col>
-                <v-col cols="1">
-                  <v-btn 
-                    icon
-                    color="green accent-3"
-                    @click="changeQuantity(temporary_item, '+')"
-                  >
-                    <v-icon>mdi-plus</v-icon>
-                  </v-btn>
-                </v-col>
-                <v-col>
-                  <v-btn 
-                    block
-                    color="green accent-3"
-                    :disabled="!check_shopping_car"
-                    @click="addToCart()"
-                  >
-                    加入購物車
-                  </v-btn>
-                </v-col>
-              </v-row>
-            </v-card-actions>
-          </v-card>
+          <product-variation
+            :product_detail="product_detail"
+            :store_data="store_data"
+            :item_extra="item_extra"
+            :temporary_item="temporary_item"
+            :toppings="toppings"
+            :unset-toppings="unsetToppings"
+            @changeQuantity="changeQuantity"
+            @addToCart="addToCart"
+          />
         </v-dialog>
-
       </v-col>
 
       <!-- 購物車 -->
@@ -274,17 +152,20 @@
             <v-divider />
             <v-sheet
               v-if="shopping_cart.list.length === 0"
-              hieght="200"
+              height="10%"
               class="pa-1 text-center font-weight-medium"
             >
               你尚未放入任何產品到購物車中。
             </v-sheet>
             <v-list
+              max-height="80%"
               v-else
+              class="overflow-y-auto"
             >
               <v-list-item
                 v-for="(item, index) in shopping_cart.list"
                 :key="index"
+                @click="backToProductVariation( index )"
               >
                 <v-row no-gutter>
                   <!-- 數量調整 -->
@@ -292,7 +173,7 @@
                     <v-btn 
                       icon
                       color="green accent-3"
-                      @click="changeQuantity(item, '-', true)"
+                      @click.stop="changeQuantity(item, '-', true)"
                     >
                       <v-icon>mdi-minus</v-icon>
                     </v-btn>
@@ -304,7 +185,7 @@
                     <v-btn 
                       icon
                       color="green accent-3"
-                      @click="changeQuantity(item, '+', true)"
+                      @click.stop="changeQuantity(item, '+', true)"
                     >
                       <v-icon>mdi-plus</v-icon>
                     </v-btn>
@@ -360,6 +241,8 @@
                 </v-row>
               </v-list-item>
             </v-list>
+            <v-divider />
+            
           </v-card>
         </v-sheet>
       </v-col>
@@ -370,11 +253,12 @@
 <script>
 import Store from '@/assets/temp/storeList.json';
 import Menu from '@/assets/temp/menuList.json';
-// import ProductVariation from '@/components/Menu/ProductVariation/main';
+import ProductVariation from '@/components/Menu/ProductVariation/main';
 
 export default {
   name: 'Menu',
   components: {
+    ProductVariation
   },
   data: () => ({
     store_data: {},
@@ -382,8 +266,6 @@ export default {
     menu_tab: null,
     store_detail: false,
     product_detail: false,
-    check_shopping_car: false,
-    product_variation: null,
     shopping_cart_edit: false,
     toppings: [],
     item_extra: {
@@ -543,7 +425,6 @@ export default {
       });
 
       this.shopping_cart.total = price_total;
-      console.log( this.shopping_cart.list );
     },
     backToProductVariation( index ) {
       console.log( index );
@@ -552,61 +433,9 @@ export default {
   watch: {
     product_detail( now_status ) {
       if ( !now_status ) {
-        this.product_variation = null;
         this._.set(this.item_extra, 'category', {});
         this._.set(this.item_extra, 'product', {});
         this._.set(this.item_extra, 'remarks', null);
-      }
-    },
-    product_variation( variation_index ) {
-      this.check_shopping_car = false;
-      this.unsetToppings();
-
-      if ( variation_index !== null ) {
-        let variation = this._.get(this.item_extra, ['product', 'product_variations', variation_index]);
-        this.temporary_item.variation = this.getUnit(variation);
-        this.temporary_item.price = variation.price;
-        this.temporary_item.subtotal = this.temporary_item.price;
-
-        let topping_ids = this._.get(variation, 'topping_ids');
-
-        // 有 toppings 才新增
-        if ( topping_ids !== undefined ) {
-          this._.set(this.item_extra, 'toppings', []);
-          this._.forEach(topping_ids, topping_id => {
-            let topping = this._.get(this.store_data, ['toppings', topping_id]);
-            this.item_extra.toppings.push( topping );
-          });
-        } else {
-          this.check_shopping_car = true;
-        }
-      }
-    },
-    toppings( now_status ) {
-      // console.log( now_status );
-      if ( this.item_extra.toppings !== null ) {
-        this.temporary_item.subtotal = this.temporary_item.price;
-
-        // 檢查每一個 Topping 是否符合
-        let canCheckout = true;
-        this._.forEach(this.item_extra.toppings, (topping, index) => {
-          let choice_index = now_status[index];
-          
-          if ( typeof( choice_index ) === "object" ) {
-            if ( choice_index === null ) {
-              canCheckout = canCheckout && (topping.quantity_min === 0 );
-            } else {
-              this._.forEach(choice_index, option_index => {
-                this.temporary_item.subtotal += this._.get(topping , ['options', option_index, 'price']);
-              });
-              canCheckout = canCheckout && (topping.quantity_max >= choice_index.length);
-            }
-          } else {
-            this.temporary_item.subtotal += this._.get(topping , ['options', choice_index, 'price']);
-            canCheckout = canCheckout && true
-          }
-        });
-        this.check_shopping_car = canCheckout;
       }
     }
   },
