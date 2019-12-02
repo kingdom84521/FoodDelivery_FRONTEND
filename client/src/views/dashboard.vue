@@ -84,5 +84,6 @@ export default {
 <style>
     .border--black {
         border: 1px #D8D8D8 solid ;
+        border-radius: 5px ;
     }
 </style>

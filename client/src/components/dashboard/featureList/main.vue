@@ -24,6 +24,7 @@
                 <v-list-item 
                     v-for="( child, subindex ) in element.children"
                     :key="`${ index }-${ subindex }-item`"
+                    @click="goto( element.baseRoute + child.route )"
                 >
                     <v-list-item-content>
                         <v-list-item-title class="subtitle-1">
@@ -43,6 +44,7 @@
             <v-list-item 
                 v-else
                 :key="`${ index }-item`"
+                @click="goto( element.route )"
             >
                 <v-list-item-icon>
                     <v-icon
@@ -71,14 +73,17 @@ export default {
                     icon: "mdi-account-circle",
                     iconColor: "red",
                     title: "我的用戶",
+                    baseRoute: "account",
                     children: [
                         {
                             title: "用戶資訊",
-                            icon: "mdi-face-outline"
+                            icon: "mdi-face-outline",
+                            route: "/profile"
                         },
                         {
                             title: "親人列表",
-                            icon: "mdi-face-recognition"
+                            icon: "mdi-face-recognition",
+                            route: "/relatives"
                         }
                     ]
                 },
@@ -86,15 +91,39 @@ export default {
                     type: "default",
                     icon: "mdi-clipboard-list",
                     iconColor: "indigo",
-                    title: "我的訂單"
+                    title: "我的訂單",
+                    route: "purchase"
                 },
                 {
                     type: "default",
                     icon: "mdi-bell-circle",
                     iconColor: "green accent-3",
-                    title: "通知總覽"
+                    title: "通知總覽",
+                    route: "notification"
                 }
             ]
+        }
+    },
+    methods: {
+        goto( route ) {
+            let testIfSameRoute = request => {
+                let currentPath = this.$route.fullPath
+                if ( currentPath.startsWith( "/dashboard/purchase" ) )
+                {
+                    return request === '/dashboard/purchase'
+                }
+                else {
+                    return request === currentPath
+                }
+            }
+
+            if ( testIfSameRoute( `/dashboard/${ route }` ) )
+            {
+                return ;
+            }
+            else {
+                this.$router.push( `/dashboard/${ route }` )
+            }
         }
     }
 }

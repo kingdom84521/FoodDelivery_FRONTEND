@@ -7,12 +7,11 @@
                 <v-expand-transition>
                     <div v-if="this.type !== 'ongoing'">
                         <v-text-field
-                            solo
+                            outlined
                             prepend-inner-icon="mdi-magnify"
                             clear-icon="mdi-close"
                             clearable
                             v-model="keyword"
-                            @click:clear="clearMessage"
                             placeholder="請輸入您要搜尋的關鍵字"
                         />
                     </div>
@@ -42,9 +41,6 @@ export default {
         }
     },
     methods: {
-        clearMessage() {
-            this.keyword = ''
-        }
     }
 }
 </script>
