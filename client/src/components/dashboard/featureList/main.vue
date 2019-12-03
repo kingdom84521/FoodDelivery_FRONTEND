@@ -6,6 +6,7 @@
             <v-list-group 
                 v-if="element.type === 'group'"
                 :key="`${ index }-group`"
+                :value="childIsActive( element )"
             >
                 <template v-slot:activator>
                     <v-list-item-icon>
@@ -24,7 +25,8 @@
                 <v-list-item 
                     v-for="( child, subindex ) in element.children"
                     :key="`${ index }-${ subindex }-item`"
-                    @click="goto( element.baseRoute + child.route )"
+                    :to="child.route.namespace"
+                    active-class="primary--text"
                 >
                     <v-list-item-content>
                         <v-list-item-title class="subtitle-1">
@@ -44,7 +46,9 @@
             <v-list-item 
                 v-else
                 :key="`${ index }-item`"
-                @click="goto( element.route )"
+                :to="element.route.namespace"
+                active-class="primary--text"
+
             >
                 <v-list-item-icon>
                     <v-icon
@@ -73,17 +77,32 @@ export default {
                     icon: "mdi-account-circle",
                     iconColor: "red",
                     title: "我的用戶",
-                    baseRoute: "account",
+                    baseRoute: {
+                        path: "account",
+                        namespace: {
+                            name: "account"
+                        }
+                    },
                     children: [
                         {
                             title: "用戶資訊",
                             icon: "mdi-face-outline",
-                            route: "/profile"
+                            route: {
+                                path: "/profile",
+                                namespace: {
+                                    name: "profile"
+                                }
+                            }
                         },
                         {
                             title: "親人列表",
                             icon: "mdi-face-recognition",
-                            route: "/relatives"
+                            route: {
+                                path: "/relatives",
+                                namespace: {
+                                    name: "relatives"
+                                }
+                            }
                         }
                     ]
                 },
@@ -92,38 +111,38 @@ export default {
                     icon: "mdi-clipboard-list",
                     iconColor: "indigo",
                     title: "我的訂單",
-                    route: "purchase"
+                    route: {
+                        path: "purchase",
+                        namespace: {
+                            name: "purchase"
+                        }
+                    }
                 },
                 {
                     type: "default",
                     icon: "mdi-bell-circle",
                     iconColor: "green accent-3",
                     title: "通知總覽",
-                    route: "notification"
+                    route: {
+                        path: "notification",
+                        namespace: {
+                            name: "notification"
+                        }
+                    }
                 }
             ]
         }
     },
     methods: {
-        goto( route ) {
-            let testIfSameRoute = request => {
-                let currentPath = this.$route.fullPath
-                if ( currentPath.startsWith( "/dashboard/purchase" ) )
-                {
-                    return request === '/dashboard/purchase'
-                }
-                else {
-                    return request === currentPath
-                }
+        childIsActive( element ) {
+            var routeStore = []
+            
+            for ( var i = 0 ; i < element.children.length ; ++i )
+            {
+                routeStore.push( `/dashboard/${ element.baseRoute.path }${ element.children[ i ].route.path }` )
             }
 
-            if ( testIfSameRoute( `/dashboard/${ route }` ) )
-            {
-                return ;
-            }
-            else {
-                this.$router.push( `/dashboard/${ route }` )
-            }
+            return routeStore.includes( this.$route.fullPath )
         }
     }
 }
