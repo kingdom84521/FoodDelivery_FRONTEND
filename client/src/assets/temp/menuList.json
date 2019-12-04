@@ -14,18 +14,78 @@
               "id": 700001,
               "name": "正常",
               "price": 95,
+              "nutrition": {
+                "id": 800011,
+                "serving_size": 400,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1268,
+                  "protein": 31.2,
+                  "fat": {
+                    "total": 48.4,
+                    "saturated_fat": 25.2,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 161.2,
+                    "sugars": 4
+                  },
+                  "sodium": 5544
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700002,
               "name": "加大",
               "price": 115,
+              "nutrition": {
+                "id": 800012,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700003,
               "name": "升級套餐",
               "price": 135,
+              "nutrition": {
+                "id": 800013,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300001, 300002]
             }
           ]
@@ -38,42 +98,162 @@
               "id": 700004,
               "name": "正常",
               "price": 115,
+              "nutrition": {
+                "id": 800014,
+                "serving_size": 400,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1268,
+                  "protein": 31.2,
+                  "fat": {
+                    "total": 48.4,
+                    "saturated_fat": 25.2,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 161.2,
+                    "sugars": 4
+                  },
+                  "sodium": 5544
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700005,
               "name": "加大",
               "price": 135,
+              "nutrition": {
+                "id": 800015,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700006,
               "name": "升級套餐",
               "price": 155,
+              "nutrition": {
+                "id": 800016,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300001, 300002]
             }
           ]
         },
         {
           "id": 600003,
-          "name": "白醬蛤蝲",
+          "name": "白醬蛤蜊",
           "description": null,
           "product_variations": [{
               "id": 700007,
               "name": "正常",
               "price": 115,
+              "nutrition": {
+                "id": 800017,
+                "serving_size": 400,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1268,
+                  "protein": 31.2,
+                  "fat": {
+                    "total": 48.4,
+                    "saturated_fat": 25.2,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 161.2,
+                    "sugars": 4
+                  },
+                  "sodium": 5544
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700008,
               "name": "加大",
               "price": 135,
+              "nutrition": {
+                "id": 800018,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700009,
               "name": "升級套餐",
               "price": 155,
+              "nutrition": {
+                "id": 800019,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300001, 300002]
             }
           ]
@@ -86,18 +266,78 @@
               "id": 700010,
               "name": "正常",
               "price": 105,
+              "nutrition": {
+                "id": 800020,
+                "serving_size": 400,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1268,
+                  "protein": 31.2,
+                  "fat": {
+                    "total": 48.4,
+                    "saturated_fat": 25.2,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 161.2,
+                    "sugars": 4
+                  },
+                  "sodium": 5544
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700011,
               "name": "加大",
               "price": 125,
+              "nutrition": {
+                "id": 800021,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700012,
               "name": "升級套餐",
               "price": 145,
+              "nutrition": {
+                "id": 800022,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300001, 300002]
             }
           ]
@@ -110,18 +350,78 @@
               "id": 700013,
               "name": "正常",
               "price": 115,
+              "nutrition": {
+                "id": 800023,
+                "serving_size": 400,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1268,
+                  "protein": 31.2,
+                  "fat": {
+                    "total": 48.4,
+                    "saturated_fat": 25.2,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 161.2,
+                    "sugars": 4
+                  },
+                  "sodium": 5544
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700014,
               "name": "加大",
               "price": 135,
+              "nutrition": {
+                "id": 800024,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700015,
               "name": "升級套餐",
               "price": 155,
+              "nutrition": {
+                "id": 800025,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300001, 300002]
             }
           ]
@@ -134,18 +434,78 @@
               "id": 700016,
               "name": "正常",
               "price": 115,
+              "nutrition": {
+                "id": 800026,
+                "serving_size": 400,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1268,
+                  "protein": 31.2,
+                  "fat": {
+                    "total": 48.4,
+                    "saturated_fat": 25.2,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 161.2,
+                    "sugars": 4
+                  },
+                  "sodium": 5544
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700017,
               "name": "加大",
               "price": 135,
+              "nutrition": {
+                "id": 800027,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700018,
               "name": "升級套餐",
               "price": 155,
+              "nutrition": {
+                "id": 800028,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300001, 300002]
             }
           ]
@@ -158,18 +518,78 @@
               "id": 700019,
               "name": "正常",
               "price": 95,
+              "nutrition": {
+                "id": 800029,
+                "serving_size": 400,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1268,
+                  "protein": 31.2,
+                  "fat": {
+                    "total": 48.4,
+                    "saturated_fat": 25.2,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 161.2,
+                    "sugars": 4
+                  },
+                  "sodium": 5544
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700020,
               "name": "加大",
               "price": 115,
+              "nutrition": {
+                "id": 800030,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300002]
             },
             {
               "id": 700021,
               "name": "升級套餐",
               "price": 135,
+              "nutrition": {
+                "id": 800031,
+                "serving_size": 500,
+                "serving_per_container": 1,
+                "unit_type": "weight",
+                "nutrition_facts": {
+                  "calories": 1585,
+                  "protein": 39,
+                  "fat": {
+                    "total": 60.5,
+                    "saturated_fat": 31.5,
+                    "trans_fatty_acid": 0
+                  },
+                  "carbohydrates": {
+                    "total": 201.5,
+                    "sugars": 5
+                  },
+                  "sodium": 6930
+                }
+              },
               "topping_ids": [300001, 300002]
             }
           ]
@@ -188,6 +608,26 @@
             "id": 700022,
             "name": null,
             "price": 50,
+            "nutrition": {
+              "id": 800032,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "weight",
+              "nutrition_facts": {
+                "calories": 200,
+                "protein": 10.8,
+                "fat": {
+                  "total": 5.6,
+                  "saturated_fat": 4.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 26.8,
+                  "sugars": 17.6
+                },
+                "sodium": 160
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -199,6 +639,26 @@
             "id": 700023,
             "name": null,
             "price": 70,
+            "nutrition": {
+              "id": 800033,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "weight",
+              "nutrition_facts": {
+                "calories": 200,
+                "protein": 10.8,
+                "fat": {
+                  "total": 5.6,
+                  "saturated_fat": 4.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 26.8,
+                  "sugars": 17.6
+                },
+                "sodium": 160
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -210,6 +670,26 @@
             "id": 700024,
             "name": null,
             "price": 70,
+            "nutrition": {
+              "id": 800034,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "weight",
+              "nutrition_facts": {
+                "calories": 200,
+                "protein": 10.8,
+                "fat": {
+                  "total": 5.6,
+                  "saturated_fat": 4.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 26.8,
+                  "sugars": 17.6
+                },
+                "sodium": 160
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -221,6 +701,26 @@
             "id": 700025,
             "name": null,
             "price": 35,
+            "nutrition": {
+              "id": 800035,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "weight",
+              "nutrition_facts": {
+                "calories": 200,
+                "protein": 10.8,
+                "fat": {
+                  "total": 5.6,
+                  "saturated_fat": 4.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 26.8,
+                  "sugars": 17.6
+                },
+                "sodium": 160
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -232,6 +732,26 @@
             "id": 700026,
             "name": null,
             "price": 35,
+            "nutrition": {
+              "id": 800036,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "weight",
+              "nutrition_facts": {
+                "calories": 200,
+                "protein": 10.8,
+                "fat": {
+                  "total": 5.6,
+                  "saturated_fat": 4.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 26.8,
+                  "sugars": 17.6
+                },
+                "sodium": 160
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -243,6 +763,26 @@
             "id": 700027,
             "name": null,
             "price": 50,
+            "nutrition": {
+              "id": 800037,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "weight",
+              "nutrition_facts": {
+                "calories": 200,
+                "protein": 10.8,
+                "fat": {
+                  "total": 5.6,
+                  "saturated_fat": 4.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 26.8,
+                  "sugars": 17.6
+                },
+                "sodium": 160
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -254,6 +794,26 @@
             "id": 700028,
             "name": null,
             "price": 35,
+            "nutrition": {
+              "id": 800038,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "weight",
+              "nutrition_facts": {
+                "calories": 200,
+                "protein": 10.8,
+                "fat": {
+                  "total": 5.6,
+                  "saturated_fat": 4.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 26.8,
+                  "sugars": 17.6
+                },
+                "sodium": 160
+              }
+            },
             "topping_ids": []
           }]
         }
@@ -271,6 +831,26 @@
             "id": 700029,
             "name": null,
             "price": 30,
+            "nutrition": {
+              "id": 800039,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "volume",
+              "nutrition_facts": {
+                "calories": 138,
+                "protein": 4.5,
+                "fat": {
+                  "total": 4.5,
+                  "saturated_fat": 3.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 20.0,
+                  "sugars": 20.0
+                },
+                "sodium": 112
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -282,6 +862,26 @@
             "id": 700030,
             "name": null,
             "price": 55,
+            "nutrition": {
+              "id": 800040,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "volume",
+              "nutrition_facts": {
+                "calories": 138,
+                "protein": 4.5,
+                "fat": {
+                  "total": 4.5,
+                  "saturated_fat": 3.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 20.0,
+                  "sugars": 20.0
+                },
+                "sodium": 112
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -293,6 +893,26 @@
             "id": 700031,
             "name": null,
             "price": 55,
+            "nutrition": {
+              "id": 800041,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "volume",
+              "nutrition_facts": {
+                "calories": 138,
+                "protein": 4.5,
+                "fat": {
+                  "total": 4.5,
+                  "saturated_fat": 3.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 20.0,
+                  "sugars": 20.0
+                },
+                "sodium": 112
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -304,6 +924,26 @@
             "id": 700032,
             "name": null,
             "price": 60,
+            "nutrition": {
+              "id": 800042,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "volume",
+              "nutrition_facts": {
+                "calories": 138,
+                "protein": 4.5,
+                "fat": {
+                  "total": 4.5,
+                  "saturated_fat": 3.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 20.0,
+                  "sugars": 20.0
+                },
+                "sodium": 112
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -315,6 +955,26 @@
             "id": 700033,
             "name": null,
             "price": 65,
+            "nutrition": {
+              "id": 800043,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "volume",
+              "nutrition_facts": {
+                "calories": 138,
+                "protein": 4.5,
+                "fat": {
+                  "total": 4.5,
+                  "saturated_fat": 3.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 20.0,
+                  "sugars": 20.0
+                },
+                "sodium": 112
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -326,6 +986,26 @@
             "id": 700034,
             "name": null,
             "price": 50,
+            "nutrition": {
+              "id": 800044,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "volume",
+              "nutrition_facts": {
+                "calories": 138,
+                "protein": 4.5,
+                "fat": {
+                  "total": 4.5,
+                  "saturated_fat": 3.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 20.0,
+                  "sugars": 20.0
+                },
+                "sodium": 112
+              }
+            },
             "topping_ids": []
           }]
         },
@@ -337,6 +1017,26 @@
             "id": 700035,
             "name": null,
             "price": 45,
+            "nutrition": {
+              "id": 800045,
+              "serving_size": 0,
+              "serving_per_container": 0,
+              "unit_type": "volume",
+              "nutrition_facts": {
+                "calories": 138,
+                "protein": 4.5,
+                "fat": {
+                  "total": 4.5,
+                  "saturated_fat": 3.0,
+                  "trans_fatty_acid": 0
+                },
+                "carbohydrates": {
+                  "total": 20.0,
+                  "sugars": 20.0
+                },
+                "sodium": 112
+              }
+            },
             "topping_ids": []
           }]
         }
