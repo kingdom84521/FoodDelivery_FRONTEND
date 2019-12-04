@@ -5,7 +5,7 @@
     >
       <v-row no-gutters>
         <v-col
-          cols="2"
+          cols="1"
           class="pa-3"
         >
           <div class="square">
@@ -13,24 +13,45 @@
           </div>
         </v-col>
         <v-col
-          cols="6"
+          cols="7"
         >
           <v-row no-gutters class="pa-3">
             <v-col>
-              <div>
-                testing
+              <div class="title font-weight-bold">
+                [ 這裡是店家的名稱 ]
               </div>
               <v-spacer />
-              <div>
-                testing
+              <div class="d-flex flex-row align-center">
+                <v-icon 
+                  small 
+                  left
+                  class="pt-1"
+                >
+                  mdi-eye
+                </v-icon>
+                <v-hover v-slot:default="{ hover }">
+                  <div :class="{ 'black--text': !hover, 'primary--text': hover }">
+                    點擊快速檢視訂單內容
+                  </div>
+                </v-hover>
               </div>
             </v-col>
           </v-row>
         </v-col>
         <v-col
           cols="4"
+          align-self="stretch"
         >
-          asd
+          <v-row no-gutters align="center">
+            <v-col>
+              testing
+            </v-col>
+          </v-row>
+          <v-row no-gutters align="end">
+            <v-col>
+              testing
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-sheet>
