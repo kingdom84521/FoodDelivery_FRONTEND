@@ -16,15 +16,9 @@
             <v-card-title>
               {{ store_data.name }}
             </v-card-title>
-            <v-spacer></v-spacer>
-            <v-btn 
-              icon
-            >
-              <v-icon
-                color="green accent-4"
-              >
-                mdi-alert-circle-outline
-              </v-icon>
+            <v-spacer />
+            <v-btn icon>
+              <v-icon color="green accent-4">mdi-alert-circle-outline</v-icon>
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -150,8 +144,8 @@
 </template>
 
 <script>
-import Store from '@/assets/temp/storeList.json';
-import Menu from '@/assets/temp/menuList.json';
+import Store from '@/assets/temp/store_list.json';
+import Menu from '@/assets/temp/menu_list.json';
 import ProductVariation from '@/components/Menu/ProductVariation/main';
 import ShoppingCart from '@/components/Menu/ShoppingCart/main';
 
@@ -325,6 +319,7 @@ export default {
       });
 
       this.shopping_cart.total = price_total;
+      // console.log( this.shopping_cart );
     },
     backToProductVariation( index ) {
       console.log( index );
