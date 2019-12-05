@@ -50,7 +50,7 @@
             "price": 0,
             "nutrition": {
               "id": 800002,
-              "serving_size": 400,
+              "serving_size": 300,
               "serving_per_container": 1,
               "unit_type": "weight",
               "nutrition_facts": {
@@ -75,7 +75,7 @@
             "price": 0,
             "nutrition": {
               "id": 800003,
-              "serving_size": 400,
+              "serving_size": 300,
               "serving_per_container": 1,
               "unit_type": "weight",
               "nutrition_facts": {

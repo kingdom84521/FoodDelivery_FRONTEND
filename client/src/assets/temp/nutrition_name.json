@@ -45,23 +45,23 @@
 		}
 	},
 	"unit": [{
-			"chinese": "大卡",
-			"english": "kilocalorie",
+			"chinese_name": "大卡",
+			"english_name": "kilocalorie",
 			"abbreviation": "kcal"
 		},
 		{
-			"chinese": "卡",
-			"english": "calorie",
+			"chinese_name": "卡",
+			"english_name": "calorie",
 			"abbreviation": "cal"
 		},
 		{
-			"chinese": "克",
-			"english": "gram",
+			"chinese_name": "公克",
+			"english_name": "gram",
 			"abbreviation": "g"
 		},
 		{
-			"chinese": "毫克",
-			"english": "milligram",
+			"chinese_name": "毫克",
+			"english_name": "milligram",
 			"abbreviation": "mg"
 		}
 	]
