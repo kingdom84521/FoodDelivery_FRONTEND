@@ -46,7 +46,7 @@
 </template>>
 
 <script>
-import StoreList from '@/assets/temp/storeList.json'
+import StoreList from '@/assets/temp/store_list.json'
 
 export default {
   data: () => ({
