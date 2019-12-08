@@ -54,110 +54,10 @@
           </v-card>
         </v-dialog>
         
-        <!-- 餐點分類 -->
-        <v-tabs 
-          background-color="green accent-3" 
-          color="grey darken-2"
-          center-active 
-          v-model="menu_tab"
-        >
-          <v-tab 
-            v-for="(category, index) in store_menu.categories"
-            :key="index"
-            class="font-weight-bold"
-          >
-            {{ category.name }}
-          </v-tab>
-          <v-tabs-slider color="orange darken-2"/>
-        </v-tabs>
-
-        <!-- 餐點項目 -->
-        <v-tabs-items v-model="menu_tab">
-          <v-tab-item
-            v-for="(category, index) in store_menu.categories"
-            :key="index"
-          >
-            <v-card
-              v-for="(product, index) in category.products"
-              :key="index"
-              @click="checkItemExtra(category, product)"
-            >
-              <v-container fluid class="pa-0">
-                <v-row class="pa-0 pl-3">
-                  <v-col cols="2" class="pr-0">
-                    <v-img  
-                      height="100" 
-                      width="100" 
-                      src="https://fakeimg.pl/100x100" 
-                    />
-                  </v-col>
-                  <v-col cols="9" class="ml-n12">
-                    <v-row>
-                      <v-col cols="4">
-                        <div class="font-weight-bold headline"> {{ product.name }} </div>
-                      </v-col>
-                      <v-col>
-                        餐點標籤：
-                      </v-col>
-                    </v-row>
-                    <v-row class="mt-n4">
-                      <v-col cols="2" class="pr-0">
-                        營養成分：
-                      </v-col>
-                      <template
-                        v-for="(item, name, index) in lowestPrice(product.product_variations).nutrition.nutrition_facts"
-                      >
-                        <v-col
-                          v-if="index%nutrition_one_line === 0  && index !== 0"
-                          :key="index+'_pre_space'"
-                          class="pa-0"
-                          cols="2"
-                        />
-                        <v-col 
-                          :key="index+'_item'"
-                          :cols="nutrition_space"
-                          :class="nutritionClass( index )"
-                        >
-                          <v-row no-gutters>
-                            <v-col cols="6">
-                              {{ nutrition_name.nutrition[name].chinese_name }}
-                            </v-col>
-                            <v-col class="text-end">
-                              {{ `${ typeof(item) === 'object' ? item.total : item }` }}
-                            </v-col>
-                            <v-col>
-                              {{ getNutritionUnitName( name ) }}
-                            </v-col>
-                          </v-row>
-                        </v-col>
-                        <v-col
-                          v-if="index%nutrition_one_line === nutrition_one_line - 1"
-                          :key="index+'_last_space'"
-                          :cols="nutritionSpace"
-                          class="pa-0"
-                        />
-                      </template>
-                    </v-row>
-                  </v-col>
-                  <v-col align-self="end" class="text-end pr-8">
-                    <v-btn
-                      icon
-                      v-if="isItemExtra( product )"
-                      class="mb-5 mr-n2"
-                    >
-                      <v-icon color="green accent-4">
-                        mdi-plus-box-outline
-                      </v-icon>
-                    </v-btn>
-                    <div class="font-weight-medium">
-                      NT{{ lowestPrice(product.product_variations).price }}$
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-card>
-          </v-tab-item>
-        </v-tabs-items>
+        <product-list 
+          :store_menu="store_menu"
+          @checkItemExtra="checkItemExtra"
+        />
 
         <!-- 餐點額外項目 -->
         <v-dialog 
@@ -197,23 +97,20 @@
 <script>
 import Store from '@/assets/temp/store_list.json';
 import Menu from '@/assets/temp/menu_list.json';
+import ProductList from '@/components/Menu/Product/ProductList/main';
 import ProductVariation from '@/components/Menu/ProductVariation/main';
 import ShoppingCart from '@/components/Menu/ShoppingCart/main';
-import NutritionName from '@/assets/temp/nutrition_name.json';
 
 export default {
   name: 'Menu',
   components: {
+    ProductList,
     ProductVariation,
     ShoppingCart
   },
   data: () => ({
     store_data: {},
     store_menu: {},
-    nutrition_name: {},
-    nutrition_space: 3,
-    nutrition_one_line: 3,
-    menu_tab: null,
     store_detail: false,
     product_detail: false,
     toppings: [],
@@ -241,23 +138,6 @@ export default {
   methods: {
     lowestPrice( variations ) {
       return this._.minBy( variations, variation => { return variation.price } );
-    },
-    nutritionClass( index ) {
-      let class_type = '';
-      if ( index%this.nutrition_one_line === 0 ) {
-        class_type += 'ml-n12';
-      } else {
-        class_type += 'ml-n7';
-      }
-      if ( index > this.nutrition_one_line-1 ) {
-        class_type += ' ' + 'mt-n4';
-      }
-      return class_type;
-    },
-    getNutritionUnitName( name ) {
-      let unit = this.nutrition_name.unit;
-      let unit_index = this.nutrition_name.nutrition[name].unit_index;
-      return unit[ unit_index ].abbreviation;
     },
     isItemExtra( product ) {
       return (product.product_variations.length !== 1 || product.product_variations[0].topping_ids.length !== 0);
@@ -406,26 +286,13 @@ export default {
       }
     }
   },
-  computed: {
-    nutritionSpace() {
-      let one_line = this.nutrition_one_line;
-      let one_space = this.nutrition_space;
-
-      let last_extra_space = 10 - (one_line * one_space);
-      if ( last_extra_space < 0 ) {
-        this.nutrition_space = Math.floor(10 / one_line);
-        last_extra_space = 10 - (one_line * one_space);
-      }
-      return last_extra_space;
-    }
-  },
   created() {
     this.store_data = this._.find(Store, {'id': 100001});
     this.store_menu = this._.find(Menu, {'id': this.store_data.menus[0]});
     this.shopping_cart.store = this.getUnit( this.store_data );
     this.shopping_cart.menu = this.getUnit( this.store_menu );
     this.toppings = new Array( this._.size(this.store_data.toppings) );
-    this.nutrition_name = NutritionName;
+    // this.nutrition_name = NutritionName;
   }
 };
 </script>
