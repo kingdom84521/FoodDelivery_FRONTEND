@@ -1,10 +1,12 @@
 <template>
   <v-sheet
-    height="100%"
+    height="650px"
     elevation="2"
     color="green accent-3"
     class="pa-1"
+    v-scroll="onScroll"
   >
+    <!-- height="100%" -->
     <v-card
       height="100%"
     >
@@ -12,13 +14,13 @@
       <v-divider />
       <v-sheet
         v-if="shopping_cart.list.length === 0"
-        height="10%"
+        height="15%"
         class="pa-1 text-center font-weight-medium"
       >
         你尚未放入任何產品到購物車中。
       </v-sheet>
       <v-list
-        max-height="80%"
+        max-height="70%"
         v-else
         class="overflow-y-auto"
       >
@@ -27,13 +29,6 @@
           :key="index"
           @click="backToProductVariation( index )"
         >
-          <!-- <v-btn 
-            block
-            color="red darken-1"
-            @click="deleteShoppingCartItem(index)"
-          >
-            刪除
-          </v-btn> -->
           <v-row>
             <!-- 項目描述 -->
             <v-col cols="9">
@@ -107,7 +102,44 @@
         </v-list-item>
       </v-list>
       <v-divider />
-      
+      <!-- 總計 -->
+      <v-container>
+        <v-row no-gutters>
+          <v-col cols="3">
+            餐點總價：
+          </v-col>
+          <v-col>
+            NT{{ shopping_cart.total }} $
+          </v-col>
+        </v-row>
+        <!-- <v-row no-gutters>
+          <v-col cols="3" justify-self="end">
+            服務費：
+          </v-col>
+          <v-col cols="4">
+            NT0 $
+          </v-col>
+        </v-row> -->
+        <!-- <v-row no-gutters>
+          <v-col cols="8">
+            總價：
+          </v-col>
+          <v-col cols="4">
+            789
+          </v-col>
+        </v-row> -->
+      </v-container>
+      <v-card-actions class="px-2">
+        <v-btn
+          block
+          large
+          color="green accent-3"
+          class="headline"
+        >
+          結帳
+          <!-- 結帳 {{ offsetTop }} -->
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-sheet>
 </template>
@@ -123,6 +155,7 @@ export default {
   },
   data: () => ({
     shopping_cart_edit: false,
+    offsetTop: 0
   }),
   methods: {
     changeQuantity( item , state ) {
@@ -133,6 +166,10 @@ export default {
     },
     deleteShoppingCartItem(index) {
       console.log( index );
+    },
+    onScroll( e ) {
+      // console.log( e );
+      // this.offsetTop = e.target.scrollTop;
     }
   }
 }
