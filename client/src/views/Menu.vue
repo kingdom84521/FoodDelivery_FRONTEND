@@ -53,7 +53,8 @@
             </v-container>
           </v-card>
         </v-dialog>
-        
+
+        <!-- 餐點列表 -->
         <product-list 
           :store_menu="store_menu"
           @checkItemExtra="checkItemExtra"
@@ -98,7 +99,7 @@
 import Store from '@/assets/temp/store_list.json';
 import Menu from '@/assets/temp/menu_list.json';
 import ProductList from '@/components/Menu/Product/ProductList/main';
-import ProductVariation from '@/components/Menu/ProductVariation/main';
+import ProductVariation from '@/components/Menu/Product/ProductVariation/main';
 import ShoppingCart from '@/components/Menu/ShoppingCart/main';
 
 export default {
@@ -287,12 +288,13 @@ export default {
     }
   },
   created() {
+    // console.log( this.$route.params.storeId );
+    // this.store_data = this._.find(Store, {'id': parseInt(this.$route.params.storeId)});
     this.store_data = this._.find(Store, {'id': 100001});
     this.store_menu = this._.find(Menu, {'id': this.store_data.menus[0]});
     this.shopping_cart.store = this.getUnit( this.store_data );
     this.shopping_cart.menu = this.getUnit( this.store_menu );
     this.toppings = new Array( this._.size(this.store_data.toppings) );
-    // this.nutrition_name = NutritionName;
   }
 };
 </script>
