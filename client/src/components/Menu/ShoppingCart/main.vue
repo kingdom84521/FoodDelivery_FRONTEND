@@ -2,7 +2,7 @@
   <v-sheet
     height="650px"
     elevation="2"
-    color="green accent-3"
+    color="green accent-4"
     class="pa-1"
     v-scroll="onScroll"
   >
@@ -133,7 +133,7 @@
         <v-btn
           block
           large
-          color="green accent-3"
+          color="green accent-4"
           class="headline"
         >
           結帳
