@@ -8,9 +8,10 @@
           cols="1"
           class="pa-3"
         >
-          <div class="square">
-            
-          </div>
+          <v-img
+            contain
+            src="https://via.placeholder.com/100"
+          />
         </v-col>
         <v-col
           cols="7"
@@ -29,29 +30,38 @@
                 >
                   mdi-eye
                 </v-icon>
-                <v-hover v-slot:default="{ hover }">
-                  <div :class="{ 'black--text': !hover, 'primary--text': hover }">
-                    點擊快速檢視訂單內容
-                  </div>
-                </v-hover>
+                <div class="link-animation">
+                  點擊快速檢視訂單內容
+                </div>
               </div>
             </v-col>
           </v-row>
         </v-col>
         <v-col
           cols="4"
-          align-self="stretch"
+          class="pa-3 pr-4"
         >
-          <v-row no-gutters align="center">
-            <v-col>
-              testing
-            </v-col>
-          </v-row>
-          <v-row no-gutters align="end">
-            <v-col>
-              testing
-            </v-col>
-          </v-row>
+         <div 
+          class="d-flex h-100 align-content-space-between flex-wrap"
+         >
+           <div class="justify-end w-100 d-flex flex-row">
+             <v-avatar 
+              left
+              class="mr-2" 
+              color="indigo" 
+              size="33"
+            >
+               <span class="white--text body-2">KK</span>
+             </v-avatar>
+             <div class="body-2 pt-1 grey--text text--accent-2">點擊查看訂餐人資訊</div>
+           </div>
+           <div class="text-end w-100 font-weight-bold">
+             訂單金額：
+             <span class="headline primary--text">
+               $888
+             </span>
+           </div>
+         </div>
         </v-col>
       </v-row>
     </v-sheet>
@@ -60,7 +70,24 @@
 
 <script>
 export default {
-
+  props: {
+    store: {
+      type: String,
+      required: true
+    },
+    orderItems: {
+      type: Array,
+      required: true
+    },
+    by: {
+      type: String,
+      required: true
+    },
+    total: {
+      type: Number,
+      required: true
+    }
+  }
 }
 </script>
 
@@ -72,5 +99,24 @@ export default {
     background-color: gray ;
     height: 100px ;
     width: 100px ;
+  }
+
+  .h-100 {
+    height: 100% ;
+  }
+
+  .w-100 {
+    width: 100% ;
+  }
+
+  .link-animation {
+    color: #000000 ;
+    transition: color 0.1s linear 0s ;
+    
+  }
+
+  .link-animation:hover {
+    color: #1976D2 ;
+    cursor: pointer ;
   }
 </style>
