@@ -192,6 +192,7 @@ export default {
       let item_template = { ...this.temporary_item, "toppings": [], "remarks": null };
       item_template.price = item_template.subtotal;
       item_template.subtotal = item_template.price * item_template.quantity;
+      item_template.remarks = this.item_extra.remarks;
 
       if ( this.item_extra.toppings !== null ) {
         let toppings_choice = this.toppings;
@@ -272,7 +273,7 @@ export default {
       });
 
       this.shopping_cart.total = price_total;
-      // console.log( this.shopping_cart );
+      console.log( this.shopping_cart );
     },
     backToProductVariation( index ) {
       console.log( index );

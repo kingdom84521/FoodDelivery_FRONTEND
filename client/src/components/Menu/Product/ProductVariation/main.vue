@@ -92,6 +92,13 @@
 
     <!-- 備註 -->
     <v-card-title>備註</v-card-title>
+    <v-textarea
+      v-model="item_extra.remarks"
+      auto-grow 
+      outlined
+      class="pa-3"
+      placeholder="例如：不要香菜"
+    />
 
     <!-- 數量調整及送出 -->
     <v-card-actions>
