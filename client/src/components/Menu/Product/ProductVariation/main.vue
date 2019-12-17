@@ -168,6 +168,14 @@ export default {
     unsetToppings: {
       type: Function,
       require: true
+    },
+    addToCart: {
+      type: Function,
+      require: true
+    },
+    backToCart: {
+      type: Function,
+      require: true
     }
   },
   data: () => ({
@@ -187,9 +195,6 @@ export default {
     },
     changeQuantity( item , state ) {
       this.$emit('changeQuantity', item, state);
-    },
-    addToCart() {
-      this.$emit('addToCart');
     }
   },
   watch: {
@@ -249,6 +254,8 @@ export default {
         this.check_shopping_car = canCheckout;
       }
     }
+  },
+  created() {
   }
 }
 </script>

@@ -72,8 +72,9 @@
             :temporary_item="temporary_item"
             :toppings="toppings"
             :unset-toppings="unsetToppings"
+            :add-to-cart="addToCart"
+            :back-to-cart="backToCart"
             @changeQuantity="changeQuantity"
-            @addToCart="addToCart"
           />
         </v-dialog>
       </v-col>
@@ -258,6 +259,19 @@ export default {
 
       this.product_detail = false;
       this.updateShoppingCart();
+    },
+    backToCart() {
+      // let list_item_template = this.getNewListItem();
+
+      // let same_item_index = this.getSameItemIndex( list_item_template );
+      // if ( same_item_index === -1 ) {
+      //   this.shopping_cart.list.push( list_item_template );
+      // } else {
+      //   this.shopping_cart.list[ same_item_index ].quantity += list_item_template.quantity;
+      // }
+
+      // this.product_detail = false;
+      // this.updateShoppingCart();
     },
     updateShoppingCart() {
       let price_total = 0;
