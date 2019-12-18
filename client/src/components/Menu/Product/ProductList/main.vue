@@ -8,7 +8,7 @@
       v-model="menu_tab"
     >
       <v-tab 
-        v-for="(category, index) in store_menu.categories"
+        v-for="(category, index) in restaurant_menu.categories"
         :key="index"
         class="font-weight-bold"
       >
@@ -20,7 +20,7 @@
     <!-- 餐點項目 -->
     <v-tabs-items v-model="menu_tab">
       <v-tab-item
-        v-for="(category, index) in store_menu.categories"
+        v-for="(category, index) in restaurant_menu.categories"
         :key="index"
       >
         <v-card
@@ -113,7 +113,7 @@ import NutritionName from '@/assets/temp/nutrition_name.json';
 export default {
   name: "ProductList",
   props: {
-    store_menu: {
+    restaurant_menu: {
       type: Object,
       require: true
     },

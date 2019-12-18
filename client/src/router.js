@@ -18,8 +18,8 @@ export default new Router({
       component: Order
     },
     {
-      path: '/store/:storeId',
-      name: 'store',
+      path: '/restaurant/:restaurantId',
+      name: 'restaurant',
       component: Menu
     },
     // {

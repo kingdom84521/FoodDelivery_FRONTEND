@@ -10,11 +10,11 @@
             src="../assets/italy.jpg"
           ></v-img>
           <v-card-actions
-            @click.stop="store_detail = true"
+            @click.stop="restaurant_detail = true"
           >
             <!-- 店名 -->
             <v-card-title>
-              {{ store_data.name }}
+              {{ restaurant_data.name }}
             </v-card-title>
             <v-spacer />
             <v-btn icon>
@@ -25,7 +25,7 @@
 
         <!-- 餐廳詳細資料 -->
         <v-dialog 
-          v-model="store_detail" 
+          v-model="restaurant_detail" 
           max-width="1000"
         >
           <v-card>
@@ -38,7 +38,7 @@
                 absolute
                 x-small
                 color="white"
-                @click="store_detail=false"
+                @click="restaurant_detail=false"
               >
                 <v-icon color="green accent-4">
                   mdi-close
@@ -46,7 +46,7 @@
               </v-btn>
             </v-img>
             <v-card-title>
-              {{ store_data.name }}
+              {{ restaurant_data.name }}
             </v-card-title>
             <v-container>
 
@@ -56,7 +56,7 @@
 
         <!-- 餐點列表 -->
         <product-list 
-          :store_menu="store_menu"
+          :restaurant_menu="restaurant_menu"
           @checkItemExtra="checkItemExtra"
         />
 
@@ -67,7 +67,7 @@
         >
           <product-variation
             :product_detail="product_detail"
-            :store_data="store_data"
+            :restaurant_data="restaurant_data"
             :item_extra="item_extra"
             :temporary_item="temporary_item"
             :toppings="toppings"
@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import Store from '@/assets/temp/store_list.json';
+import Restaurant from '@/assets/temp/restaurant_list.json';
 import Menu from '@/assets/temp/menu_list.json';
 import ProductList from '@/components/Menu/Product/ProductList/main';
 import ProductVariation from '@/components/Menu/Product/ProductVariation/main';
@@ -111,9 +111,9 @@ export default {
     ShoppingCart
   },
   data: () => ({
-    store_data: {},
-    store_menu: {},
-    store_detail: false,
+    restaurant_data: {},
+    restaurant_menu: {},
+    restaurant_detail: false,
     product_detail: false,
     toppings: [],
     item_extra: {
@@ -123,7 +123,7 @@ export default {
       remarks: null
     },
     shopping_cart: {
-      store: null,
+      restaurant: null,
       menu: null,
       list: [],
       total: 0
@@ -303,13 +303,13 @@ export default {
     }
   },
   created() {
-    // console.log( this.$route.params.storeId );
-    // this.store_data = this._.find(Store, {'id': parseInt(this.$route.params.storeId)});
-    this.store_data = this._.find(Store, {'id': 100001});
-    this.store_menu = this._.find(Menu, {'id': this.store_data.menus[0]});
-    this.shopping_cart.store = this.getUnit( this.store_data );
-    this.shopping_cart.menu = this.getUnit( this.store_menu );
-    this.toppings = new Array( this._.size(this.store_data.toppings) );
+    // console.log( this.$route.params.restaurantId );
+    // this.restaurant_data = this._.find(Restaurant, {'id': parseInt(this.$route.params.restaurantId)});
+    this.restaurant_data = this._.find(Restaurant, {'id': 100001});
+    this.restaurant_menu = this._.find(Menu, {'id': this.restaurant_data.menus[0]});
+    this.shopping_cart.restaurant = this.getUnit( this.restaurant_data );
+    this.shopping_cart.menu = this.getUnit( this.restaurant_menu );
+    this.toppings = new Array( this._.size(this.restaurant_data.toppings) );
   }
 };
 </script>

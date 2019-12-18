@@ -149,7 +149,7 @@ export default {
       default: false,
       require: true
     },
-    store_data: {
+    restaurant_data: {
       type: Object,
       require: true
     },
@@ -219,7 +219,7 @@ export default {
         if ( topping_ids !== undefined ) {
           this._.set(this.item_extra, 'toppings', []);
           this._.forEach(topping_ids, topping_id => {
-            let topping = this._.get(this.store_data, ['toppings', topping_id]);
+            let topping = this._.get(this.restaurant_data, ['toppings', topping_id]);
             this.item_extra.toppings.push( topping );
           });
         } else {

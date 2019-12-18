@@ -17,20 +17,20 @@
     <!-- 店家列表 -->
     <v-row justify="space-around">
       <v-col
-        v-for="(store, i) in stores"
+        v-for="(restaurant, i) in restaurants"
         :key="i"
         md="3"
         sm="4"
         cols="12"
       >
         <v-card
-          :to="{ name: 'store', params: { storeId: store.id } }"
+          :to="{ name: 'restaurant', params: { restaurantId: restaurant.id } }"
           class="mb-7"
           height="310"
         >
           <v-img src="@/assets/italy.jpg" height="155"></v-img>
-          <v-card-title> {{ store.name }} </v-card-title>
-          <v-card-text> 預估{{ store.distance }}分鐘 </v-card-text>
+          <v-card-title> {{ restaurant.name }} </v-card-title>
+          <v-card-text> 預估{{ restaurant.distance }}分鐘 </v-card-text>
         </v-card>
       </v-col>
       <v-spacer></v-spacer>
@@ -46,14 +46,14 @@
 </template>>
 
 <script>
-import StoreList from '@/assets/temp/store_list.json'
+import RestaurantList from '@/assets/temp/restaurant_list.json'
 
 export default {
   data: () => ({
     // dateOption: ["Today ", "Tomorrow ", "Day after tomorrow "],
     // date: "",
     scrolling: false,
-    stores: [],
+    restaurants: [],
     location: ""
   }),
   methods: {
@@ -63,23 +63,23 @@ export default {
     ScrollTop() {
       window.scroll({ top: 0, behavior: "smooth" });
     },
-    getStoresData() {
+    getRestaurantsData() {
       if ( this.location === "" ) {
         return;
       }
-      this.stores = StoreList;
-      // console.log( this.stores );
+      this.restaurants = RestaurantList;
+      // console.log( this.restaurants );
     },
     getLocation() {
       console.log("Get location by Google API");
       this.location = "360台灣苗栗縣苗栗市恭敬路43號";
-      this.getStoresData();
+      this.getRestaurantsData();
     }
   },
   watch: {},
   computed: {},
   created() {
-    this.getStoresData();
+    this.getRestaurantsData();
     window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {
