@@ -226,6 +226,7 @@ export default {
       let list_item_template = this.getNewListItem();
       this.$store.dispatch('cart/addProductToCart', list_item_template);
       console.log( this.$store.state.cart );
+      this.product_detail = false;
     },
     backToCart() {
     },
