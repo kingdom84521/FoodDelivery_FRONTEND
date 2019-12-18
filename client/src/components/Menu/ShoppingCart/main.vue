@@ -13,7 +13,7 @@
       <v-card-title class="justify-center font-weight-black">購物車列表</v-card-title>
       <v-divider />
       <v-sheet
-        v-if="shopping_cart.list.length === 0"
+        v-if="cart_list.length === 0"
         height="15%"
         class="pa-1 text-center font-weight-medium"
       >
@@ -25,7 +25,7 @@
         class="overflow-y-auto"
       >
         <v-list-item
-          v-for="(item, index) in shopping_cart.list"
+          v-for="(item, index) in cart_list"
           :key="index"
           @click="backToProductVariation( index )"
         >
@@ -69,7 +69,7 @@
                 <v-btn 
                   icon
                   color="red accent-3"
-                  @click.stop="changeQuantity(item, '-')"
+                  @click.stop="changeQuantity(index, -1)"
                 >
                   <v-icon>mdi-minus</v-icon>
                 </v-btn>
@@ -81,7 +81,7 @@
                 <v-btn 
                   icon
                   color="green accent-4"
-                  @click.stop="changeQuantity(item, '+')"
+                  @click.stop="changeQuantity(index, 1)"
                 >
                   <v-icon>mdi-plus</v-icon>
                 </v-btn>
@@ -109,7 +109,7 @@
             餐點總價：
           </v-col>
           <v-col>
-            NT{{ shopping_cart.total }} $
+            NT{{ total_price }} $
           </v-col>
         </v-row>
         <!-- <v-row no-gutters>
@@ -136,6 +136,7 @@
           color="green accent-4"
           class="headline"
         >
+          <!-- @click="checkOut()" -->
           結帳
           <!-- 結帳 {{ offsetTop }} -->
         </v-btn>
@@ -145,21 +146,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'ShoppingCart',
-  props: {
-    shopping_cart: {
-      type: Object,
-      require: true
-    }
-  },
   data: () => ({
     shopping_cart_edit: false,
     offsetTop: 0
   }),
   methods: {
-    changeQuantity( item , state ) {
-      this.$emit('changeQuantity', item, state, true);
+    changeQuantity( index , amount ) {
+      this.$store.dispatch('cart/changeQuantity', {index , amount});
     },
     backToProductVariation( index ) {
       this.$emit('backToProductVariation', index);
@@ -169,8 +166,14 @@ export default {
     },
     onScroll( e ) {
       // console.log( e );
-      // this.offsetTop = e.target.scrollTop;
+      this.offsetTop = e.target.scrollTop;
     }
+  },
+  computed: {
+    ...mapState({
+      cart_list: state => state.cart.list,
+      total_price: state => state.cart.total,
+    })
   }
 }
 </script>

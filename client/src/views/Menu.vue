@@ -87,8 +87,6 @@
         class="pl-md-0"
       >
         <shopping-cart
-          :shopping_cart="shopping_cart"
-          @changeQuantity="changeQuantity"
           @backToProductVariation="backToProductVariation"
         />
       </v-col>
@@ -122,12 +120,6 @@ export default {
       toppings: null,
       remarks: null
     },
-    shopping_cart: {
-      restaurant: null,
-      menu: null,
-      list: [],
-      total: 0
-    },
     temporary_item: {
       category: null,
       product: null,
@@ -160,14 +152,11 @@ export default {
       }
       this.addToCart();
     },
-    changeQuantity( item , state , shopping_cart_list = false ) {
+    changeQuantity( item , state ) {
       if ( state === '+' ) {
         item.quantity += 1;
       } else if ( state === '-' ) {
         item.quantity -= 1;
-      }
-      if ( shopping_cart_list ) {
-        this.updateShoppingCart();
       }
     },
     clearTemporaryItem() {
@@ -190,10 +179,14 @@ export default {
       return unit
     },
     getNewListItem() {
-      let item_template = { ...this.temporary_item, "toppings": [], "remarks": null };
+      let item_template = { ...this.temporary_item, "toppings": [], "remarks": null, "checker": null };
       item_template.price = item_template.subtotal;
       item_template.subtotal = item_template.price * item_template.quantity;
       item_template.remarks = this.item_extra.remarks;
+
+      let item_checker = "" + item_template.category.id;
+      item_checker += "," + item_template.product.id;
+      item_checker += "," + item_template.variation.id;
 
       if ( this.item_extra.toppings !== null ) {
         let toppings_choice = this.toppings;
@@ -202,95 +195,42 @@ export default {
           let topping_unit =  { ...this.getUnit( topping ), "options_list": [] };
 
           if ( choice_index !== null ) {
+            let topping_string = "" + topping_unit.id;
+
             if ( typeof( choice_index ) === "number" ) {
-              topping_unit.options_list.push( this.getUnit( topping.options[choice_index] ) );              
+              let option_unit = this.getUnit( topping.options[choice_index] );
+              topping_unit.options_list.push( option_unit );       
+
+              topping_string += "_" + option_unit.id;
             } else {
               this._.forEach(choice_index, option_index => {
-                topping_unit.options_list.push( this.getUnit( topping.options[option_index] ) );              
+                let option_unit = this.getUnit( topping.options[option_index] );
+                topping_unit.options_list.push( option_unit );  
+
+                topping_string += "_" + option_unit.id;
               });
             } 
             item_template.toppings.push( topping_unit );
+
+            item_checker += "," + topping_string;
           } 
         });
       }
 
+      item_template.checker = item_checker + "," + item_template.remarks;
       this.clearTemporaryItem();
       this.unsetToppings();
       return item_template;
     },
-    getSameItemIndex( item ) {
-      let list = this.shopping_cart.list;
-      if ( list.length === 0 ) {
-        return -1;
-      }
-
-      return this._.findIndex(list, list_item => {
-        if ( item.category.id !== list_item.category.id || item.product.id !== list_item.product.id || item.variation.id !== list_item.variation.id || item.toppings.length !== list_item.toppings.length ) {
-          return false;
-        }
-
-        let item_toppings = item.toppings;
-        let list_toppings = list_item.toppings;
-        for ( var topping_index = 0 ; topping_index < item_toppings.length ; ++topping_index ) {
-          if ( item_toppings[ topping_index ].options_list.length !== list_toppings[ topping_index ].options_list.length ) {
-            return false;
-          }
-
-          let item_options = item_toppings[ topping_index ];
-          let list_options = list_toppings[ topping_index ];
-          for ( var option_index = 0 ; option_index < item_options.length ; ++option_index ) {
-            if ( item_options[ option_index ].id !== list_options[ option_index ].id ) {
-              return false;
-            } 
-          }
-        }
-        return true;
-      });
-    },
     addToCart() {
       let list_item_template = this.getNewListItem();
-
-      let same_item_index = this.getSameItemIndex( list_item_template );
-      if ( same_item_index === -1 ) {
-        this.shopping_cart.list.push( list_item_template );
-      } else {
-        this.shopping_cart.list[ same_item_index ].quantity += list_item_template.quantity;
-      }
-
-      this.product_detail = false;
-      this.updateShoppingCart();
+      this.$store.dispatch('cart/addProductToCart', list_item_template);
+      console.log( this.$store.state.cart );
     },
     backToCart() {
-      // let list_item_template = this.getNewListItem();
-
-      // let same_item_index = this.getSameItemIndex( list_item_template );
-      // if ( same_item_index === -1 ) {
-      //   this.shopping_cart.list.push( list_item_template );
-      // } else {
-      //   this.shopping_cart.list[ same_item_index ].quantity += list_item_template.quantity;
-      // }
-
-      // this.product_detail = false;
-      // this.updateShoppingCart();
-    },
-    updateShoppingCart() {
-      let price_total = 0;
-
-      this._.remove(this.shopping_cart.list, {'quantity': 0});
-
-      this._.forEach(this.shopping_cart.list, (item, index) => {
-        let price_subtotal = item.price * item.quantity;
-        if ( item.subtotal !== price_subtotal ) {
-          this.shopping_cart.list[index].subtotal = price_subtotal;
-        }
-        price_total += price_subtotal;
-      });
-
-      this.shopping_cart.total = price_total;
-      console.log( this.shopping_cart );
     },
     backToProductVariation( index ) {
-      console.log( index );
+      console.log( 'Fix index:', index );
     }
   },
   watch: {
@@ -307,9 +247,11 @@ export default {
     // this.restaurant_data = this._.find(Restaurant, {'id': parseInt(this.$route.params.restaurantId)});
     this.restaurant_data = this._.find(Restaurant, {'id': 100001});
     this.restaurant_menu = this._.find(Menu, {'id': this.restaurant_data.menus[0]});
-    this.shopping_cart.restaurant = this.getUnit( this.restaurant_data );
-    this.shopping_cart.menu = this.getUnit( this.restaurant_menu );
     this.toppings = new Array( this._.size(this.restaurant_data.toppings) );
+    this.$store.commit('cart/setCartInit', {
+      restaurant: this.getUnit( this.restaurant_data ),
+      menu: this.getUnit( this.restaurant_menu )
+    }); 
   }
 };
 </script>
