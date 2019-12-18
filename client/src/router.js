@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Order from '@/views/Order.vue'
+import Search from '@/views/Search.vue'
 import Menu from '@/views/Menu.vue'
 // import Submit from '@/views/Submit.vue'
 
@@ -13,9 +13,9 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/order',
-      name: 'order',
-      component: Order
+      path: '/search',
+      name: 'search',
+      component: Search
     },
     {
       path: '/restaurant/:restaurantId',
