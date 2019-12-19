@@ -7,6 +7,11 @@ import Account from '@/components/dashboard/account/main'
 import Purchase from '@/components/dashboard/purchase/main'
 import PurchasePage from '@/components/dashboard/purchase/purchasePage/main'
 import Notification from '@/components/dashboard/notification/main'
+import Search from '@/views/Search.vue'
+import Menu from '@/views/Menu.vue'
+// import Submit from '@/views/Submit.vue'
+
+// import Test from '@/components/Test.vue'
 
 Vue.use(Router)
 
@@ -14,26 +19,26 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [   
-      {
-        path: '/home',
-        name: 'home',
-        component: Home
-      },
-      {
-        path: '/signup',
-        name: 'signup',
-        component: SignUp
-      },
-      {
-        path: '*',
-        redirect: { name: 'home' }
-      },
-      {
-        path: "/dashboard",
-        name: "dashboard",
-        redirect: "/dashboard/account",
-        component: Dashboard,
-        children: [
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignUp
+    },
+    {
+      path: '*',
+      redirect: { name: 'home' }
+    },
+    {
+      path: "/dashboard",
+      name: "dashboard",
+      redirect: "/dashboard/account",
+      component: Dashboard,
+      children: [
         {
           path: "account",
           name: "account",
@@ -69,6 +74,16 @@ export default new Router({
           component: Notification
         }
       ]
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search
+    },
+    {
+      path: '/restaurant/:restaurantId',
+      name: 'restaurant',
+      component: Menu
     }
   ]
 })

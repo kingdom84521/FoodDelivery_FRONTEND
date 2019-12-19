@@ -1,0 +1,68 @@
+{
+	"nutrition": {
+		"calories": {
+			"chinese_name": "熱量",
+			"unit_index": 0,
+			"children": {}
+		},
+		"protein": {
+			"chinese_name": "蛋白質",
+			"unit_index": 2,
+			"children": {}
+		},
+		"fat": {
+			"chinese_name": "脂肪",
+			"unit_index": 2,
+			"children": {
+				"saturated_fat": {
+					"chinese_name": "飽和脂肪",
+					"unit_index": 2
+				},
+				"trans_fatty_acid": {
+					"chinese_name": "反式脂肪",
+					"unit_index": 2
+				}
+			}
+		},
+		"carbohydrates": {
+			"chinese_name": "碳水化合物",
+			"unit_index": 2,
+			"children": {
+				"sugars": {
+					"chinese_name": "糖",
+					"unit_index": 2
+				},
+				"dietary_fiber": {
+					"chinese_name": "膳食纖維",
+					"unit_index": 2
+				}
+			}
+		},
+		"sodium": {
+			"chinese_name": "鈉",
+			"unit_index": 3,
+			"children": {}
+		}
+	},
+	"unit": [{
+			"chinese_name": "大卡",
+			"english_name": "kilocalorie",
+			"abbreviation": "kcal"
+		},
+		{
+			"chinese_name": "卡",
+			"english_name": "calorie",
+			"abbreviation": "cal"
+		},
+		{
+			"chinese_name": "公克",
+			"english_name": "gram",
+			"abbreviation": "g"
+		},
+		{
+			"chinese_name": "毫克",
+			"english_name": "milligram",
+			"abbreviation": "mg"
+		}
+	]
+}

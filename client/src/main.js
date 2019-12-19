@@ -8,6 +8,7 @@ import vuetify from './plugins/vuetify'
 import _ from 'lodash'
 
 Vue.config.productionTip = false
+Vue.prototype._ = _
 
 Vue.prototype._ = _
 
