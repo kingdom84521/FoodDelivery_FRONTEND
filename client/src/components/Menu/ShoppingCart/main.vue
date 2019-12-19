@@ -43,7 +43,7 @@
                   <div class="pl-4 subtitle-1">加點：</div>
                 </v-row>
                 <v-row>
-                  <v-list class="pl-12">
+                  <v-list class="pl-12 pb-0">
                     <div
                       v-for="(topping, topping_index) in item.toppings"
                       :key="topping_index"
@@ -57,6 +57,14 @@
                       </v-list-item>
                     </div>
                   </v-list>
+                </v-row>
+              </template>
+              <template v-if="item.remarks">
+                <v-row>
+                  <div class="pl-4 subtitle-1">備註：</div>
+                </v-row>
+                <v-row>
+                  <div class="pl-12 subtitle-1">{{ item.remarks }}</div>
                 </v-row>
               </template>
             </v-col>
