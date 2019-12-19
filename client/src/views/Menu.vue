@@ -97,9 +97,9 @@
 <script>
 import Restaurant from '@/assets/temp/restaurant_list.json';
 import Menu from '@/assets/temp/menu_list.json';
-import ProductList from '@/components/Menu/Product/ProductList/main';
-import ProductVariation from '@/components/Menu/Product/ProductVariation/main';
-import ShoppingCart from '@/components/Menu/ShoppingCart/main';
+import ProductList from '@/components/Menu/Product/ProductList';
+import ProductVariation from '@/components/Menu/Product/ProductVariation';
+import ShoppingCart from '@/components/Menu/ShoppingCart';
 
 export default {
   name: 'Menu',
