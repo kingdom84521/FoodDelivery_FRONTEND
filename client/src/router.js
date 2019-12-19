@@ -78,7 +78,8 @@ export default new Router({
     {
       path: '/search',
       name: 'search',
-      component: Search
+      component: Search,
+      props: ( route ) => ({ keyword: route.query.keyword })
     },
     {
       path: '/restaurant/:restaurantId',

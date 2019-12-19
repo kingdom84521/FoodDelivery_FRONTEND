@@ -49,6 +49,11 @@
 import RestaurantList from '@/assets/temp/restaurant_list.json'
 
 export default {
+  props: {
+    keyword: {
+      type: String
+    }
+  },
   data: () => ({
     // dateOption: ["Today ", "Tomorrow ", "Day after tomorrow "],
     // date: "",
@@ -79,6 +84,8 @@ export default {
   watch: {},
   computed: {},
   created() {
+    console.log( this.keyword );
+
     this.getRestaurantsData();
     window.addEventListener("scroll", this.handleScroll);
   },
