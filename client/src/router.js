@@ -30,10 +30,6 @@ export default new Router({
       component: SignUp
     },
     {
-      path: '*',
-      redirect: { name: 'home' }
-    },
-    {
       path: "/dashboard",
       name: "dashboard",
       redirect: "/dashboard/account",
@@ -83,7 +79,12 @@ export default new Router({
     {
       path: '/restaurant/:restaurantId',
       name: 'restaurant',
-      component: Menu
+      component: Menu,
+      props: true
+    },
+    {
+      path: '*',
+      redirect: { name: 'home' }
     }
   ]
 })

@@ -108,6 +108,12 @@ export default {
     ProductVariation,
     ShoppingCart
   },
+  props: {
+    restaurantId: {
+      type: String,
+      require: true
+    }
+  },
   data: () => ({
     restaurant_data: {},
     restaurant_menu: {},
@@ -244,9 +250,7 @@ export default {
     }
   },
   created() {
-    // console.log( this.$route.params.restaurantId );
-    // this.restaurant_data = this._.find(Restaurant, {'id': parseInt(this.$route.params.restaurantId)});
-    this.restaurant_data = this._.find(Restaurant, {'id': 100001});
+    this.restaurant_data = this._.find(Restaurant, {'id': parseInt(this.restaurantId)});
     this.restaurant_menu = this._.find(Menu, {'id': this.restaurant_data.menus[0]});
     this.toppings = new Array( this._.size(this.restaurant_data.toppings) );
     this.$store.commit('cart/setCartInit', {
