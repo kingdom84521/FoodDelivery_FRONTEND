@@ -1,44 +1,39 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-<<<<<<< HEAD
 import Home from '@/views/Home'
 import SignUp from '@/views/SignUp'
-=======
 import Dashboard from '@/views/dashboard'
 import Account from '@/components/dashboard/account/main'
 import Purchase from '@/components/dashboard/purchase/main'
 import PurchasePage from '@/components/dashboard/purchase/purchasePage/main'
 import Notification from '@/components/dashboard/notification/main'
->>>>>>> feature@dashboard
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    {
-<<<<<<< HEAD
-      path: '/home',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: SignUp
-    },
-    {
-      path: '*',
-      redirect: { name: 'home' }
-    },
-  ]   
-=======
-      path: "/dashboard",
-      name: "dashboard",
-      redirect: "/dashboard/account",
-      component: Dashboard,
-      children: [
+  routes: [   
+      {
+        path: '/home',
+        name: 'home',
+        component: Home
+      },
+      {
+        path: '/signup',
+        name: 'signup',
+        component: SignUp
+      },
+      {
+        path: '*',
+        redirect: { name: 'home' }
+      },
+      {
+        path: "/dashboard",
+        name: "dashboard",
+        redirect: "/dashboard/account",
+        component: Dashboard,
+        children: [
         {
           path: "account",
           name: "account",
@@ -76,5 +71,4 @@ export default new Router({
       ]
     }
   ]
->>>>>>> feature@dashboard
 })
