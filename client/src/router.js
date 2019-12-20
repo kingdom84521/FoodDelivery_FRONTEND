@@ -9,7 +9,7 @@ import PurchasePage from '@/components/dashboard/purchase/purchasePage/main'
 import Notification from '@/components/dashboard/notification/main'
 import Search from '@/views/Search.vue'
 import Menu from '@/views/Menu.vue'
-// import Submit from '@/views/Submit.vue'
+import Cashout from '@/views/Cashout.vue'
 
 // import Test from '@/components/Test.vue'
 
@@ -81,6 +81,11 @@ export default new Router({
       name: 'restaurant',
       component: Menu,
       props: true
+    },
+    {
+      path: '/cashout',
+      name: 'cashout',
+      component: Cashout
     },
     {
       path: '*',

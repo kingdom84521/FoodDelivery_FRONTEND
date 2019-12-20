@@ -143,8 +143,8 @@
           large
           color="green accent-4"
           class="headline"
+          @click="checkout()"
         >
-          <!-- @click="checkOut()" -->
           結帳
           <!-- 結帳 {{ offsetTop }} -->
         </v-btn>
@@ -175,6 +175,11 @@ export default {
     onScroll( e ) {
       // console.log( e );
       this.offsetTop = e.target.scrollTop;
+    },
+    checkout() {
+      if ( this.cart_list.length !== 0 ) {
+        this.$router.push({ name: 'cashout' });
+      }
     }
   },
   computed: {
