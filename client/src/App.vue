@@ -1,6 +1,10 @@
 <template>
   <v-app>
-    <Header :user="user" @user-signout="signoutHandler" @user-signin="signinHandler"/>
+    <Header 
+      :user="user" 
+      @user-signout="signoutHandler" 
+      @user-signin="signinHandler"
+    />
 
     <v-content>
       <router-view/>
