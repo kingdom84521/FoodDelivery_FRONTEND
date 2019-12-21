@@ -1,10 +1,10 @@
 <template>
   <v-app-bar
     app
-    flat
     dark
     height="80"
-    color="green"
+    :color="dynamicState( 'color' )"
+    elevate-on-scroll
   >
     <!-- Logo -->
     <div
@@ -22,6 +22,7 @@
       <v-toolbar-title 
         @click="backToHome" 
         class="ml-2"
+        :class="`${ dynamicState( 'text-color' ) }--text`"
       >
         食載有你
       </v-toolbar-title>
@@ -36,12 +37,13 @@
       <v-btn text v-blur to="/signup">
         <v-icon
           left
-          color="white"
+          :class="`${ dynamicState( 'text-color' ) }--text`"
         >
           mdi-account-plus
         </v-icon>
         <div
           class="title"
+          :class="`${ dynamicState( 'text-color' ) }--text`"
         >
           註冊
         </div>
@@ -54,12 +56,13 @@
       >
         <v-icon
           left
-          color="white"
+          :class="`${ dynamicState( 'text-color' ) }--text`"
         >
           mdi-login
         </v-icon>
         <div
           class="title"
+          :class="`${ dynamicState( 'text-color' ) }--text`"
         >
           登入
         </div>
@@ -204,7 +207,7 @@
 </template>
 
 <script>
-  export default { 
+  export default {
     data:() => ({
       signinDialogDisplay: false,
       featureChoose: null,
@@ -248,7 +251,7 @@
     props: {
       user: {
         type: Object
-      },
+      }
     },
     methods: {
       signout() {
@@ -281,6 +284,17 @@
         }
         else {
           return 
+        }
+      },
+      at( position ) {
+          return this.$route.fullPath.startsWith( `/${ position }` )
+      },
+      dynamicState( attr ) {
+        switch ( attr ) {
+          case "color":
+            return this.at( "home" ) ? "#FAFAFA" : "green"
+          case "text-color":
+            return this.at( "home" ) ? "black" : "white"
         }
       }
     },
