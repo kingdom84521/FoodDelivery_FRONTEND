@@ -1,24 +1,27 @@
 <template>
     <v-container>
-        <v-tabs fixed-tabs>
-            <v-tab v-for="i in tabname" :key="i">{{i}}</v-tab>
-            <!-- Search -->
-            <v-tab-item>
-                <v-text-field label="編號查詢" outlined clearable></v-text-field>
-                <v-select label="菜單查詢" outlined multiple chips></v-select>
-                <row>
-                    <v-text-field></v-text-field>
-                </row>
-                <v-btn ></v-btn>
-            </v-tab-item>
-            <!-- Modify -->
-            <v-tab-item>
-            </v-tab-item>
-            <!-- Refuse -->
-            <v-tab-item>
-            </v-tab-item>
-        </v-tabs>
-        <v-expansion-panels>
+        <v-card>
+            <v-toolbar class="green darken-4" dark flat prominent>
+                <v-text-field 
+                    class="mt-5 mx-4" label="搜尋..."
+                    prepend-inner-icon="mdi-magnify"
+                    solo-inverted flat clearable
+                ></v-text-field>
+            </v-toolbar>
+
+            <v-tabs background-color="green darken-1" fixed-tabs>
+                    <v-tab class="white--text title" v-for="(i,index) in tabname" :key="index">{{i}}</v-tab>
+
+                    <v-tabs-slider color="white"></v-tabs-slider>
+                    
+                    <v-tab-item v-for="(ls, index) in list" :key="index">
+                        {{ls.no}}
+                    </v-tab-item>
+            </v-tabs>
+
+        </v-card>
+
+        <!-- <v-expansion-panels>
             <v-expansion-panel v-for="i in list" :key="i">
                 <v-expansion-panel-header>{{i.no}}</v-expansion-panel-header>
                 <v-expansion-panel-content>
@@ -26,13 +29,13 @@
                     {{i.total}}
                 </v-expansion-panel-content>
             </v-expansion-panel>
-        </v-expansion-panels>
+        </v-expansion-panels> -->
     </v-container>
 </template>
 <script>
 export default {
     data: () => ({
-        tabname: ["訂單查詢", "訂單修改", "拒絕訂單"],
+        tabname: ["所有", "製作中", "運送中", "已完成"],
         order: {},
         list: [{
             no: "201911170001",
