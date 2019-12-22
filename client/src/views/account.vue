@@ -11,7 +11,7 @@
 
             <!-- form -->
 <!-- v2 -->
-            <v-row class="title" nogutters>
+            <v-row class="title">
                     <v-col cols="12">
                         <!-- store name -->
                         <v-row class="" align="center" justify="center">
@@ -29,6 +29,63 @@
                             </v-col>
                             <v-col cols="10">
                                 <v-text-field id="storaddress" outlined hide-details></v-text-field>
+                            </v-col>
+                        </v-row>
+                        <!-- work time -->
+                        <v-row class="" align="center" justify="center">
+                            <v-col class="text-center" cols="2">
+                                <label for="worktime">營業時間</label>
+                            </v-col>
+                            <v-col cols="10">
+                                <v-row align="center">
+                                    <v-col cols="5">
+                                        <v-menu
+                                          ref="omenu" v-model="opentimepicker"
+                                          :close-on-content-click="false"
+                                          :return-value.sync="open"
+                                          transition="scale-transition"
+                                          max-width="300px" max-height="500px"
+                                        >
+                                            <template v-slot:activator="{ on }">
+                                                <v-text-field
+                                                  v-model="open" outlined hide-details
+                                                  class="mt-8" label="開店時間" readonly
+                                                  v-on="on"
+                                                ></v-text-field>
+                                            </template>
+                                            <v-time-picker
+                                              v-if="opentimepicker"
+                                              v-model="open"
+                                              full-width
+                                              @click:minute="$refs.omenu.save(open)"
+                                            ></v-time-picker>
+                                        </v-menu>
+                                    </v-col>
+                                    <v-col class="display-2 text-center" cols="1">~</v-col>
+                                    <v-col cols="5">
+                                        <v-menu
+                                          ref="cmenu" v-model="closetimepicker"
+                                          :close-on-content-click="false"
+                                          :return-value.sync="close"
+                                          transition="scale-transition"
+                                          max-width="300px" max-height="500px"
+                                        >
+                                            <template v-slot:activator="{ on }">
+                                                <v-text-field
+                                                  v-model="close" outlined hide-details
+                                                  class="mt-8" label="打烊時間" readonly
+                                                  v-on="on"
+                                                ></v-text-field>
+                                            </template>
+                                            <v-time-picker
+                                              v-if="closetimepicker"
+                                              v-model="close"
+                                              full-width
+                                              @click:minute="$refs.cmenu.save(close)"
+                                            ></v-time-picker>
+                                        </v-menu>
+                                    </v-col>
+                                </v-row>
                             </v-col>
                         </v-row>
                         <!-- contact -->
@@ -143,6 +200,11 @@
 export default {
     data: () => ({
         // height: 0
+        open: null,
+        close: null,
+        opentimepicker: false,
+        closetimepicker: false
+
     }),
     methods: {
         // getTextareaHeight(){
@@ -163,6 +225,9 @@ export default {
             // reader.onload()
             // reader.readAsDataURL(file);
 
+        },
+        showTime(){
+            console.log(this.open);
         }
     },
     mounted() {

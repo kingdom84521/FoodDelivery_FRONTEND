@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-row>
             <v-col cols="2">
-                <v-sheet>
+                <v-sheet class="">
                     <v-row class="text-center">
                         <v-col>
                             <v-avatar class="avatar" size="150" >

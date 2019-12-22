@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ordermanage from "@/views/ordermanage"
+import ordermanage from "@/views/OrderManage"
 import dish from "@/views/dish"
 import store from "@/views/store"
 import account from "@/views/account"

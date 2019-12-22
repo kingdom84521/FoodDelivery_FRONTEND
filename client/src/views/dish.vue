@@ -5,6 +5,12 @@
             <v-col class="display-1">
                 菜單列表
             </v-col>
+            <v-spacer></v-spacer>
+            <v-col justify-self="end">
+                <v-row justify="end">
+                    <v-btn class="subtitle-1 green darken-1 white--text">新增菜單</v-btn>
+                </v-row>
+            </v-col>
         </v-row>
 
         <v-divider></v-divider>
@@ -30,14 +36,22 @@
                     <!-- menu list -->
                     <v-tab-item v-for="(item, index) in dish" :key="index">
                         <v-list class="list" max-height="380">
-                            <v-list-item v-for="(menu, i) in item.list" :key="i">
+                            <v-list-item class="d-block" v-for="(menu, i) in item.list" :key="i">
                                 <v-card class="mb-2" outlined>
                                     <v-row>
                                         <v-col cols="3">
-                                            <v-img class="ml-2" max-width="200" max-height="200" src="../assets/logo.png"></v-img>
+                                            <v-img class="ml-2" min-width="100" min-height="100" src="../assets/logo.png"></v-img>
                                         </v-col>
                                         <v-col cols="9">
-                                            {{menu.name}}
+                                            <v-row justify="start" align="center">
+                                                <v-col class="headline">{{menu.name}}</v-col>
+                                                <v-col class="subtitle-2">餐點標籤:{{menu.tag}}</v-col>
+                                            </v-row>
+                                            <v-row>
+                                                <v-col>營養表:</v-col>
+                                                <v-col>{{menu.nutrition}}kcal</v-col>
+                                                <v-col>$NT{{menu.price}}</v-col>
+                                            </v-row>
                                         </v-col>
                                     </v-row>
                                 </v-card>
