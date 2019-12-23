@@ -71,9 +71,40 @@ export default {
       // console.log( this.restaurants );
     },
     getLocation() {
-      console.log("Get location by Google API");
-      this.location = "360台灣苗栗縣苗栗市恭敬路43號";
-      this.getRestaurantsData();
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
+      let success = async pos => {
+        var crd = pos.coords;
+        try {
+          let latlng = crd.latitude.toString() + "," + crd.longitude.toString();
+          const result = await this.$axios({
+            methods: 'GET',
+            baseURL: 'https://maps.googleapis.com/maps/api/geocode/json',
+            'Cotent-type': 'application/json',
+            params: {
+              latlng: latlng,
+              language: 'zh-TW',
+              key: 'AIzaSyDWAvWMT0ZxoBnAsYZgrqp9LgLvxA-yABE'
+            }
+          }); 
+          this.location = this._.get(result, ['data', 'results', 0, 'formatted_address']);
+        } catch( error ) {
+          console.log( error );
+        }
+        this.getRestaurantsData();
+      };
+
+      let error = err => {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      };
+
+      navigator.geolocation.getCurrentPosition(success, error, options);
+      // this.location = "360台灣苗栗縣苗栗市恭敬路43號";
+      console.log("Get adress by Google API");
     }
   },
   watch: {},

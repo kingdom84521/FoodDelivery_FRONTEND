@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
+import axios from './plugins/axios'
 import _ from 'lodash'
 
 Vue.config.productionTip = false
@@ -20,5 +21,6 @@ new Vue({
   router,
   store,
   vuetify,
+  axios,
   render: h => h(App)
 }).$mount('#app')
