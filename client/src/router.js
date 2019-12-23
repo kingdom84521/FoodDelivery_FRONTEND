@@ -3,10 +3,12 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import SignUp from '@/views/SignUp'
 import Dashboard from '@/views/Dashboard'
-import Account from '@/components/dashboard/account/main'
-import Purchase from '@/components/dashboard/purchase/main'
-import PurchasePage from '@/components/dashboard/purchase/purchasePage/main'
-import Notification from '@/components/dashboard/notification/main'
+import Account from '@/components/Dashboard/account/main'
+import Profile from '@/components/Dashboard/account/profile'
+import Relatives from '@/components/Dashboard/account/relatives/main'
+import Purchase from '@/components/Dashboard/purchase/main'
+import PurchasePage from '@/components/Dashboard/purchase/purchasePage/main'
+import Notification from '@/components/Dashboard/notification/main'
 import Search from '@/views/Search.vue'
 import Menu from '@/views/Menu.vue'
 // import Submit from '@/views/Submit.vue'
@@ -47,11 +49,13 @@ export default new Router({
           children: [
             {
               path: "profile",
-              name: "profile"
+              name: "profile",
+              component: Profile
             },
             {
               path: "relatives",
-              name: "relatives"
+              name: "relatives",
+              component: Relatives
             }
           ]
         },

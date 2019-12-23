@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import orderItem from "@/components/dashboard/purchase/purchasePage/orderItem"
+import orderItem from "@/components/Dashboard/purchase/purchasePage/orderItem"
 
 export default {
     components: {
