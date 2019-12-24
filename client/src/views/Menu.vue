@@ -13,7 +13,7 @@
             @click.stop="restaurant_detail = true"
           >
             <!-- 店名 -->
-            <v-card-title>
+            <v-card-title class="display-2">
               {{ restaurant_data.name }}
             </v-card-title>
             <v-spacer />
@@ -107,6 +107,12 @@ export default {
     ProductList,
     ProductVariation,
     ShoppingCart
+  },
+  props: {
+    restaurantId: {
+      type: String,
+      require: true
+    }
   },
   data: () => ({
     restaurant_data: {},
@@ -244,14 +250,11 @@ export default {
     }
   },
   created() {
-    // console.log( this.$route.params.restaurantId );
-    // this.restaurant_data = this._.find(Restaurant, {'id': parseInt(this.$route.params.restaurantId)});
-    this.restaurant_data = this._.find(Restaurant, {'id': 100001});
+    this.restaurant_data = this._.find(Restaurant, {'id': parseInt(this.restaurantId)});
     this.restaurant_menu = this._.find(Menu, {'id': this.restaurant_data.menus[0]});
     this.toppings = new Array( this._.size(this.restaurant_data.toppings) );
-    this.$store.commit('cart/setCartInit', {
-      restaurant: this.getUnit( this.restaurant_data ),
-      menu: this.getUnit( this.restaurant_menu )
+    this.$store.dispatch('cart/setCartInit', {
+      restaurantId: this.restaurant_data.id
     }); 
   }
 };

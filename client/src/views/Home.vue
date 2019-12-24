@@ -65,6 +65,7 @@
                       color="success"
                       class="white--text"
                       elevation="4"
+                      @click="searchResult()"
                     >
                       <div class="title">
                         搜尋
@@ -327,7 +328,9 @@
       ]
     }),
     methods: {
-      
+      searchResult() {
+        this.$router.push({ path: `/search?keyword=${ this.keyword }` });
+      }
     }
   }
 </script>

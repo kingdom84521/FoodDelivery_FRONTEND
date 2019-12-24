@@ -9,7 +9,7 @@ import PurchasePage from '@/components/Dashboard/purchase/purchasePage/main'
 import Notification from '@/components/Dashboard/notification/main'
 import Search from '@/views/Search.vue'
 import Menu from '@/views/Menu.vue'
-// import Submit from '@/views/Submit.vue'
+import Cashout from '@/views/Cashout.vue'
 
 // import Test from '@/components/Test.vue'
 
@@ -28,10 +28,6 @@ export default new Router({
       path: '/signup',
       name: 'signup',
       component: SignUp
-    },
-    {
-      path: '*',
-      redirect: { name: 'home' }
     },
     {
       path: "/dashboard",
@@ -78,12 +74,23 @@ export default new Router({
     {
       path: '/search',
       name: 'search',
-      component: Search
+      component: Search,
+      props: ( route ) => ({ keyword: route.query.keyword })
     },
     {
       path: '/restaurant/:restaurantId',
       name: 'restaurant',
-      component: Menu
+      component: Menu,
+      props: true
+    },
+    {
+      path: '/cashout',
+      name: 'cashout',
+      component: Cashout
+    },
+    {
+      path: '*',
+      redirect: { name: 'home' }
     }
   ]
 })
