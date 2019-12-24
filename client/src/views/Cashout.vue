@@ -95,7 +95,7 @@
 
       <v-stepper-content step="2">
         <v-card
-          height="500px"
+          height="400px"
           flat
         >
           <v-container>
@@ -105,35 +105,33 @@
                 <v-radio label="親人"/>
               </v-radio-group>
             </v-row>
-            <template v-if="receiver_choice === 0">
+            <template v-if="receiver_choice === 1">
               <v-row>
-                <v-col cols="2" class="pt-5">
-                  收餐人：
-                </v-col>
-                <v-col>
-                  <v-text-field 
-                    v-model="user.name"
-                    outlined
-                  />
-                </v-col>
+                <v-select v-model="family_choice" :items="family_list"/>
               </v-row>
             </template>
-            <template v-else>
-              <v-row>
-                <v-select v-model="family_choice" :items="family_list"></v-select>
-              </v-row>
-              <v-row>
-                <v-col cols="2" class="pt-5">
-                  收餐人：
-                </v-col>
-                <v-col>
-                  <v-text-field 
-                    v-model="family[family_index].name"
-                    outlined
-                  />
-                </v-col>
-              </v-row>
-            </template>
+            <v-row>
+              <v-col cols="2" class="pt-5">
+                收餐人：
+              </v-col>
+              <v-col>
+                <v-text-field 
+                  v-model="receiver.name"
+                  outlined
+                />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="2" class="pt-5">
+                地址：
+              </v-col>
+              <v-col>
+                <v-text-field 
+                  v-model="receiver.address"
+                  outlined
+                />
+              </v-col>
+            </v-row>
           </v-container>
         </v-card>
         <v-btn 
@@ -166,9 +164,27 @@
           flat
         >
           <v-container>
-
+            <v-select v-model="cashout_choice" :items="cashout_methods"/>
           </v-container>
         </v-card>
+        <v-btn 
+          large 
+          class="mr-1 green darken-2 white--text title"
+          :loading="wait_submit"
+          :disabled="wait_submit"
+          @click="submit()"
+        >
+          付款
+        </v-btn>
+        <v-btn 
+          text 
+          large 
+          class="ml-1 red darken-2 white--text title" 
+          :disabled="wait_submit"
+          @click="step_status = 2"
+        >
+          回上一步
+        </v-btn>
       </v-stepper-content>
     </v-stepper>
   </v-container>
@@ -181,6 +197,7 @@ export default {
   data: () => ({
     step_status: 0,
     receiver_choice: 0,
+    receiver: {},
     user: {
       id: "000001",
       name: "黃耑霖",
@@ -198,7 +215,7 @@ export default {
         address: "300新竹市香山區浸水街406巷66弄11號"
       },
       {
-        id: "f00001",
+        id: "f00002",
         name: "黃媽媽",
         nickName: "媽媽",
         phone: "0912123111",
@@ -206,22 +223,24 @@ export default {
       }
     ],
     cashout_choice: null,
-    cashout_methods: ['信用卡', 'Apple pay'],
+    cashout_methods: ['信用卡', 'Apple Pay', 'Google Pay'],
     order_list_item : {
-      orderId: '',
-      receiverId: '',
-      restaurantId: '',
+      orderId: "",
+      receiverId: "",
+      restaurantId: "",
+      address: "",
+      phone: "",
       totalPrice: 0,
       content: [],
-    }
+    },
+    wait_submit: false
   }),
   methods: {
     addCartToOrder() {
-      this.order_list_item.orderId = "000001";
-      this.order_list_item.receiverId = "000001";
+      this.order_list_item.orderId = this.user.id;
 
       let cart = this.$store.state.cart;
-      this.order_list_item.restaurantId = cart.restaurantId;
+      this.order_list_item.restaurantId = cart.restaurantId.toString();
       this.order_list_item.totalPrice = cart.total;
 
       let table_name = [ 'category', 'product', 'variation' ];
@@ -235,7 +254,7 @@ export default {
         for ( let index = 0 ; index < table_name.length ; ++index ) {
           let name = table_name[index];
           if ( item[name].name ) {
-            productName += (productName ? ',' : '') + ( index === 2 ? '~' : '' ) + item[name].name;
+            productName += (productName ? ',' : "") + ( index === 2 ? '~' : '' ) + item[name].name;
           }
         }
         let topping_name = "";
@@ -271,6 +290,33 @@ export default {
       }
       return toppingString;
     },
+    submit() {
+      this.order_list_item.receiverId = this.receiver.id;
+      this.order_list_item.address = this.receiver.address;
+      this.order_list_item.phone = this.receiver.phone;
+      console.log( this.order_list_item );
+      let submitOrder = async () => {
+        this.wait_submit = true;
+        try {
+          await this.$axios({
+            method: 'post',
+            baseURL: 'http://localhost:3001',
+            url: '/orders',
+            'Content-Type': 'application/json',
+            data: this.order_list_item
+          });
+          alert("訂餐成功");
+          this.$router.push({ name: 'dashboard' });
+        } catch (error) {
+          console.log( error );
+          console.log( JSON.stringify(this.order_list_item) );
+          alert("訂餐失敗");
+        }
+        this.wait_submit = false;
+      }
+
+      submitOrder();
+    }
   },
   computed: {
     ...mapState({
@@ -282,17 +328,24 @@ export default {
     }
   },
   watch: {
+    receiver_choice( choice ) {
+      this.receiver = {};
+      if ( choice === 0 ) {
+        this.receiver = { ...this.user};
+      }
+    },
     family_choice( nickName ) {
       // console.log( nickName );
       this.family_index = this._.findIndex(this.family, person => {
         return person.nickName === nickName;
       });
-      console.log( this.family_index );
+      this.receiver = { ...this.family[ this.family_index ] };
+      // console.log( this.family_index );
     }
   },
   created() {
     // console.log( this.$store.state.cart );
-    
+    this.receiver = { ...this.user};
     if ( this.$store.state.cart.list.length === 0 ) {
       this.$router.push({ name: 'home' });
     }
