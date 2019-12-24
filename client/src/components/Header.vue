@@ -219,7 +219,7 @@
         {
           name: 'Order',
           icon: 'mdi-food',
-          link: '/order',
+          link: '/search',
         },
         {
           name: 'History',
@@ -239,7 +239,7 @@
         {
           name: 'Settings',
           icon: 'mdi-settings-outline',
-          link: '/settings',
+          link: '/dashboard/account',
         },
         {
           name: "Help center",

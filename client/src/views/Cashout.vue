@@ -102,12 +102,12 @@
             <v-row>
               <v-radio-group v-model="receiver_choice" row>
                 <v-radio label="自己"/>
-                <v-radio label="親人"/>
+                <v-radio label="親友"/>
               </v-radio-group>
             </v-row>
             <template v-if="receiver_choice === 1">
               <v-row>
-                <v-select v-model="family_choice" :items="family_list"/>
+                <v-select v-model="relatives_choice" :items="relatives_list"/>
               </v-row>
             </template>
             <v-row>
@@ -117,6 +117,17 @@
               <v-col>
                 <v-text-field 
                   v-model="receiver.name"
+                  outlined
+                />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="2" class="pt-5">
+                電話：
+              </v-col>
+              <v-col>
+                <v-text-field 
+                  v-model="receiver.phone"
                   outlined
                 />
               </v-col>
@@ -191,6 +202,9 @@
 </template>
 
 <script>
+import FakeUserOrders from '@/assets/temp/user_order_list.js'
+import FakeRelatives from '@/assets/temp/relatives_list.js'
+
 import { mapState } from 'vuex'
 
 export default {
@@ -204,9 +218,9 @@ export default {
       phone: "0910809449",
       address: "360苗栗縣苗栗市天雲街1巷1號"
     },
-    family_choice: null,
-    family_index: 0,
-    family:[
+    relatives_choice: null,
+    relatives_index: 0,
+    relatives:[
       {
         id: "f00001",
         name: "黃爸爸",
@@ -232,6 +246,11 @@ export default {
       phone: "",
       totalPrice: 0,
       content: [],
+    },
+    fake_order:{
+      store: "",
+      by: "",
+      total: 0
     },
     wait_submit: false
   }),
@@ -276,6 +295,10 @@ export default {
       });
 
       console.log( this.order_list_item );
+
+      this.fake_order.store = cart.restaurantName;
+      this.fake_order.by = this.user.name;
+      this.fake_order.total = cart.total;
     },
     getToppingString( toppings ) {
       let toppingString = "";
@@ -314,8 +337,19 @@ export default {
         }
         this.wait_submit = false;
       }
+      let fakeSubmit = () => {
+        this.wait_submit = true;
+        setTimeout(() => {
+          FakeUserOrders.add( this.fake_order );
+          this.wait_submit = false;
+          alert("訂餐成功");
+          this.$store.commit('cart/clearShoppingCart')
+          this.$router.push({ path: '/dashboard/purchase/all' });
+        },1000);
+      }
 
-      submitOrder();
+      // submitOrder();
+      fakeSubmit();
     }
   },
   computed: {
@@ -323,8 +357,8 @@ export default {
       cart_list: state => state.cart.list,
       total_price: state => state.cart.total,
     }),
-    family_list() {
-      return this._.map(this.family, person => { return person.nickName });
+    relatives_list() {
+      return this._.map(this.relatives, person => { return person.name });
     }
   },
   watch: {
@@ -334,17 +368,17 @@ export default {
         this.receiver = { ...this.user};
       }
     },
-    family_choice( nickName ) {
-      // console.log( nickName );
-      this.family_index = this._.findIndex(this.family, person => {
-        return person.nickName === nickName;
+    relatives_choice( name ) {
+      // console.log( name );
+      this.relatives_index = this._.findIndex(this.relatives, person => {
+        return person.name === name;
       });
-      this.receiver = { ...this.family[ this.family_index ] };
-      // console.log( this.family_index );
+      this.receiver = { ...this.relatives[ this.relatives_index ] };
+      // console.log( this.relatives_index );
     }
   },
   created() {
-    // console.log( this.$store.state.cart );
+    this.relatives = FakeRelatives.read();
     this.receiver = { ...this.user};
     if ( this.$store.state.cart.list.length === 0 ) {
       this.$router.push({ name: 'home' });

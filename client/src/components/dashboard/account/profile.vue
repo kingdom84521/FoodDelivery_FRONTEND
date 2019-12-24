@@ -57,7 +57,7 @@ export default {
             textFieldData: [
                 {
                     label: "姓名",
-                    data: ""
+                    data: "黃耑霖"
                 },
                 {
                     label: "電子信箱",
@@ -65,15 +65,15 @@ export default {
                 },
                 {
                     label: "手機號碼",
-                    data: ""
+                    data: "0910809449"
                 },
                 {
                     label: "生日",
-                    data: ""
+                    data: "87/8/7"
                 },
                 {
                     label: "地址",
-                    data: ""
+                    data: "360苗栗縣苗栗市天雲街1巷1號"
                 }
             ]
         }

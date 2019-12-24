@@ -2,22 +2,22 @@ var data = [
     {
         "store": "洋津義大利麵",
         "by": "DH",
-        "total": 123
+        "total": 150
     },
     {
-        "store": "洋津義大利麵",
+        "store": "鼎香169餐坊",
         "by": "DH",
-        "total": 123
+        "total": 55
     },
     {
-        "store": "洋津義大利麵",
+        "store": "鼎香169餐坊",
         "by": "DH",
-        "total": 123
+        "total": 70
     },
     {
-        "store": "洋津義大利麵",
+        "store": "廣東粥",
         "by": "DH",
-        "total": 123
+        "total": 70
     }
 ]
 

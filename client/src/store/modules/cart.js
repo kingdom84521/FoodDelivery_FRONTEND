@@ -3,6 +3,7 @@ import _ from 'lodash'
 // initial state
 const state = {
   restaurantId: null,
+  restaurantName: null,
   list: [],
   total: 0
 }
@@ -10,13 +11,13 @@ const state = {
 // getters
 const getters = {
   getSameItemIndex: state => item => {
-      if ( state.list.length === 0 ) {
-        return -1;
-      }
+    if ( state.list.length === 0 ) {
+      return -1;
+    }
 
-      return _.findIndex(state.list, list_item => {
-        return item.checker === list_item.checker;
-      });
+    return _.findIndex(state.list, list_item => {
+      return item.checker === list_item.checker;
+    });
   },
   getIndexItem: state => index => {
       return state.list[ index ];
@@ -51,6 +52,7 @@ const actions = {
 const mutations = {
   clearShoppingCart( state ) {
     state.restaurantId = null;
+    state.restaurantName = null;
     state.list = [];
     state.total = 0;
   },
@@ -71,6 +73,7 @@ const mutations = {
   },
   setCartInit( state , payload ) {
     state.restaurantId = payload.restaurantId;
+    state.restaurantName = payload.restaurantName;
   },
   changeQuantity(state, payload) {
     state.list[ payload.index ].quantity += payload.amount;
