@@ -9,6 +9,7 @@ import axios from './plugins/axios'
 import _ from 'lodash'
 
 Vue.config.productionTip = false
+
 Vue.prototype._ = _
 
 Vue.directive('blur', {

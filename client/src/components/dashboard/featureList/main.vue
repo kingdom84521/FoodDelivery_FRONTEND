@@ -7,6 +7,7 @@
                 v-if="element.type === 'group'"
                 :key="`${ index }-group`"
                 :value="childIsActive( element )"
+                
             >
                 <template v-slot:activator>
                     <v-list-item-icon>

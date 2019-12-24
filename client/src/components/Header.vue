@@ -3,8 +3,8 @@
     app
     dark
     height="80"
-    :color="dynamicState( 'color' )"
     elevate-on-scroll
+    :color="dynamicState( 'color' )"
   >
     <!-- Logo -->
     <div
