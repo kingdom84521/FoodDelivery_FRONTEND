@@ -54,7 +54,7 @@ export default {
     // date: "",
     scrolling: false,
     restaurants: [],
-    location: ""
+    location: "360台灣苗栗縣苗栗市聯合大學八甲校區1"
   }),
   methods: {
     handleScroll() {
@@ -81,6 +81,7 @@ export default {
         var crd = pos.coords;
         try {
           let latlng = crd.latitude.toString() + "," + crd.longitude.toString();
+          // console.log( "Position: ", latlng );
           const result = await this.$axios({
             methods: 'GET',
             baseURL: 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -104,7 +105,7 @@ export default {
 
       navigator.geolocation.getCurrentPosition(success, error, options);
       // this.location = "360台灣苗栗縣苗栗市恭敬路43號";
-      console.log("Get adress by Google API");
+      // console.log("Get adress by Google API");
     }
   },
   watch: {},

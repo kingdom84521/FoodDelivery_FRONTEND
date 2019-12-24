@@ -2,8 +2,7 @@ import _ from 'lodash'
 
 // initial state
 const state = {
-  restaurant: null,
-  menu: null,
+  restaurantId: null,
   list: [],
   total: 0
 }
@@ -26,6 +25,13 @@ const getters = {
 
 // actions
 const actions = {
+  setCartInit({ state, commit }, payload) {
+    if ( state.restaurantId !== null && state.restaurantId != payload.restaurantId ) {
+      // commit('clearShoppingCart');
+      console.log("Different:", state.restaurantId, payload.restaurantId);
+    }
+    commit('setCartInit', payload);
+  },
   changeQuantity({ commit }, payload) {
     commit('changeQuantity', payload);
     commit('updateShoppingCart');
@@ -44,8 +50,7 @@ const actions = {
 // mutations
 const mutations = {
   clearShoppingCart( state ) {
-    state.restaurant = null;
-    state.menu = null;
+    state.restaurantId = null;
     state.list = [];
     state.total = 0;
   },
@@ -65,8 +70,7 @@ const mutations = {
     state.total = price_total;
   },
   setCartInit( state , payload ) {
-    state.restaurant = payload.restaurant;
-    state.menu = payload.menu;
+    state.restaurantId = payload.restaurantId;
   },
   changeQuantity(state, payload) {
     state.list[ payload.index ].quantity += payload.amount;

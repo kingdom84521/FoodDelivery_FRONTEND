@@ -10,7 +10,7 @@
       <v-tab 
         v-for="(category, index) in restaurant_menu.categories"
         :key="index"
-        class="font-weight-bold"
+        class="font-weight-bold headline"
       >
         {{ category.name }}
       </v-tab>
@@ -42,12 +42,12 @@
                   <v-col cols="4">
                     <div class="font-weight-bold headline"> {{ product.name }} </div>
                   </v-col>
-                  <v-col>
+                  <v-col class="title">
                     餐點標籤：
                   </v-col>
                 </v-row>
                 <v-row class="mt-n4 pb-0">
-                  <v-col cols="2" class="pr-0">
+                  <v-col cols="2" class="pr-0 title">
                     營養成分：
                   </v-col>
                   <template
@@ -56,7 +56,7 @@
                     <v-col
                       v-if="index%nutrition_one_line === 0  && index !== 0"
                       :key="index+'_pre_space'"
-                      class="pa-0"
+                      class="pa-0 title"
                       cols="2"
                     />
                     <v-col 
@@ -95,7 +95,7 @@
                     mdi-plus-box-outline
                   </v-icon>
                 </v-btn>
-                <div class="font-weight-medium">
+                <div class="font-weight-medium title">
                   NT{{ lowestPrice(product.product_variations).price }}$
                 </div>
               </v-col>
@@ -121,7 +121,7 @@ export default {
   data: () => ({
     menu_tab: null,
     nutrition_name: {},
-    nutrition_space: 3,
+    nutrition_space: 4,
     nutrition_one_line: 3
   }),
   methods: {
@@ -140,9 +140,9 @@ export default {
       return last_extra_space;
     },
     nutritionClass( index ) {
-      let class_type = '';
+      let class_type = 'title ';
       if ( index%this.nutrition_one_line === 0 ) {
-        class_type += 'ml-n12';
+        class_type += 'ml-n9';
       } else {
         class_type += 'ml-n7';
       }
