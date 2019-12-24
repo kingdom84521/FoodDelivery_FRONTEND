@@ -19,7 +19,7 @@
           <v-row no-gutters class="pa-3">
             <v-col>
               <div class="title font-weight-bold">
-                [ 這裡是店家的名稱 ]
+                {{ store }}
               </div>
               <v-spacer />
               <div class="d-flex flex-row align-center">
@@ -51,14 +51,14 @@
               color="indigo" 
               size="33"
             >
-               <span class="white--text body-2">KK</span>
+               <span class="white--text body-2">{{ by }}</span>
              </v-avatar>
              <div class="body-2 pt-1 grey--text text--accent-2">點擊查看訂餐人資訊</div>
            </div>
            <div class="text-end w-100 font-weight-bold">
              訂單金額：
              <span class="headline primary--text">
-               $888
+               ${{ total }}
              </span>
            </div>
          </div>
@@ -76,8 +76,7 @@ export default {
       required: true
     },
     orderItems: {
-      type: Array,
-      required: true
+      type: Array
     },
     by: {
       type: String,

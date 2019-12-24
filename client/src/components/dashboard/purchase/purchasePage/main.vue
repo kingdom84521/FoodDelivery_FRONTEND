@@ -26,7 +26,7 @@
                     max-height="600"
                     height="600"
                 >
-                    <order-Item></order-Item>
+                    <order-item v-for="( order, index ) in orders" :key="index" v-bind="order" />
                 </v-sheet>
             </v-col>
         </v-row>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import FakeUserOrders from '@/assets/temp/user_order_list.js'
 import orderItem from "@/components/Dashboard/purchase/purchasePage/orderItem"
 
 export default {
@@ -45,11 +46,16 @@ export default {
     },
     data: () => {
         return {
-            keyword: ""
+            keyword: "",
+            orders: []
         }
     },
     methods: {
+    },
+    mounted() {
+        this.orders = FakeUserOrders.read()
     }
+
 }
 </script>
 
