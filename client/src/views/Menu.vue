@@ -254,7 +254,7 @@ export default {
     this.restaurant_menu = this._.find(Menu, {'id': this.restaurant_data.menus[0]});
     this.toppings = new Array( this._.size(this.restaurant_data.toppings) );
     this.$store.dispatch('cart/setCartInit', {
-      restaurantId: this.restaurant_data.id
+      restaurantId: this.restaurantId
     }); 
   }
 };
