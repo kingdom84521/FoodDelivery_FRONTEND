@@ -2,8 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import SignUp from '@/views/SignUp'
-import Dashboard from '@/views/dashboard'
+import Dashboard from '@/views/Dashboard'
 import Account from '@/components/Dashboard/account/main'
+import Profile from '@/components/Dashboard/account/profile'
+import Relatives from '@/components/Dashboard/account/relatives/main'
 import Purchase from '@/components/Dashboard/purchase/main'
 import PurchasePage from '@/components/Dashboard/purchase/purchasePage/main'
 import Notification from '@/components/Dashboard/notification/main'
@@ -43,11 +45,13 @@ export default new Router({
           children: [
             {
               path: "profile",
-              name: "profile"
+              name: "profile",
+              component: Profile
             },
             {
               path: "relatives",
-              name: "relatives"
+              name: "relatives",
+              component: Relatives
             }
           ]
         },

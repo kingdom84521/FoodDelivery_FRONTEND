@@ -1,0 +1,96 @@
+<template>
+    <v-sheet
+        class="ma-2 mt-3 pa-3 rounded"
+        color="white"
+        elevation="2"
+    >
+        <v-row justify="space-between">
+            <v-col cols="2" class="ml-2">
+                <div class="display-1">
+                    個人簡介
+                </div>
+                <div class="grey--text text--lighten-2 mt-1">
+                    在這裡編輯您的個人資訊
+                </div>
+            </v-col>
+            <v-col
+                cols="1"
+                align-self="center"
+                class="mr-5"
+            >
+                <v-btn 
+                    x-large
+                    rounded
+                    color="#FAFAFA"
+                    @click="updateInformation"
+                >
+                    儲存資訊
+                </v-btn>
+            </v-col>
+        </v-row>
+        <v-divider />
+        <v-row class="pl-2">
+            <v-col cols="7">
+                <v-row v-for="( element, index ) in textFieldData" :key="index">
+                    <v-col cols="2" align-self="center">
+                        <div class="title">
+                            {{ element.label }}：
+                        </div>
+                    </v-col>
+                    <v-col cols="9">
+                        <v-text-field
+                            outlined
+                            hide-details
+                            v-model="element.data"
+                        />
+                    </v-col>
+                </v-row>
+            </v-col>
+        </v-row>
+    </v-sheet>
+</template>
+
+<script>
+export default {
+    data: () => {
+        return {
+            textFieldData: [
+                {
+                    label: "姓名",
+                    data: ""
+                },
+                {
+                    label: "電子信箱",
+                    data: ""
+                },
+                {
+                    label: "手機號碼",
+                    data: ""
+                },
+                {
+                    label: "生日",
+                    data: ""
+                },
+                {
+                    label: "地址",
+                    data: ""
+                }
+            ]
+        }
+    },
+    methods: {
+        updateInformation() {
+            let confirmed = confirm("確定儲存嗎？")
+            if ( confirmed ) {
+                console.log( "upload" )
+            }
+        }
+    }
+}
+</script>
+
+<style>
+    .rounded {
+        border-radius: 5px
+    }
+</style>
