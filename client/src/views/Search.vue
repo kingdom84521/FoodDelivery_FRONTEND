@@ -21,7 +21,7 @@
       <div class="display-2 my-3">推薦菜單選擇</div>
       <v-row justify="space-around" class="overflow-block overflow-y-auto">
         <v-col
-          v-for="(restaurant, i) in restaurants"
+          v-for="(restaurant, i) in searchRestaurants"
           :key="i"
           md="3"
           sm="4"
@@ -32,7 +32,8 @@
             class="mb-7"
             height="310"
           >
-            <v-img src="@/assets/italy.jpg" height="155"></v-img>
+            <v-img :src="restaurant.imgURL" v-if="restaurant.imgURL" height="155"/>
+            <v-img src="@/assets/italy.jpg" v-else height="155"/>
             <v-card-title> {{ restaurant.name }} </v-card-title>
             <v-card-text> 預估{{ restaurant.distance }}分鐘 </v-card-text>
           </v-card>
@@ -58,7 +59,8 @@
             class="mb-7"
             height="310"
           >
-            <v-img src="@/assets/italy.jpg" height="155"></v-img>
+            <v-img :src="restaurant.imgURL" v-if="restaurant.imgURL" height="155"/>
+            <v-img src="@/assets/italy.jpg" v-else height="155"/>
             <v-card-title> {{ restaurant.name }} </v-card-title>
             <v-card-text> 預估{{ restaurant.distance }}分鐘 </v-card-text>
           </v-card>
@@ -89,6 +91,7 @@ export default {
     // dateOption: ["Today ", "Tomorrow ", "Day after tomorrow "],
     // date: "",
     scrolling: false,
+    searchRestaurants: [],
     restaurants: [],
     location: "360台灣苗栗縣苗栗市聯合大學八甲校區1"
   }),
@@ -99,11 +102,16 @@ export default {
     ScrollTop() {
       window.scroll({ top: 0, behavior: "smooth" });
     },
-    getRestaurantsData() {
-      if ( this.location === "" ) {
+    searchRestaurantsData( keyword ) {
+      if ( keyword === "" ) {
         return;
       }
-      this.restaurants = RestaurantList;
+      this._.forEach(RestaurantList, restaurant => {
+        let getIndex = this._.findIndex(restaurant.name.split(''), word => { return word == keyword });
+        if ( getIndex !== -1 ) {
+          this.searchRestaurants.push( restaurant );
+        }
+      })
       // console.log( this.restaurants );
     },
     getLocation() {
@@ -147,9 +155,10 @@ export default {
   watch: {},
   computed: {},
   created() {
+    this.restaurants = RestaurantList;
+    
     console.log( this.keyword );
-
-    this.getRestaurantsData();
+    this.searchRestaurantsData( this.keyword );
     window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {

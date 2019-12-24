@@ -27,7 +27,7 @@ const getters = {
 const actions = {
   setCartInit({ state, commit }, payload) {
     if ( state.restaurantId !== null && state.restaurantId != payload.restaurantId ) {
-      // commit('clearShoppingCart');
+      commit('clearShoppingCart');
       console.log("Different:", state.restaurantId, payload.restaurantId);
     }
     commit('setCartInit', payload);

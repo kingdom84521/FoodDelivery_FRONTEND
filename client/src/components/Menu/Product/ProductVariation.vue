@@ -2,9 +2,15 @@
   <!-- 餐點額外項目 -->
   <v-card>
     <v-img
+      v-if="showImg"
+      max-height="250"
+      :src="img"
+    />
+    <v-img
+      v-else
       max-height="250"
       src="@/assets/butter.jpg"
-    ></v-img>
+    />
     <v-card-title>
       <div> {{ item_extra.product.name }} </div>
       <v-spacer />
@@ -106,7 +112,7 @@
         <v-col cols="1">
           <v-btn 
             icon
-            color="green accent-3"
+            color="red accent-3"
             :disabled="temporary_item.quantity === 1"
             @click="changeQuantity(temporary_item, '-')"
           >
@@ -176,9 +182,13 @@ export default {
     backToCart: {
       type: Function,
       require: true
+    },
+    showImg: {
+      type: Boolean
     }
   },
   data: () => ({
+    img: "https://img2.secretchina.com/pic/2019/8-3/p2483812a213645788-ss.jpg",
     product_variation: null,
     check_shopping_car: false
   }),
@@ -216,7 +226,7 @@ export default {
         let topping_ids = this._.get(variation, 'topping_ids');
 
         // 有 toppings 才新增
-        if ( topping_ids !== undefined ) {
+        if ( topping_ids !== undefined && topping_ids.length !== 0 ) {
           this._.set(this.item_extra, 'toppings', []);
           this._.forEach(topping_ids, topping_id => {
             let topping = this._.get(this.restaurant_data, ['toppings', topping_id]);
@@ -256,6 +266,7 @@ export default {
     }
   },
   created() {
+    console.log( this.$router.params );
   }
 }
 </script>

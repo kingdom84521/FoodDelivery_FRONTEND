@@ -7,8 +7,14 @@
         <v-card>
           <v-img 
             max-height="250"
+            :src="restaurant_data.imgURL"
+            v-if="restaurant_data.imgURL"
+          />
+          <v-img 
+            max-height="250"
             src="../assets/italy.jpg"
-          ></v-img>
+            v-else
+          />
           <v-card-actions
             @click.stop="restaurant_detail = true"
           >
@@ -74,6 +80,7 @@
             :unset-toppings="unsetToppings"
             :add-to-cart="addToCart"
             :back-to-cart="backToCart"
+            :show-img="have_img"
             @changeQuantity="changeQuantity"
           />
         </v-dialog>
@@ -238,6 +245,11 @@ export default {
     },
     backToProductVariation( index ) {
       console.log( 'Fix index:', index );
+    }
+  },
+  computed: {
+    have_img() {
+      return this.restaurant_data.imgURL !== "";
     }
   },
   watch: {
