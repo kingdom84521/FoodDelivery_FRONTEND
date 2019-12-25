@@ -22,7 +22,7 @@
                                         <v-col class="title">
                                            訂單編號：{{i.no}}
                                         </v-col>
-                                        <v-col class="subtitle-1 text-end">檢視</v-col>
+                                        <v-col class="subtitle-1 text-end">檢視</v-col> 
                                     </v-row>
                                 </v-expansion-panel-header>
                                 <v-expansion-panel-content>
@@ -31,7 +31,8 @@
                                         <v-col>
                                             <v-list-item v-for="(obj, k) in i.menu" :key="k" disabled>
                                                 <v-row>
-                                                    <v-col>{{obj.name}}*{{obj.amount}}</v-col>
+                                                    <v-col>{{obj.name}}</v-col>
+                                                    <v-col>x{{obj.amount}}</v-col>
                                                     <v-col>單價：{{obj.price}}</v-col>
                                                     <v-col>小計：{{obj.price*obj.amount}}</v-col>
                                                 </v-row>
@@ -52,70 +53,77 @@
 export default {
     data: () => ({
         tabname: ["所有", "製作中", "運送中", "已完成"],
-        order: {},
-        list: [{
-            status: 0,
-            no: "2019-11-17-0001",
-            menu: [
-                {
-                    name: "xxxx",
-                    price: 0,
-                    amount: 1
-                },
-                {
-                    name: "xxxx",
-                    price: 0,
-                    amount: 2
-                },
-                {
-                    name: "xxxx",
-                    price: 0,
-                    amount: 3
-                }
-            ],
-            total: ".....",
-            time: ""
-        }, {
-            status: 1,
-            no: "2019-11-17-0002",
-            menu: [
-                {
-                    name: "xxxx",
-                    price: 0,
-                },
-                {
-                    name: "xxxx",
-                    price: 0,
-                },
-                {
-                    name: "xxxx",
-                    price: 0,
-                }
-            ],
-            total: ".....",
-            time: ""
-        }, {
-            status: 2,
-            no: "2019-11-17-0003",
-            menu: [
-                {
-                    name: "xxxx",
-                    price: 0,
-                },
-                {
-                    name: "xxxx",
-                    price: 0,
-                },
-                {
-                    name: "xxxx",
-                    price: 0,
-                }
-            ],
-            total: ".....",
-            time: ""
-        }]
+        order: [],
+        list: [
+            {
+                status: 0,
+                no: "2019-11-17-0001",
+                menu: [
+                    {
+                        name: "xxxx",
+                        price: 0,
+                        amount: 1
+                    },
+                    {
+                        name: "xxxx",
+                        price: 0,
+                        amount: 2
+                    },
+                    {
+                        name: "xxxx",
+                        price: 0,
+                        amount: 3
+                    }
+                ],
+                total: ".....",
+                time: ""
+            },
+            {
+                status: 1,
+                no: "2019-11-17-0002",
+                menu: [
+                    {
+                        name: "xxxx",
+                        price: 0,
+                    },
+                    {
+                        name: "xxxx",
+                        price: 0,
+                    },
+                    {
+                        name: "xxxx",
+                        price: 0,
+                    }
+                ],
+                total: ".....",
+                time: ""
+            },
+            {
+                status: 2,
+                no: "2019-11-17-0003",
+                menu: [
+                    {
+                        name: "xxxx",
+                        price: 0,
+                    },
+                    {
+                        name: "xxxx",
+                        price: 0,
+                    },
+                    {
+                        name: "xxxx",
+                        price: 0,
+                    }
+                ],
+                total: ".....",
+                time: ""
+            }
+        ]
     }),
     methods: {
+        
+    },
+    async created(){
         
     }
 }

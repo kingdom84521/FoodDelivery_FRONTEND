@@ -38,7 +38,7 @@
                 <router-view name="dish"></router-view>
                 <router-view name="ordermanage"></router-view>
                 <router-view name="account"></router-view>
-                <router-view name="notify"></router-view>
+                <!-- <router-view name="notify"></router-view> -->
             </v-col>
         </v-row>
     </v-container>
@@ -50,8 +50,8 @@ export default {
         items: [
           { title: '帳戶編輯', icon: 'mdi-store', route: 'account' },
           { title: '菜單管理', icon: 'mdi-noodles', route: 'dish' },
-          { title: '訂單管理', icon: 'mdi-format-list-bulleted', route: 'ordermanage' },
-          { title: '通知', icon: 'mdi-bell', route: 'notify'}
+          { title: '訂單管理', icon: 'mdi-format-list-bulleted', route: 'ordermanage' }
+        //   { title: '通知', icon: 'mdi-bell', route: 'notify'}
         ]
     }),
     methods:{

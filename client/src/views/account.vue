@@ -203,8 +203,8 @@ export default {
         open: null,
         close: null,
         opentimepicker: false,
-        closetimepicker: false
-
+        closetimepicker: false,
+        storeinformation: []
     }),
     methods: {
         // getTextareaHeight(){
@@ -232,6 +232,15 @@ export default {
     },
     mounted() {
         //this.getTextareaHeight();
+    },
+    async created(){
+        try {
+            const res = await this.$axios.get("http://localhost:3000/restaurants");
+            this.storeinformation = res.data;
+            
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
 </script>

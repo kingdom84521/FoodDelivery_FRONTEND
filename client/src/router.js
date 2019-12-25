@@ -19,9 +19,9 @@ export default new Router({
       component: store,
       children: [
         {
-          name: "",
-          path: "main",
-          component: main
+          name: "store",
+          path: "",
+          component: account
         },
         {
           name: "dish",
