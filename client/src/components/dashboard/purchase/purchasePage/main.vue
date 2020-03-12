@@ -35,7 +35,7 @@
 
 <script>
 import FakeUserOrders from '@/assets/temp/user_order_list.js'
-import orderItem from "@/components/Dashboard/purchase/purchasePage/orderItem"
+import orderItem from "@/components/dashboard/purchase/purchasePage/orderItem"
 
 export default {
     components: {

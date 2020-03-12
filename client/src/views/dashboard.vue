@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import featureList from "@/components/Dashboard/featureList/main"
+import featureList from "@/components/dashboard/featureList/main"
 
 export default {
     name: "Dashboard",
