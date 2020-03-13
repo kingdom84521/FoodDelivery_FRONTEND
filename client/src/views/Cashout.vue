@@ -318,25 +318,25 @@ export default {
       this.order_list_item.address = this.receiver.address;
       this.order_list_item.phone = this.receiver.phone;
       console.log( this.order_list_item );
-      let submitOrder = async () => {
-        this.wait_submit = true;
-        try {
-          await this.$axios({
-            method: 'post',
-            baseURL: 'http://localhost:3001',
-            url: '/orders',
-            'Content-Type': 'application/json',
-            data: this.order_list_item
-          });
-          alert("訂餐成功");
-          this.$router.push({ name: 'dashboard' });
-        } catch (error) {
-          console.log( error );
-          console.log( JSON.stringify(this.order_list_item) );
-          alert("訂餐失敗");
-        }
-        this.wait_submit = false;
-      }
+      // let submitOrder = async () => {
+      //   this.wait_submit = true;
+      //   try {
+      //     await this.$axios({
+      //       method: 'post',
+      //       baseURL: 'http://localhost:3001',
+      //       url: '/orders',
+      //       'Content-Type': 'application/json',
+      //       data: this.order_list_item
+      //     });
+      //     alert("訂餐成功");
+      //     this.$router.push({ name: 'dashboard' });
+      //   } catch (error) {
+      //     console.log( error );
+      //     console.log( JSON.stringify(this.order_list_item) );
+      //     alert("訂餐失敗");
+      //   }
+      //   this.wait_submit = false;
+      // }
       let fakeSubmit = () => {
         this.wait_submit = true;
         setTimeout(() => {
