@@ -12,6 +12,12 @@ import Notification from '@/components/Dashboard/notification/main'
 import Search from '@/views/Search.vue'
 import Menu from '@/views/Menu.vue'
 import Cashout from '@/views/Cashout.vue'
+import ordermanage from "@/views/OrderManage"
+import dish from "@/views/dish"
+import store from "@/views/store"
+import account from "@/views/account"
+import main from "@/views/main"
+import notify from "@/views/notify"
 
 // import Test from '@/components/Test.vue'
 
@@ -95,6 +101,43 @@ export default new Router({
     {
       path: '*',
       redirect: { name: 'home' }
+    },
+    {
+      name: "store",
+      path: "/store",
+      component: store,
+      children: [
+        {
+          name: "store",
+          path: "",
+          component: account
+        },
+        {
+          name: "dish",
+          path: "dish",
+          component: dish
+        },
+        {
+          name: "ordermanage",
+          path: "ordermanage",
+          component: ordermanage
+        },
+        {
+          name: "account",
+          path: "account",
+          component: account
+        },
+        {
+          name: "main",
+          path: "main",
+          component: main
+        },
+        {
+          name: "notify",
+          path: "notify",
+          component: notify
+        }
+      ]
     }
   ]
 })
