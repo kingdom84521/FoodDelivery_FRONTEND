@@ -18,6 +18,7 @@ import store from "@/views/store"
 import account from "@/views/account"
 import main from "@/views/main"
 import notify from "@/views/notify"
+import StoreRegist from "@/views/StoreRegist"
 
 // import Test from '@/components/Test.vue'
 
@@ -138,6 +139,11 @@ export default new Router({
           component: notify
         }
       ]
+    },
+    {
+      name: "storeregist",
+      path: "/storeregist",
+      component: StoreRegist
     }
   ]
 })
